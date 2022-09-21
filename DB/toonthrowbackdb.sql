@@ -198,3 +198,13 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'toon'@'localhost';
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `toonthrowbackdb`;
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `img`) VALUES (1, 'admin', 'admin', '1', 'long bio here', 'img url here');
+
+COMMIT;
+
