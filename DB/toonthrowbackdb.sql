@@ -358,6 +358,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `rating` (`id`, `rating`, `description`, `created_date`, `updated_date`) VALUES (1, 'PG', 'Parental guidance.', '2022-09-22', NULL);
+INSERT INTO `rating` (`id`, `rating`, `description`, `created_date`, `updated_date`) VALUES (2, 'PG10', 'Parental guidance under 10 years old.', '2022-09-22', NULL);
 
 COMMIT;
 
@@ -368,7 +369,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (1, 'Hey Arnold', '1996-10-07', 'A young boy has humorous and at times intense philosophic adventures with friends in \'90s New York City. ', '2022-09-22', NULL, 'https://cdn.vox-cdn.com/thumbor/tBc_7lQ2WMFz6PB_O7j7clOZbPo=/0x0:670x377/1200x800/filters:focal(274x87:380x193)/cdn.vox-cdn.com/uploads/chorus_image/image/51248321/1_hey-arnold.0.jpg', 1, '2004-06-08', NULL, true, 1, 1, 1);
-INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (2, 'Courage The Cowardly Dog', '1996-02-18', 'A farm dog comically battles supernatural horrors to defend his owners.', '2022-09-22', NULL, 'https://m.media-amazon.com/images/M/MV5BMTU4MGEyNTItNzg5ZS00ZGU0LTk4NmEtODM0Y2UxYTY2YTUyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg', 2, '2002-11-22', 'https://en.wikipedia.org/wiki/Courage_the_Cowardly_Dog', true, 1, 1, 1);
+INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (2, 'Courage The Cowardly Dog', '1996-02-18', 'A farm dog comically battles supernatural horrors to defend his owners.', '2022-09-22', NULL, 'https://m.media-amazon.com/images/M/MV5BMTU4MGEyNTItNzg5ZS00ZGU0LTk4NmEtODM0Y2UxYTY2YTUyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg', 2, '2002-11-22', 'https://en.wikipedia.org/wiki/Courage_the_Cowardly_Dog', true, 2, 2, 2);
 
 COMMIT;
 
@@ -390,6 +391,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (1, 1, '\"This is my favorite feels toon.', true, '2022-09-22', NULL, NULL, 1);
+INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (2, 2, '\"ooo spoopy\"', true, '2022-09-22', NULL, NULL, 2);
 
 COMMIT;
 
@@ -400,6 +402,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (1, 'In what historic event does Mr. Hyunh\'s backstory take place?', 'The Fall of Saigon.', 1, '2022-09-22', NULL);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (2, 'What does mummy Rameses moan outside the farmhouse?', '\"Return the Slab!\"', 2, '2022-09-22', NULL);
 
 COMMIT;
 
@@ -410,6 +413,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (1, 1, 'https://www.amazon.com/hey-arnold-merchandise/s?k=hey+arnold+merchandise', NULL, 1, '2022-09-22', NULL, true);
+INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (2, 2, 'https://www.amazon.com/courage-cowardly-dog-shirt/s?k=courage+the+cowardly+dog+shirt', NULL, 2, '2022-09-22', NULL, true);
 
 COMMIT;
 
@@ -420,6 +424,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (1, 'This cartoon bridged the late 90s to the mid 00s.', 1, 1, true, '2022-09-22', NULL);
+INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (2, 'This is the only \"children\'s horror/black comedy\" combination on the network.', 2, 2, true, '2022-09-22', NULL);
 
 COMMIT;
 
@@ -430,6 +435,7 @@ COMMIT;
 START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (2, 2);
 
 COMMIT;
 
