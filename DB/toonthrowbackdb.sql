@@ -181,11 +181,11 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `created_date` DATETIME NOT NULL,
   `updated_date` DATETIME NULL,
   `reply_comment_id` INT NULL,
-  `cartoon_id1` INT NOT NULL,
+  `cartoon_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_forum_user1_idx` (`user_id` ASC),
   INDEX `fk_forum_comment_forum_comment1_idx` (`reply_comment_id` ASC),
-  INDEX `fk_comment_cartoon1_idx` (`cartoon_id1` ASC),
+  INDEX `fk_comment_cartoon1_idx` (`cartoon_id` ASC),
   CONSTRAINT `fk_forum_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comment_cartoon1`
-    FOREIGN KEY (`cartoon_id1`)
+    FOREIGN KEY (`cartoon_id`)
     REFERENCES `cartoon` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -389,7 +389,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `toonthrowbackdb`;
-INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id1`) VALUES (1, 1, '\"This is my favorite feels toon.', true, '2022-09-22', NULL, NULL, 1);
+INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (1, 1, '\"This is my favorite feels toon.', true, '2022-09-22', NULL, NULL, 1);
 
 COMMIT;
 
