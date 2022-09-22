@@ -326,6 +326,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (1, 'admin', 'admin', '', 'administrator', '', true, 'admin', NULL, NULL, '2022-09-22', NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (2, 'user', 'user', NULL, 'user', NULL, true, 'user', NULL, NULL, '2022-09-22', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (3, 'user1', 'user1', NULL, 'user1', NULL, true, 'user1', NULL, NULL, '2022-09-23', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (4, 'user2', 'user2', NULL, 'user2', NULL, true, 'user2', NULL, NULL, '2022-09-23', NULL);
 
 COMMIT;
 
@@ -337,6 +339,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `creator` (`id`, `name`, `bio`, `image`, `url`, `created_date`, `updated_date`) VALUES (1, 'Craig Bartlett', 'Born in 1956, Chris also made childrens\' cartoons \"Dinosaur Train\" and \"Ready Jet Go!\".', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Craig_Bartlett_2017.jpg/440px-Craig_Bartlett_2017.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Craig_Bartlett_2017.jpg', '2022-09-22', NULL);
 INSERT INTO `creator` (`id`, `name`, `bio`, `image`, `url`, `created_date`, `updated_date`) VALUES (2, 'John R. Dilworth', 'Born in 1963, John is the founder of Stretch Films, started in 1991.', 'https://upload.wikimedia.org/wikipedia/commons/f/f0/DillyDali2014.jpg', 'https://en.wikipedia.org/wiki/John_R._Dilworth', '2022-09-22', NULL);
+INSERT INTO `creator` (`id`, `name`, `bio`, `image`, `url`, `created_date`, `updated_date`) VALUES (3, 'Stephen Hillenburg', 'Born in 1961, Stephen is a marine science educator.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Stephen_Hillenburg_by_Carlos_Cazurro.jpg/1024px-Stephen_Hillenburg_by_Carlos_Cazurro.jpg', 'https://en.wikipedia.org/wiki/Stephen_Hillenburg', '2022-09-23', NULL);
+INSERT INTO `creator` (`id`, `name`, `bio`, `image`, `url`, `created_date`, `updated_date`) VALUES (4, 'Adam Maxwell Burton', 'Burton is known professionally as Maxwell Atoms.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Maxwell_Atoms_.jpg/1920px-Maxwell_Atoms_.jpg', 'https://en.wikipedia.org/wiki/Maxwell_Atoms', '2022-09-23', NULL);
 
 COMMIT;
 
@@ -370,6 +374,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (1, 'Hey Arnold', '1996-10-07', 'A young boy has humorous and at times intense philosophic adventures with friends in \'90s New York City. ', '2022-09-22', NULL, 'https://cdn.vox-cdn.com/thumbor/tBc_7lQ2WMFz6PB_O7j7clOZbPo=/0x0:670x377/1200x800/filters:focal(274x87:380x193)/cdn.vox-cdn.com/uploads/chorus_image/image/51248321/1_hey-arnold.0.jpg', 1, '2004-06-08', NULL, true, 1, 1, 1);
 INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (2, 'Courage The Cowardly Dog', '1996-02-18', 'A farm dog comically battles supernatural horrors to defend his owners.', '2022-09-22', NULL, 'https://m.media-amazon.com/images/M/MV5BMTU4MGEyNTItNzg5ZS00ZGU0LTk4NmEtODM0Y2UxYTY2YTUyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg', 2, '2002-11-22', 'https://en.wikipedia.org/wiki/Courage_the_Cowardly_Dog', true, 2, 2, 2);
+INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (3, 'Spongebob Squarepants', '1999-05-01', 'A humanoid sponge living in a pineapple under the sea has comedic misadventures.', '2022-09-23', NULL, 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1024px-SpongeBob_SquarePants_character.svg.png', 3, NULL, 'http://www.nick.com.au/spongebob-squarepants/', true, 3, 1, 1);
+INSERT INTO `cartoon` (`id`, `name`, `airing_date`, `description`, `created_date`, `updated_date`, `image`, `user_id`, `finale_date`, `url`, `active`, `creator_id`, `network_id`, `rating_id`) VALUES (4, 'Grim & Evil', '2001-08-24', 'A double segmented series about the Grim Reaper befriended by two children and and Hector Con Carne.', '2022-09-23', NULL, 'https://upload.wikimedia.org/wikipedia/en/4/47/Grim_%26_Evil_Logo.jpg', 4, '2003-10-01', 'https://en.wikipedia.org/wiki/Grim_%26_Evil', true, 4, 2, 2);
 
 COMMIT;
 
@@ -381,6 +387,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `media` (`id`, `url`, `cartoon_id`, `user_id`, `description`, `title`, `image`, `episode_number`, `season`, `active`, `created_date`, `updated_date`) VALUES (1, 'https://www.youtube.com/watch?v=6jvYynOwKdo&list=PLLhOnau-tupT0auXzLM-f5iNjzHydd4XO', 1, 1, 'Clips of \"Hey Arnold!\"', 'Video Clip', NULL, NULL, NULL, true, '2022-09-22', NULL);
 INSERT INTO `media` (`id`, `url`, `cartoon_id`, `user_id`, `description`, `title`, `image`, `episode_number`, `season`, `active`, `created_date`, `updated_date`) VALUES (2, 'https://www.youtube.com/watch?v=pyEKOY1TIbU', 2, 2, 'Full Episode of Courage The Cowardly Dog', 'Full Episode', NULL, NULL, NULL, true, '2022-09-22', NULL);
+INSERT INTO `media` (`id`, `url`, `cartoon_id`, `user_id`, `description`, `title`, `image`, `episode_number`, `season`, `active`, `created_date`, `updated_date`) VALUES (3, 'https://www.youtube.com/watch?v=YZI-Q118lYY', 3, 3, 'Live feed of Spongebob Squarepants.', 'Live Feed', NULL, NULL, NULL, true, '2022-09-23', NULL);
+INSERT INTO `media` (`id`, `url`, `cartoon_id`, `user_id`, `description`, `title`, `image`, `episode_number`, `season`, `active`, `created_date`, `updated_date`) VALUES (4, 'https://www.youtube.com/watch?v=t9fVEsLVwxw', 4, 4, 'Half Episode of Grim & Evil', 'Half Episode', NULL, 13, 1, true, '2022-09-23', NULL);
 
 COMMIT;
 
@@ -392,6 +400,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (1, 1, '\"This is my favorite feels toon.', true, '2022-09-22', NULL, NULL, 1);
 INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (2, 2, '\"ooo spoopy\"', true, '2022-09-22', NULL, NULL, 2);
+INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (3, 3, '\"The feed goes on and on and on.\"', true, '2022-09-23', NULL, NULL, 3);
+INSERT INTO `comment` (`id`, `user_id`, `comment`, `active`, `created_date`, `updated_date`, `reply_comment_id`, `cartoon_id`) VALUES (4, 4, '\"This series shouldn\'t have turned into Billy and Mandy.\"', true, '2022-09-23', NULL, NULL, 4);
 
 COMMIT;
 
@@ -403,6 +413,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (1, 'In what historic event does Mr. Hyunh\'s backstory take place?', 'The Fall of Saigon.', 1, '2022-09-22', NULL);
 INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (2, 'What does mummy Rameses moan outside the farmhouse?', '\"Return the Slab!\"', 2, '2022-09-22', NULL);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (3, 'What is the name of the spatula handed boogey man in Spongebob?', 'The Hash Slinging Slasher.', 3, '2022-09-23', NULL);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (4, 'What are the only two parts of Hector left?', 'His brain and stomach.', 4, '2022-09-23', NULL);
 
 COMMIT;
 
@@ -414,6 +426,7 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (1, 1, 'https://www.amazon.com/hey-arnold-merchandise/s?k=hey+arnold+merchandise', NULL, 1, '2022-09-22', NULL, true);
 INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (2, 2, 'https://www.amazon.com/courage-cowardly-dog-shirt/s?k=courage+the+cowardly+dog+shirt', NULL, 2, '2022-09-22', NULL, true);
+INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (3, 3, 'https://www.amazon.com/Spongebob-Merchandise/s?k=Spongebob+Merchandise', NULL, 3, '2022-09-23', NULL, true);
 
 COMMIT;
 
@@ -425,6 +438,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (1, 'This cartoon bridged the late 90s to the mid 00s.', 1, 1, true, '2022-09-22', NULL);
 INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (2, 'This is the only \"children\'s horror/black comedy\" combination on the network.', 2, 2, true, '2022-09-22', NULL);
+INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (3, 'This TV series was created by a marine biologist.', 3, 3, true, '2022-09-23', NULL);
+INSERT INTO `fact` (`id`, `fact`, `cartoon_id`, `user_id`, `active`, `created_date`, `updated_date`) VALUES (4, 'This series was split into two seperate cartoons after 2003.', 4, 4, true, '2022-09-23', NULL);
 
 COMMIT;
 
@@ -436,6 +451,8 @@ START TRANSACTION;
 USE `toonthrowbackdb`;
 INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (1, 1);
 INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (2, 2);
+INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (3, 3);
+INSERT INTO `favorite` (`cartoon_id`, `user_id`) VALUES (4, 4);
 
 COMMIT;
 
