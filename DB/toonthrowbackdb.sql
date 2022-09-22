@@ -324,10 +324,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `toonthrowbackdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (1, 'admin', 'admin', '', 'administrator', '', true, 'admin', NULL, NULL, '2022-09-22', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (2, 'user', 'user', NULL, 'user', NULL, true, 'user', NULL, NULL, '2022-09-22', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (3, 'user1', 'user1', NULL, 'user1', NULL, true, 'user1', NULL, NULL, '2022-09-23', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (4, 'user2', 'user2', NULL, 'user2', NULL, true, 'user2', NULL, NULL, '2022-09-23', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (1, 'admin', '$2a$10$Dm9/iOs3ozBHDKqqcjVe4ugFE6KVPBzRpC3Vvo2JRiWqrJ8YMENqy', '', 'administrator', '', true, 'admin', NULL, NULL, '2022-09-22', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (2, 'user', '$2a$10$Dm9/iOs3ozBHDKqqcjVe4ugFE6KVPBzRpC3Vvo2JRiWqrJ8YMENqy', NULL, 'user', NULL, true, 'user', NULL, NULL, '2022-09-22', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (3, 'user1', '$2a$10$Dm9/iOs3ozBHDKqqcjVe4ugFE6KVPBzRpC3Vvo2JRiWqrJ8YMENqy', NULL, 'user1', NULL, true, 'user1', NULL, NULL, '2022-09-23', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `bio`, `image`, `active`, `role`, `first_name`, `last_name`, `created_date`, `updated_date`) VALUES (4, 'user2', '$2a$10$Dm9/iOs3ozBHDKqqcjVe4ugFE6KVPBzRpC3Vvo2JRiWqrJ8YMENqy', NULL, 'user2', NULL, true, 'user2', NULL, NULL, '2022-09-23', NULL);
 
 COMMIT;
 

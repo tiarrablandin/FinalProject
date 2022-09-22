@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.services.CartoonService;
 
 @RestController
 @RequestMapping(path="api")
