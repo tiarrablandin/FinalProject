@@ -1,7 +1,7 @@
 package com.skilldistillery.toonthrowback.controllers;
 
 import java.security.Principal;
-import java.util.Set;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,14 +29,13 @@ public class CartoonController {
 	private CartoonService cartoonService;
 	
 	@GetMapping("cartoons")
-	public Set<Cartoon> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		//return todoService.index(username);
-		return cartoonService.index(principal.getName());
+	public List<Cartoon> index() {
+		return cartoonService.index();
 	}
 	
 	@GetMapping("cartoons/{cid}")
-	public Cartoon show(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) { 
-		Cartoon cartoon = cartoonService.show(principal.getName(), cid);
+	public Cartoon show(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) { 
+		Cartoon cartoon = cartoonService.show(cid);
 		if(cartoon == null) {
 			res.setStatus(404);
 		}

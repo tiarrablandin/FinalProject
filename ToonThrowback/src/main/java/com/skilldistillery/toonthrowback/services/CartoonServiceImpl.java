@@ -1,46 +1,93 @@
 package com.skilldistillery.toonthrowback.services;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
 import com.skilldistillery.toonthrowback.entities.User;
 import com.skilldistillery.toonthrowback.repositories.CartoonRepository;
 import com.skilldistillery.toonthrowback.repositories.UserRepository;
 
+@Service
 public class CartoonServiceImpl implements CartoonService {
 
 	@Autowired
 	private CartoonRepository cartoonRepo;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository userRepo;
 	
 	@Override
-	public Set<Cartoon> index(String name) {
+	public List<Cartoon> index() {
+		return cartoonRepo.findAll();
+	}
+
+	@Override
+	public Cartoon show(int cid) {
+		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
+		if(cartoonOp.isPresent()) {
+			Cartoon cartoon = cartoonOp.get();
+				return cartoon;
+			}
 		return null;
 	}
 
 	@Override
-	public Cartoon show(String name, int cid) {
+	public Cartoon create(String username, Cartoon cartoon) {
+		User user = userRepo.findByUsername(username);
+		if(user != null) {
+			cartoon.setUser(user);
+			System.out.println(user);
+			System.out.println(cartoon);
+			return cartoonRepo.saveAndFlush(cartoon);
+		}
 		return null;
 	}
 
 	@Override
-	public Cartoon create(String name, Cartoon cartoon) {
+	public Cartoon update(String username, int cid, Cartoon cartoon) {
+		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
+		if(cartoonOp.isPresent()) {
+			Cartoon cartoonOld = cartoonOp.get();
+			if (cartoonOld.getUser().getUsername().equals(username)) {
+				cartoonOld.setName(cartoon.getName());
+				cartoonOld.setDescription(cartoon.getDescription());
+				cartoonOld.setUrl(cartoon.getUrl());
+				cartoonOld.setImage(cartoon.getImage());
+				cartoonOld.setAiringDate(cartoon.getAiringDate());
+				cartoonOld.setFinaleDate(cartoon.getFinaleDate());
+				cartoonOld.setCreatedDate(cartoon.getCreatedDate());
+				cartoonOld.setUpdatedDate(cartoon.getUpdatedDate());
+				cartoonOld.setNetwork(cartoon.getNetwork());
+				cartoonOld.setCreator(cartoon.getCreator());
+				cartoonRepo.save(cartoonOld);
+				return cartoonOld;
+			}
+		}
 		return null;
 	}
 
 	@Override
-	public Cartoon update(String name, int cid, Cartoon cartoon) {
-		return null;
-	}
+	public boolean destroy(String username, int cid) {
+		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
+		if(cartoonOp.isPresent()) {
+			Cartoon cartoon = cartoonOp.get();
+			if(cartoon.getUser().getUsername().equals(username)) {
+				try {
+					if (cartoon.isActive()) {
+						cartoon.setActive(cartoon.isActive());
+					}
+					return true;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
-	@Override
-	public boolean destroy(String name, int cid) {
+		}
 		return false;
 	}
-
 }
+

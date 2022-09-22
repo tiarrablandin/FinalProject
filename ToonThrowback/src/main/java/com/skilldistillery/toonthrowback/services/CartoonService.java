@@ -1,19 +1,19 @@
 package com.skilldistillery.toonthrowback.services;
 
-import java.util.Set;
+import java.util.List;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
 
 public interface CartoonService {
-	 public Set<Cartoon> index(String name);
+	 public List<Cartoon> index();
 
-	    public Cartoon show(String name, int cid);
+	    public Cartoon show( int cid);
 
-	    public Cartoon create(String name, Cartoon cartoon);
+	    public Cartoon create(String username, Cartoon cartoon);
 
-	    public Cartoon update(String name, int cid, Cartoon cartoon);
+	    public Cartoon update(String username, int cid, Cartoon cartoon);
 
-	    public boolean destroy(String name, int cid);
+	    public boolean destroy(String username, int cid);
 	
 
 }
