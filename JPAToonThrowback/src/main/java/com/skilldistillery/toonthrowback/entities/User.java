@@ -15,6 +15,13 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+
 @Entity
 public class User {
 	
@@ -50,21 +57,27 @@ public class User {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Cartoon> cartoon;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy="userFavs")
 	private List<Cartoon> favCartoons;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Media> media;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Comment> comment;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Fact> facts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Merchandise> merch;
 	

@@ -15,6 +15,11 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
 @Entity
 public class Media {
 	
@@ -45,10 +50,12 @@ public class Media {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
+	@JsonIgnoreProperties({"media"})
 	@OneToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
 	
+	@JsonIgnoreProperties({"media"})
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;

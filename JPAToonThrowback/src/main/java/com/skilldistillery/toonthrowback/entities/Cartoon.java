@@ -18,6 +18,10 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 public class Cartoon {
 	
@@ -71,19 +75,35 @@ public class Cartoon {
 	@JoinColumn(name="creator_id")
 	private Creator creator;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cartoon")
 	private List<Comment> comment;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cartoon")
 	private List<Fact> facts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cartoon")
 	private List<Trivia> trivias;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cartoon")
 	private List<Merchandise> merch;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="cartoon")
+	private List<Media> media;
+	
 /////////////////////////////////////////////////////////////////////////////////	
+
+	public List<Media> getMedia() {
+		return media;
+	}
+
+	public void setMedia(List<Media> media) {
+		this.media = media;
+	}
 
 	public Cartoon() {
 	}

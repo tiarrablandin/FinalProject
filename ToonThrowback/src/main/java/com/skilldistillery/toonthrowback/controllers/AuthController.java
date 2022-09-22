@@ -34,6 +34,7 @@ public class AuthController {
 	 
 	@GetMapping("authenticate")
 	public User authenticate(Principal principal, HttpServletResponse res) {
+		System.out.println(principal);
 	  if (principal == null) { // no Authorization header sent
 	     res.setStatus(401);
 	     res.setHeader("WWW-Authenticate", "Basic");
@@ -42,17 +43,6 @@ public class AuthController {
 	  return authService.getUserByUsername(principal.getName());
 	}
 	
-	// SMOKE TEST ONLY, DELETE/COMMENT OUT LATER
-	@GetMapping("test/users/{userId}")
-	public User getUserForTest(
-	  @PathVariable Integer userId,
-	  HttpServletResponse res
-	) {
-	  User user = authService.getUserById(userId);
-	  if (user == null) {
-	    res.setStatus(404);
-	  }
-	  return user;
-	}
+
 
 }

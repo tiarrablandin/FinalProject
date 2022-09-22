@@ -14,6 +14,12 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+
 @Entity
 public class Trivia {
 	
@@ -33,6 +39,7 @@ public class Trivia {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
+	@JsonIgnoreProperties({"trivias"})
 	@ManyToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
