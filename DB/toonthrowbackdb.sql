@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `cartoon` (
   `name` VARCHAR(45) NOT NULL,
   `airing_date` DATETIME NULL,
   `description` TEXT NULL,
-  `created_date` VARCHAR(45) NOT NULL,
+  `created_date` DATETIME NOT NULL,
   `updated_date` DATETIME NULL,
   `image` TEXT NULL,
   `user_id` INT NOT NULL,
