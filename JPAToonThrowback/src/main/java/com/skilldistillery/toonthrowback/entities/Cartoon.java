@@ -63,7 +63,6 @@ public class Cartoon {
 			   inverseJoinColumns= @JoinColumn(name="user_id"))
 	private List<User> userFavs;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="network_id")
 	private Network network;

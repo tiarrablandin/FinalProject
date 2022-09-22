@@ -21,7 +21,7 @@ import com.skilldistillery.toonthrowback.entities.Comment;
 import com.skilldistillery.toonthrowback.services.CommentService;
 
 @RestController
-@RequestMapping(path="api")
+@RequestMapping(path="api/cartoons/{cid}")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class CommentController {
 	
@@ -29,13 +29,13 @@ public class CommentController {
 	private CommentService commentService;
 	
 	@GetMapping("comments")
-	public List<Comment> index() {
-		return commentService.index();
+	public List<Comment> index(@PathVariable int cid) {
+		return commentService.index(cid);
 	}
 	
 	@GetMapping("comments/{id}")
-	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) { 
-		Comment comment = commentService.show(id);
+	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
+		Comment comment = commentService.show(id, cid);
 		if(comment == null) {
 			res.setStatus(404);
 		}
@@ -43,11 +43,11 @@ public class CommentController {
 	}
 	
 	@PostMapping("comments")
-	public Comment create(HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
+	public Comment create( @PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
 		Comment created = null;
 		
 		try {
-			created = commentService.create(comment);
+			created = commentService.create(comment, cid, principal.getName());
 			res.setStatus(201);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -56,11 +56,11 @@ public class CommentController {
 		return created;
 	}
 	
-	@PostMapping("comments/{cid}")
-	public Comment createReply(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, @RequestBody Comment comment, Principal principal) {
+	@PostMapping("comments/{commentId}")
+	public Comment createReply(HttpServletRequest req, HttpServletResponse res, @PathVariable int commentId, @RequestBody Comment comment, Principal principal) {
 		Comment created = null;
 		try {
-			created = commentService.create(comment, cid);
+			created = commentService.create(comment, commentId, principal.getName());
 			res.setStatus(201);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -70,11 +70,11 @@ public class CommentController {
 	}
 	
 	@PutMapping("comments/{id}")
-	public Comment update(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Comment comment, Principal principal) { 
+	public Comment update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Comment comment, Principal principal) { 
 		Comment updated = null;
 		
 		try {
-			updated = commentService.update(id, comment);
+			updated = commentService.update(id, comment, principal.getName());
 		}catch(Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
@@ -85,7 +85,7 @@ public class CommentController {
 	
 	@DeleteMapping("comments/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
-		boolean deleted = commentService.destroy(id);
+		boolean deleted = commentService.destroy(id, principal.getName());
 		if(deleted) {
 			res.setStatus(204);
 		}else {
