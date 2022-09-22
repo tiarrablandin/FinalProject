@@ -15,16 +15,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class CommentTest {
 	static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Comment comment;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPAToonThrowback");
 	}
-	
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
@@ -33,36 +33,28 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		comment = em.find(Comment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user=null;
+		comment = null;
 	}
 
 	@Test
-	void test_user_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("", user.getEmail());
-		assertEquals(null, user.getFirstName());
-		assertEquals(null, user.getLastName());
-		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
-		assertEquals("admin", user.getRole());
+	void test_comment_entities() {
+		assertNotNull(comment);
+		assertTrue(comment.getComment().contains("This is my"));
+		assertTrue(comment.isActive());
 	}
 	
 	@Test
 	void test_comment_entity_mappings() {
-		assertTrue(user.getCartoon().size() > 0);
-		assertTrue(user.getFavCartoons().size() > 0);
-		assertTrue(user.getMedia().size() > 0);
-		assertTrue(user.getComment().size() > 0);
-		assertTrue(user.getFacts().size() > 0);
-		assertTrue(user.getMerch().size() > 0);
+		assertEquals(1, comment.getUser().getId());
+		assertEquals(1, comment.getCartoon().getId());
+		assertEquals(null,comment.getParentComment());
+		assertFalse(comment.getReplies().size() > 0);
 	}
 
 }

@@ -15,10 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class TriviaTest {
 	static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Trivia trivia;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,36 +33,25 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		trivia = em.find(Trivia.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user=null;
+		trivia=null;
 	}
 
 	@Test
-	void test_user_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("", user.getEmail());
-		assertEquals(null, user.getFirstName());
-		assertEquals(null, user.getLastName());
-		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
-		assertEquals("admin", user.getRole());
+	void test_trivia_entities() {
+		assertNotNull(trivia);
+		assertTrue(trivia.getQuestion().contains("In what historic event"));
+		assertEquals("The Fall of Saigon.", trivia.getAnswer());
 	}
 	
 	@Test
-	void test_comment_entity_mappings() {
-		assertTrue(user.getCartoon().size() > 0);
-		assertTrue(user.getFavCartoons().size() > 0);
-		assertTrue(user.getMedia().size() > 0);
-		assertTrue(user.getComment().size() > 0);
-		assertTrue(user.getFacts().size() > 0);
-		assertTrue(user.getMerch().size() > 0);
+	void test_trivia_entity_mappings() {
+		assertEquals(1, trivia.getCartoon().getId());
 	}
 
 }

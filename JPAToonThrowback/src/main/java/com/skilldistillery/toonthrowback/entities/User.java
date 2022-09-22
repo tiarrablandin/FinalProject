@@ -1,11 +1,19 @@
 package com.skilldistillery.toonthrowback.entities;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class User {
@@ -14,10 +22,55 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	
+	private String image;
+	
 	private String username;
+	
+	private String password;
+	
+	private String email;
+	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	private String bio;
+	
+	private boolean active;
+	
+	private String role;
+	
+	@CreationTimestamp
+	@Column(name="created_date")
+	private LocalDateTime createdDate;
+	
+	@UpdateTimestamp
+	@Column(name="updated_date")
+	private LocalDateTime updatedDate;
+	
+	@OneToMany(mappedBy="user")
+	private List<Cartoon> cartoon;
+	
+	@ManyToMany(mappedBy="userFavs")
+	private List<Cartoon> favCartoons;
+	
+	@OneToMany(mappedBy="user")
+	private List<Media> media;
+	
+	@OneToMany(mappedBy="user")
+	private List<Comment> comment;
+	
+	@OneToMany(mappedBy="user")
+	private List<Fact> facts;
+	
+	@OneToMany(mappedBy="user")
+	private List<Merchandise> merch;
+	
+/////////////////////////////////////////////////////////////////////////////////	
 
 	public User() {
-		super();
 	}
 
 	public int getId() {
@@ -36,14 +89,148 @@ public class User {
 		this.username = username;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImg(String image) {
+		this.image = image;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(LocalDateTime updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public List<Cartoon> getCartoon() {
+		return cartoon;
+	}
+
+	public void setCartoon(List<Cartoon> cartoon) {
+		this.cartoon = cartoon;
+	}
+
+	public List<Cartoon> getFavCartoons() {
+		return favCartoons;
+	}
+
+	public void setFavCartoons(List<Cartoon> favCartoons) {
+		this.favCartoons = favCartoons;
+	}
+
+	public List<Media> getMedia() {
+		return media;
+	}
+
+	public void setMedia(List<Media> media) {
+		this.media = media;
+	}
+
+	public List<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
+
+	public List<Fact> getFacts() {
+		return facts;
+	}
+
+	public void setFacts(List<Fact> facts) {
+		this.facts = facts;
+	}
+
+	public List<Merchandise> getMerch() {
+		return merch;
+	}
+
+	public void setMerch(List<Merchandise> merch) {
+		this.merch = merch;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
+		return "User [id=" + id + ", img=" + image + ", username=" + username + ", password=" + password + ", email="
+				+ email + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio + ", active=" + active
+				+ ", role=" + role + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, username);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -55,7 +242,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return id == other.id && Objects.equals(username, other.username);
+		return id == other.id;
 	}
-		
+
 }

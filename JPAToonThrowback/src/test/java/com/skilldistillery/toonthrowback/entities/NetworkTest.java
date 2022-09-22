@@ -15,10 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class NetworkTest {
 	static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Network network;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,36 +33,25 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		network = em.find(Network.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user=null;
+		network=null;
 	}
 
 	@Test
-	void test_user_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("", user.getEmail());
-		assertEquals(null, user.getFirstName());
-		assertEquals(null, user.getLastName());
-		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
-		assertEquals("admin", user.getRole());
+	void test_network_entities() {
+		assertNotNull(network);
+		assertEquals("Nickelodeon", network.getName());
+		assertTrue(network.getDescription().contains("First American cable"));
 	}
 	
 	@Test
-	void test_comment_entity_mappings() {
-		assertTrue(user.getCartoon().size() > 0);
-		assertTrue(user.getFavCartoons().size() > 0);
-		assertTrue(user.getMedia().size() > 0);
-		assertTrue(user.getComment().size() > 0);
-		assertTrue(user.getFacts().size() > 0);
-		assertTrue(user.getMerch().size() > 0);
+	void test_network_entity_mappings() {
+		assertTrue(network.getCartoon().size() > 0);
 	}
 
 }

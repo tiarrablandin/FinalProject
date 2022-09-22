@@ -15,10 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class CreatorTest {
 	static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Creator creator;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,36 +33,25 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		creator = em.find(Creator.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user=null;
+		creator=null;
 	}
 
 	@Test
-	void test_user_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("", user.getEmail());
-		assertEquals(null, user.getFirstName());
-		assertEquals(null, user.getLastName());
-		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
-		assertEquals("admin", user.getRole());
+	void test_creator_entities() {
+		assertNotNull(creator);
+		assertEquals("Craig Bartlett", creator.getName());
+		assertTrue(creator.getBio().contains("Born in 1956"));
 	}
 	
 	@Test
-	void test_comment_entity_mappings() {
-		assertTrue(user.getCartoon().size() > 0);
-		assertTrue(user.getFavCartoons().size() > 0);
-		assertTrue(user.getMedia().size() > 0);
-		assertTrue(user.getComment().size() > 0);
-		assertTrue(user.getFacts().size() > 0);
-		assertTrue(user.getMerch().size() > 0);
+	void test_creator_entity_mappings() {
+		assertTrue(creator.getCartoon().size() > 0);
 	}
 
 }

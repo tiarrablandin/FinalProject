@@ -1,8 +1,8 @@
 package com.skilldistillery.toonthrowback.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
@@ -15,10 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class MediaTest {
 	static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Media media;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,36 +33,29 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		media = em.find(Media.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user=null;
+		media=null;
 	}
 
 	@Test
-	void test_user_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("", user.getEmail());
-		assertEquals(null, user.getFirstName());
-		assertEquals(null, user.getLastName());
-		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
-		assertEquals("admin", user.getRole());
+	void test_media_entities() {
+		assertNotNull(media);
+		assertEquals("Video Clip", media.getTitle());
+		assertTrue(media.getDescription().contains("Clips of"));
+		assertNull(media.getSeason());
+		assertNull(media.getEpisodeNum());
+		assertTrue(media.isActive());
 	}
 	
 	@Test
-	void test_comment_entity_mappings() {
-		assertTrue(user.getCartoon().size() > 0);
-		assertTrue(user.getFavCartoons().size() > 0);
-		assertTrue(user.getMedia().size() > 0);
-		assertTrue(user.getComment().size() > 0);
-		assertTrue(user.getFacts().size() > 0);
-		assertTrue(user.getMerch().size() > 0);
+	void test_media_entity_mappings() {
+		assertEquals(1, media.getUser().getId());
+		assertEquals(1, media.getCartoon().getId());
 	}
 
 }
