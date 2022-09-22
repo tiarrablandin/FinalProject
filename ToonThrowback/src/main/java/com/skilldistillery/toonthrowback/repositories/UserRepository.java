@@ -7,6 +7,7 @@ import com.skilldistillery.toonthrowback.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User getUserById(int userId);
+	
 	User findByUsername(String username);
 	
 }
