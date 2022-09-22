@@ -14,9 +14,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -43,7 +41,7 @@ public class Network {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
-	@JsonIgnoreProperties({"network"})
+	@JsonIgnore
 	@OneToMany(mappedBy="network")
 	private List<Cartoon> cartoon;
 	

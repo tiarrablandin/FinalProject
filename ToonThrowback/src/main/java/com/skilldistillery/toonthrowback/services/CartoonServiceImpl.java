@@ -49,6 +49,7 @@ public class CartoonServiceImpl implements CartoonService {
 
 	@Override
 	public Cartoon update(String username, int cid, Cartoon cartoon) {
+		System.out.println(cartoon);
 		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
 		if(cartoonOp.isPresent()) {
 			Cartoon cartoonOld = cartoonOp.get();

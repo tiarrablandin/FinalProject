@@ -16,9 +16,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -41,22 +39,22 @@ public class Comment {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
-	@JsonIgnoreProperties({"comment"})
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@JsonIgnoreProperties({"comment"})
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
 	
-	@JsonIgnoreProperties({"replies", "parentComment"})
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="reply_comment_id")
 	private Comment parentComment;
 	
-	@JsonIgnoreProperties({"replies", "parentComment"})
+	@JsonIgnore
 	@OneToMany(mappedBy="parentComment")
 	private List<Comment> replies;
 	

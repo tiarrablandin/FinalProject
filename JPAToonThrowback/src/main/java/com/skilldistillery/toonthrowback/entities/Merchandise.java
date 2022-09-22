@@ -14,9 +14,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -41,12 +39,12 @@ public class Merchandise {
 	@Column(name="update_date")
 	private LocalDateTime updatedDate;
 	
-	@JsonIgnoreProperties({"merch"})
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
 	
-	@JsonIgnoreProperties({"merch"})
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
