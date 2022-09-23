@@ -41,8 +41,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public Comment create(Comment comment, int cartoonId, String username) {
-		Optional<Cartoon> toonOpt = toonRepo.findById(cartoonId);
+	public Comment create(Comment comment, int cid, String username) {
+		Optional<Cartoon> toonOpt = toonRepo.findById(cid);
 		User user = userRepo.findByUsername(username);
 		if (toonOpt.isPresent() && user != null) {
 			comment.setUser(user);
@@ -50,7 +50,6 @@ public class CommentServiceImpl implements CommentService {
 			return commentRepo.saveAndFlush(comment);
 		}
 		return null;
-
 	}
 
 	@Override
@@ -98,7 +97,6 @@ public class CommentServiceImpl implements CommentService {
 					e.printStackTrace();
 				}
 			}
-
 		}
 		return false;
 	}

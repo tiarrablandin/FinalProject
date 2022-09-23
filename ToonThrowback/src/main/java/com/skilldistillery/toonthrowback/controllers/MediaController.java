@@ -21,9 +21,9 @@ import com.skilldistillery.toonthrowback.entities.Comment;
 import com.skilldistillery.toonthrowback.services.CommentService;
 
 @RestController
-@RequestMapping(path="api/cartoons/{cid}")
+@RequestMapping(path="api/cartoons.{cid}")
 @CrossOrigin({"*", "http://localhost:4300"})
-public class CommentController {
+public class MediaController {
 	
 	@Autowired
 	private CommentService commentService;
@@ -43,23 +43,11 @@ public class CommentController {
 	}
 	
 	@PostMapping("comments")
-	public Comment create( @PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
+	public Comment create(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
 		Comment created = null;
+		
 		try {
 			created = commentService.create(comment, cid, principal.getName());
-			res.setStatus(201);
-		}catch(Exception e) {
-			e.printStackTrace();
-			res.setStatus(400);
-		}
-		return created;
-	}
-	
-	@PostMapping("comments/{commentId}")
-	public Comment createReply(HttpServletRequest req, HttpServletResponse res, @PathVariable int commentId, @RequestBody Comment comment, Principal principal) {
-		Comment created = null;
-		try {
-			created = commentService.create(comment, commentId, principal.getName());
 			res.setStatus(201);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -90,7 +78,4 @@ public class CommentController {
 		}
 	}
 	
-	
-	
-
 }
