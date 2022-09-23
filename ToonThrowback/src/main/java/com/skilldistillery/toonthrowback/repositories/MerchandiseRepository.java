@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skilldistillery.toonthrowback.entities.Merchandise;
 
-public interface MerchRepository extends JpaRepository<Merchandise, Integer> {
+public interface MerchandiseRepository extends JpaRepository<Merchandise, Integer> {
 
-	Merchandise getUserById(int userId);
+	Merchandise getById(int userId);
 	
 	List<Merchandise> findByUserId(int id);
 	
