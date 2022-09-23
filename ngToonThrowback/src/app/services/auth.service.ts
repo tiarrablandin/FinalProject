@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 import { User } from '../models/user';
+import { Buffer } from 'buffer';
 
 @Injectable({
   providedIn: 'root'

@@ -11,6 +11,12 @@ import { HomeComponent } from './components/home/home.component';
 import { ToonService } from './services/toon.service';
 import { AuthService } from './services/auth.service';
 import { AccountComponent } from './components/account/account.component';
+import { MediaComponent } from './components/media/media.component';
+import { TriviaComponent } from './components/trivia/trivia.component';
+import { MerchComponent } from './components/merch/merch.component';
+import { RegisterComponent } from './components/register/register.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +24,15 @@ import { AccountComponent } from './components/account/account.component';
     NavbarComponent,
     HomeComponent,
     AccountComponent,
-    // AboutComponent,
-    // ContactComponent,
-    // NotFoundComponent,
-    // RegisterComponent,
+    MediaComponent,
+    TriviaComponent,
+    MerchComponent,
+    RegisterComponent,
+    NotFoundComponent,
+    AboutComponent,
+    AboutComponent,
+    NotFoundComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

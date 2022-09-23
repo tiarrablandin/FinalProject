@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
+import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
+import { MediaComponent } from './components/media/media.component';
+import { MerchComponent } from './components/merch/merch.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
+import { TriviaComponent } from './components/trivia/trivia.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  // { path: 'about', component: AboutComponent },
-  // { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'media', component: MediaComponent },
+  { path: 'trivia', component: TriviaComponent },
+  { path: 'merch', component: MerchComponent },
+  { path: 'account', component: AccountComponent },
   // { path: 'toon', component: ToonComponent },
-  // { path: 'register', component: RegisterComponent },
-  // { path: '**', component: NotFoundComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
