@@ -21,19 +21,19 @@ import com.skilldistillery.toonthrowback.entities.Comment;
 import com.skilldistillery.toonthrowback.services.CommentService;
 
 @RestController
-@RequestMapping(path="api/cartoons/{cid}")
+@RequestMapping(path="api")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class MerchController {
 	
 	@Autowired
 	private CommentService commentService;
 	
-	@GetMapping("comments")
+	@GetMapping("merch")
 	public List<Comment> index(@PathVariable int cid) {
 		return commentService.index(cid);
 	}
 	
-	@GetMapping("comments/{id}")
+	@GetMapping("merch/{id}")
 	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
 		Comment comment = commentService.show(id, cid);
 		if(comment == null) {
@@ -42,7 +42,7 @@ public class MerchController {
 		return comment;
 	}
 	
-	@PostMapping("comments")
+	@PostMapping("merch")
 	public Comment create( @PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
 		Comment created = null;
 		try {
@@ -55,7 +55,7 @@ public class MerchController {
 		return created;
 	}
 	
-	@PostMapping("comments/{commentId}")
+	@PostMapping("merch/{id}")
 	public Comment createReply(HttpServletRequest req, HttpServletResponse res, @PathVariable int commentId, @RequestBody Comment comment, Principal principal) {
 		Comment created = null;
 		try {
@@ -68,7 +68,7 @@ public class MerchController {
 		return created;
 	}
 	
-	@PutMapping("comments/{id}")
+	@PutMapping("merch/{id}")
 	public Comment update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Comment comment, Principal principal) { 
 		Comment updated = null;
 		try {
@@ -80,7 +80,7 @@ public class MerchController {
 		return updated;
 	}
 	
-	@DeleteMapping("comments/{id}")
+	@DeleteMapping("merch/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
 		boolean deleted = commentService.destroy(id, principal.getName());
 		if(deleted) {

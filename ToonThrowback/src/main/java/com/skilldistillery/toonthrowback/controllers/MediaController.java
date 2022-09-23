@@ -21,7 +21,7 @@ import com.skilldistillery.toonthrowback.entities.Media;
 import com.skilldistillery.toonthrowback.services.MediaService;
 
 @RestController
-@RequestMapping(path="api/cartoons.{cid}")
+@RequestMapping(path="api")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class MediaController {
 	
