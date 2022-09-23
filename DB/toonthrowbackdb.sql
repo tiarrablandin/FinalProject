@@ -216,11 +216,19 @@ CREATE TABLE IF NOT EXISTS `trivia` (
   `cartoon_id` INT NOT NULL,
   `created_date` DATETIME NOT NULL,
   `updated_date` DATETIME NULL,
+  `active` TINYINT NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_trivia_cartoon1_idx` (`cartoon_id` ASC),
+  INDEX `fk_trivia_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_trivia_cartoon1`
     FOREIGN KEY (`cartoon_id`)
     REFERENCES `cartoon` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trivia_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -232,7 +240,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `merchandise` ;
 
 CREATE TABLE IF NOT EXISTS `merchandise` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `cartoon_id` INT NOT NULL,
   `url` TEXT NOT NULL,
   `image` TEXT NULL,
@@ -411,10 +419,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `toonthrowbackdb`;
-INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (1, 'In what historic event does Mr. Hyunh\'s backstory take place?', 'The Fall of Saigon.', 1, '2022-09-22', NULL);
-INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (2, 'What does mummy Rameses moan outside the farmhouse?', '\"Return the Slab!\"', 2, '2022-09-22', NULL);
-INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (3, 'What is the name of the spatula handed boogey man in Spongebob?', 'The Hash Slinging Slasher.', 3, '2022-09-23', NULL);
-INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`) VALUES (4, 'What are the only two parts of Hector left?', 'His brain and stomach.', 4, '2022-09-23', NULL);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`, `active`, `user_id`) VALUES (1, 'In what historic event does Mr. Hyunh\'s backstory take place?', 'The Fall of Saigon.', 1, '2022-09-22', NULL, true, 1);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`, `active`, `user_id`) VALUES (2, 'What does mummy Rameses moan outside the farmhouse?', '\"Return the Slab!\"', 2, '2022-09-22', NULL, true, 2);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`, `active`, `user_id`) VALUES (3, 'What is the name of the spatula handed boogey man in Spongebob?', 'The Hash Slinging Slasher.', 3, '2022-09-23', NULL, true, 3);
+INSERT INTO `trivia` (`id`, `question`, `answer`, `cartoon_id`, `created_date`, `updated_date`, `active`, `user_id`) VALUES (4, 'What are the only two parts of Hector left?', 'His brain and stomach.', 4, '2022-09-23', NULL, true, 4);
 
 COMMIT;
 
