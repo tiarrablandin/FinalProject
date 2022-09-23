@@ -12,7 +12,7 @@ public interface TriviaService {
 
 	 public Trivia create(Trivia trivia, int cid, String username);
 	    
-	 public Trivia update(int id, Trivia trivia, String username);
+	 public Trivia update(int id, int cid, Trivia trivia, String username);
 
 	 public boolean destroy(int id, String username);
 }

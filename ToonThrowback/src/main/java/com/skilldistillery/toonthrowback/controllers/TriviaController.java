@@ -59,7 +59,7 @@ public class TriviaController {
 	public Trivia update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Trivia trivia, Principal principal) { 
 		Trivia updated = null;
 		try {
-			updated = triviaService.update(id, trivia, principal.getName());
+			updated = triviaService.update(id, cid, trivia, principal.getName());
 		}catch(Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);

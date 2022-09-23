@@ -53,7 +53,7 @@ public class TriviaServiceImpl implements TriviaService {
 	}
 
 	@Override
-	public Trivia update(int id, Trivia trivia, String username) {
+	public Trivia update(int id, int cid, Trivia trivia, String username) {
 		Optional<Trivia> triviaOp = triviaRepo.findById(id);
 		if (triviaOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
@@ -62,6 +62,8 @@ public class TriviaServiceImpl implements TriviaService {
 				triviaOld.setQuestion(trivia.getQuestion());
 				triviaOld.setAnswer(trivia.getAnswer());
 				triviaOld.setCartoon(trivia.getCartoon());
+				triviaOld.setCartoon(new Cartoon());
+				triviaOld.getCartoon().setId(cid);
 				triviaRepo.save(triviaOld);
 				return triviaOld;
 			}
