@@ -45,6 +45,7 @@ public class TriviaServiceImpl implements TriviaService {
 		Optional<Cartoon> toonOpt = toonRepo.findById(cid);
 		User user = userRepo.findByUsername(username);
 		if (toonOpt.isPresent() && user != null) {
+			trivia.setUser(user);
 			trivia.setCartoon(toonOpt.get());
 			return triviaRepo.saveAndFlush(trivia);
 		}

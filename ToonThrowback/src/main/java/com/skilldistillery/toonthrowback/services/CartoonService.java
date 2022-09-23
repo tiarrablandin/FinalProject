@@ -3,6 +3,7 @@ package com.skilldistillery.toonthrowback.services;
 import java.util.List;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.entities.User;
 
 public interface CartoonService {
 	 public List<Cartoon> index();
@@ -14,6 +15,12 @@ public interface CartoonService {
 	    public Cartoon update(String username, int cid, Cartoon cartoon);
 
 	    public boolean destroy(String username, int cid);
+
+		public Cartoon updateFavorite(String username, int cid);
+		
+		public Cartoon deleteFavorite(String username, int cid);
+	    
+	  
 	
 
 }

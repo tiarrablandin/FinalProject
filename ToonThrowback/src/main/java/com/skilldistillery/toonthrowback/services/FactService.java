@@ -12,7 +12,7 @@ public interface FactService {
 
 	 public Fact create(Fact fact, int cid, String username);
 	    
-	 public Fact update(int id, Fact fact, String username);
+	 public Fact update(int cid, int id, Fact fact, String username);
 
 	 public boolean destroy(int id, String username);
 }

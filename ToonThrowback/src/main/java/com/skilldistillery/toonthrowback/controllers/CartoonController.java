@@ -80,7 +80,27 @@ public class CartoonController {
 		}
 	}
 	
+	@PutMapping("cartoons/fav/{cid}")
+	public Cartoon updateFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) { 
+		Cartoon updated = null;
+		
+		try {
+			updated = cartoonService.updateFavorite(principal.getName(), cid);
+		}catch(Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
+		return updated;
+	}
 	
-	
+	@DeleteMapping("cartoons/fav/{cid}")
+	public void destroyFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) {
+		 Cartoon deleteFav = cartoonService.deleteFavorite(principal.getName(), cid);
+		if(deleteFav != null) {
+			res.setStatus(204);
+		}else {
+			res.setStatus(404);
+		}
+	}
 
 }

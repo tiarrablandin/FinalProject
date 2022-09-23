@@ -59,7 +59,7 @@ public class FactController {
 	public Fact update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Fact fact, Principal principal) { 
 		Fact updated = null;
 		try {
-			updated = factService.update(id, fact, principal.getName());
+			updated = factService.update(cid, id, fact, principal.getName());
 		}catch(Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);

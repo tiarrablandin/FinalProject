@@ -21,7 +21,7 @@ import com.skilldistillery.toonthrowback.entities.Trivia;
 import com.skilldistillery.toonthrowback.services.TriviaService;
 
 @RestController
-@RequestMapping(path="api/cartoons/{cid}")
+@RequestMapping(path="api/{cid}")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class TriviaController {
 	

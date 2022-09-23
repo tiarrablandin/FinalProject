@@ -53,7 +53,7 @@ public class FactServiceImpl implements FactService {
 	}
 
 	@Override
-	public Fact update(int id, Fact fact, String username) {
+	public Fact update(int cid, int id, Fact fact, String username) {
 		Optional<Fact> factOp = factRepo.findById(id);
 		if (factOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
@@ -61,7 +61,8 @@ public class FactServiceImpl implements FactService {
 			if (factOld.getId() == id && user != null && factOld.getUser().equals(user)) {
 				factOld.setFact(fact.getFact());
 				factOld.setActive(fact.isActive());
-				factOld.setCartoon(fact.getCartoon());
+				factOld.setCartoon(new Cartoon());
+				factOld.getCartoon().setId(cid);
 				factRepo.save(factOld);
 				return factOld;
 			}

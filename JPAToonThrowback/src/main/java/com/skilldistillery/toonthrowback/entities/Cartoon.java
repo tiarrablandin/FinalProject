@@ -1,6 +1,7 @@
 package com.skilldistillery.toonthrowback.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,6 +95,27 @@ public class Cartoon {
 	@JsonIgnore
 	@OneToMany(mappedBy="cartoon")
 	private List<Media> media;
+	
+	
+	public void addFavorite(User user) {
+		if (userFavs == null) userFavs = new ArrayList<>();
+		
+		
+		if(!userFavs.contains(user)) {
+			userFavs.add(user);
+			user.addCartoon(this);
+			
+		}
+	}
+
+
+	public void removeFavorite(User user) {
+		if(userFavs != null && userFavs.contains(user)) {
+			userFavs.remove(user);
+			user.removeCartoon(this);
+		}
+		
+	}
 	
 /////////////////////////////////////////////////////////////////////////////////	
 

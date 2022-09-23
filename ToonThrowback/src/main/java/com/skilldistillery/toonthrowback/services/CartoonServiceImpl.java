@@ -1,5 +1,6 @@
 package com.skilldistillery.toonthrowback.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,5 +91,36 @@ public class CartoonServiceImpl implements CartoonService {
 		}
 		return false;
 	}
+	
+	@Override
+	public Cartoon updateFavorite(String username, int cid) {
+		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
+		 User u = userRepo.findByUsername(username);
+		if(cartoonOp.isPresent()) {
+			Cartoon cartoonFav = cartoonOp.get();
+			cartoonFav.addFavorite(u);
+			cartoonRepo.save(cartoonFav);
+			return cartoonFav;
+			
+			
+		}
+		return null;
+	}
+
+	@Override
+	public Cartoon deleteFavorite(String username, int cid) {
+		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
+		User u = userRepo.findByUsername(username);
+		if(cartoonOp.isPresent()) {
+			Cartoon cartoonFav = cartoonOp.get();
+			cartoonFav.removeFavorite(u);
+			cartoonRepo.saveAndFlush(cartoonFav);
+			return cartoonFav;
+		}
+		return null;
+	}
+
+
+
 }
 
