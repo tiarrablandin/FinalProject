@@ -21,14 +21,14 @@ import com.skilldistillery.toonthrowback.entities.Fact;
 import com.skilldistillery.toonthrowback.services.FactService;
 
 @RestController
-@RequestMapping(path="api/cartoons/{cid}")
+@RequestMapping(path="api/{cid}")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class FactController {
 	
 	@Autowired
 	private FactService factService;
 	
-	@GetMapping("facts")
+	@GetMapping("fact")
 	public List<Fact> index(@PathVariable int cid) {
 		return factService.index(cid);
 	}

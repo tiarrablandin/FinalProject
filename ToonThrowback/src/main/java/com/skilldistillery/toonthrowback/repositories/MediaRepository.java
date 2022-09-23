@@ -14,5 +14,5 @@ public interface MediaRepository extends JpaRepository<Media, Integer> {
 	
 	List<Media> findByCartoonId(int id);
 	
-	List <Media> findByIdAndCartoonId(int id);
+	List <Media> findByIdAndCartoonId(int id , int cid);
 }
