@@ -210,7 +210,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `trivia` ;
 
 CREATE TABLE IF NOT EXISTS `trivia` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `question` TEXT NOT NULL,
   `answer` VARCHAR(100) NOT NULL,
   `cartoon_id` INT NOT NULL,
