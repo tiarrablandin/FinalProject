@@ -1,20 +1,60 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <button class="btn btn-outline-light" (click)="open(content)">Login/Logout</button>
+          <a class="nav-link active link-dark" aria-current="page" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active link-dark" [routerLink]="['/about']">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active link-dark" [routerLink]="['/media']">Media</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active link-dark" [routerLink]="['/trivia']">Trivia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active link-dark" [routerLink]="['/merch']">Merch</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active link-dark" [routerLink]="['/account']">Account</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-dark" (click)="open(content)">Login</button>
         </li>
       </ul>
       <div class="d-flex">
         <label></label>
-        <input type="text" class="form-control" placeholder="search cartoon" aria-describedby="helpId" [(ngModel)]="searchTerm">
-        <button class="btn btn-outline-light" (click)="search()">Search</button>
+        <!-- <input type="text" class="form-control" placeholder="search cartoon" aria-describedby="helpId" [(ngModel)]="searchTerm"> -->
+        <!-- <button class="btn btn-outline-light" (click)="search()">Search</button> -->
       </div><br>
     </div>
   </div>
 </nav><br><br>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="login">
+            <input type="text" class="form-control" style="width: 300px;" name="username" placeholder="name" [(ngModel)]="loginUser.username"><br>
+            <input type="text" class="form-control" style="width: 300px;" name="element" placeholder="password" [(ngModel)]="loginUser.password"><br>
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)="login(loginUser)">Login</button>
+  </div>
+</ng-template>

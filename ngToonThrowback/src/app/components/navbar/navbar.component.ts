@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  loginUser: User = new User();
+  closeResult: string = "";
+
+  constructor(private modalService: NgbModal,
+              private auth: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  login(user: User) {
+    console.log('Logging in');
+    console.log(user);
+    this.auth.login(user.username, user.password).subscribe({
+      next: (loggedInUser) => {
+        this.router.navigateByUrl('todo')
+      },
+      error: (err) => {
+        console.error('Error logging in');
+        console.error(err);
+      }
+    });
+  }
+
+  logout() {
+    console.log('Logging out.');
+    this.auth.logout();
+    this.router.navigateByUrl('home');
   }
 
   open(content: any) {
