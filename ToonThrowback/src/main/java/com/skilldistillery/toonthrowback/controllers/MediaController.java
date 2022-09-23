@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.toonthrowback.entities.Comment;
-import com.skilldistillery.toonthrowback.services.CommentService;
+import com.skilldistillery.toonthrowback.entities.Media;
+import com.skilldistillery.toonthrowback.services.MediaService;
 
 @RestController
 @RequestMapping(path="api/cartoons.{cid}")
@@ -26,28 +26,28 @@ import com.skilldistillery.toonthrowback.services.CommentService;
 public class MediaController {
 	
 	@Autowired
-	private CommentService commentService;
+	private MediaService mediaService;
 	
-	@GetMapping("comments")
-	public List<Comment> index(@PathVariable int cid) {
-		return commentService.index(cid);
+	@GetMapping("media")
+	public List<Media> index(@PathVariable int cid) {
+		return mediaService.index(cid);
 	}
 	
-	@GetMapping("comments/{id}")
-	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
-		Comment comment = commentService.show(id, cid);
-		if(comment == null) {
+	@GetMapping("media/{id}")
+	public Media show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
+		Media media = mediaService.show(id, cid);
+		if(media == null) {
 			res.setStatus(404);
 		}
-		return comment;
+		return media;
 	}
 	
-	@PostMapping("comments")
-	public Comment create(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, Principal principal) {
-		Comment created = null;
+	@PostMapping("media")
+	public Media create(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Media media, Principal principal) {
+		Media created = null;
 		
 		try {
-			created = commentService.create(comment, cid, principal.getName());
+			created = mediaService.create(media, cid, principal.getName());
 			res.setStatus(201);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -56,11 +56,11 @@ public class MediaController {
 		return created;
 	}
 	
-	@PutMapping("comments/{id}")
-	public Comment update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Comment comment, Principal principal) { 
-		Comment updated = null;
+	@PutMapping("media/{id}")
+	public Media update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Media media, Principal principal) { 
+		Media updated = null;
 		try {
-			updated = commentService.update(id, comment, principal.getName());
+			updated = mediaService.update(id, media, principal.getName());
 		}catch(Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
@@ -68,9 +68,9 @@ public class MediaController {
 		return updated;
 	}
 	
-	@DeleteMapping("comments/{id}")
+	@DeleteMapping("medias/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
-		boolean deleted = commentService.destroy(id, principal.getName());
+		boolean deleted = mediaService.destroy(id, principal.getName());
 		if(deleted) {
 			res.setStatus(204);
 		}else {
