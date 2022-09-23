@@ -29,6 +29,8 @@ public class Trivia {
 	
 	private String answer;
 	
+	private boolean active;
+	
 	@CreationTimestamp
 	@Column(name="created_date")
 	private LocalDateTime createdDate;
@@ -71,6 +73,14 @@ public class Trivia {
 		this.answer = answer;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
@@ -97,8 +107,8 @@ public class Trivia {
 
 	@Override
 	public String toString() {
-		return "Trivia [id=" + id + ", question=" + question + ", answer=" + answer + ", createdDate=" + createdDate
-				+ ", updatedDate=" + updatedDate + ", cartoon=" + cartoon + "]";
+		return "Trivia [id=" + id + ", question=" + question + ", answer=" + answer + ", active=" + active
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", cartoon=" + cartoon + "]";
 	}
 
 	@Override
