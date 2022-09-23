@@ -81,6 +81,10 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Merchandise> merch;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="user")
+	private List<Trivia> trivia;
+	
 /////////////////////////////////////////////////////////////////////////////////	
 
 	public User() {
@@ -232,6 +236,14 @@ public class User {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public List<Trivia> getTrivia() {
+		return trivia;
+	}
+
+	public void setTrivia(List<Trivia> trivia) {
+		this.trivia = trivia;
 	}
 
 	@Override

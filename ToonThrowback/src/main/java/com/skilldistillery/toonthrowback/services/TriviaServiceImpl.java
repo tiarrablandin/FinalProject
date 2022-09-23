@@ -57,13 +57,13 @@ public class TriviaServiceImpl implements TriviaService {
 		if (triviaOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Trivia triviaOld = triviaOp.get();
-//			if (triviaOld.getId() == id && user != null && triviaOld.getUser().equals(user)) {
+			if (triviaOld.getId() == id && user != null && triviaOld.getUser().equals(user)) {
 				triviaOld.setQuestion(trivia.getQuestion());
 				triviaOld.setAnswer(trivia.getAnswer());
 				triviaOld.setCartoon(trivia.getCartoon());
 				triviaRepo.save(triviaOld);
 				return triviaOld;
-//			}
+			}
 		}
 		return null;
 	}
@@ -74,7 +74,7 @@ public class TriviaServiceImpl implements TriviaService {
 		if (triviaOp.isPresent() ) {
 			User user = userRepo.findByUsername(username);
 			Trivia trivia = triviaOp.get();
-//			if (trivia.getId() == id && user != null && trivia.getUser().equals(user)) {
+			if (trivia.getId() == id && user != null && trivia.getUser().equals(user)) {
 				try {
 					if (trivia.isActive()) {
 						trivia.setActive(trivia.isActive());
@@ -83,7 +83,7 @@ public class TriviaServiceImpl implements TriviaService {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-//			}
+			}
 		}
 		return false;
 	}

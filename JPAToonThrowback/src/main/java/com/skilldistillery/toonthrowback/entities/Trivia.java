@@ -44,6 +44,11 @@ public class Trivia {
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
 /////////////////////////////////////////////////////////////////////////////////	
 
 	public Trivia() {
@@ -105,10 +110,19 @@ public class Trivia {
 		this.cartoon = cartoon;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Trivia [id=" + id + ", question=" + question + ", answer=" + answer + ", active=" + active
-				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", cartoon=" + cartoon + "]";
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", cartoon=" + cartoon + ", user="
+				+ user + "]";
 	}
 
 	@Override
