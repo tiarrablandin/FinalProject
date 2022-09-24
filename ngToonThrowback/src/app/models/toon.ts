@@ -1,4 +1,6 @@
 import { Creator } from './creator';
+import { Network } from './network';
+import { Rating } from './rating';
 import { User } from './user';
 export class Toon {
   id: number = 0;
@@ -8,12 +10,12 @@ export class Toon {
   url: string = "";
   airingDate: string = "";
   finaleDate: string = "";
-  active: string = "";
+  active: boolean = false;
   createdDate: string = "";
   updatedDate: string = "";
-  // creator: Creator = new Creator();
-  // network: Network = new Network();
-  // rating: Rating = new Rating();
+  creator: Creator = new Creator();
+  network: Network = new Network();
+  rating: Rating = new Rating();
   user: User = new User();
 
   constructor(id: number = 0,
@@ -23,12 +25,12 @@ export class Toon {
     url: string = "",
     airingDate: string = "",
     finaleDate: string = "",
-    active: string = "",
+    active: boolean = false,
     createdDate: string = "",
     updatedDate: string = "",
-    // creator: Creator = new Creator(),
-    // network: Network = new Network(),
-    // rating: Rating = new Rating(),
+    creator: Creator = new Creator(),
+    network: Network = new Network(),
+    rating: Rating = new Rating(),
   user: User = new User())
   {
     this.id = id;
@@ -41,9 +43,9 @@ export class Toon {
     this.active = active;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
-    // this.creator = creator;
-    // this.network = network;
-    // this.rating = rating;
+    this.creator = creator;
+    this.network = network;
+    this.rating = rating;
     this.user = user;
   }
 }

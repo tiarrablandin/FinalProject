@@ -1,3 +1,8 @@
+import { Fact } from "./fact";
+import { Media } from "./media";
+import { Toon } from "./toon";
+import { Trivia } from "./trivia";
+
 export class User {
   id: number = 0;
   image: string = "";
@@ -8,10 +13,16 @@ export class User {
   lastName: string = "";
   bio: string = "";
   role: string = "";
-  active: string = "";
+  active: boolean = false;
   createdDate: string = "";
   updatedDate: string = "";
-
+  cartoon: Toon = new Toon();
+  favCartoons: Toon = new Toon();
+  media: Media = new Media();
+  comment: Comment = new Comment();
+  facts: Fact = new Fact();
+  // merch: Merch = new Merch();
+  trivia: Trivia = new Trivia();
 
   constructor(id: number = 0,
     image: string = "",
@@ -22,9 +33,16 @@ export class User {
     lastName: string = "",
     bio: string = "",
     role: string = "",
-    active: string = "",
+    active: boolean = false,
     createdDate: string = "",
-    updatedDate: string = "")
+    updatedDate: string = "",
+    cartoon: Toon = new Toon(),
+    favCartoons: Toon = new Toon(),
+    media: Media = new Media(),
+    comment: Comment = new Comment(),
+    facts: Fact = new Fact(),
+    // merch: Merch = new Merch(),
+    trivia: Trivia = new Trivia())
   {
     this.id = id;
     this.email = email;
@@ -37,5 +55,12 @@ export class User {
     this.active = active;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
+    this.cartoon = cartoon;
+    this.favCartoons = favCartoons;
+    this.media = media;
+    this.comment = comment;
+    this.facts = facts;
+    // this.merch = merch;
+    this.trivia = trivia;
   }
 }

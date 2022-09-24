@@ -1,3 +1,4 @@
+import { ToonService } from './../../services/toon.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
   loginUser: User = new User();
   closeResult: string = '';
+  searchTerm: string = "";
 
   constructor(
     private modalService: NgbModal,
@@ -67,4 +69,17 @@ export class NavbarComponent implements OnInit {
     this.auth.logout();
     this.router.navigateByUrl('home');
   }
+
+  search(){
+    // this.toonService.search(this.searchTerm).subscribe({
+    //   next: (data) => {
+    //     this.ToonService = data;
+    //   },
+    //   error: (err) => {
+    //     console.error("RockComponent.search(): error searching for rock");
+    //     console.error(err);
+    //   }
+    // });
+  }
+
 }

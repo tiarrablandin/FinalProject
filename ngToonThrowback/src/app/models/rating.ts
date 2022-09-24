@@ -1,33 +1,26 @@
 import { Toon } from "./toon";
 
-export class Network {
+export class Rating {
   id: number = 0;
-  image: string = "";
-  name: string = "";
+  rating: string = "";
   description: string = "";
-  url: string = "";
   createdDate: string = "";
   updatedDate: string = "";
   cartoon: Toon = new Toon();
 
   constructor(
     id: number = 0,
-    image: string = "",
-    name: string = "",
+    rating: string = "",
     description: string = "",
-    url: string = "",
     createdDate: string = "",
     updatedDate: string = "",
-    cartoon: Toon = new Toon()
+    cartoon: Toon = new Toon(),
   ){
     this.id = id;
-    this.image = image;
-    this.name = name;
+    this.rating = rating;
     this.description = description;
-    this.url = url;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.cartoon = cartoon;
   }
-
 }

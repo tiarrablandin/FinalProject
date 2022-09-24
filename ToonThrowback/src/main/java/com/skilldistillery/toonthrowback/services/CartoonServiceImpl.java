@@ -35,6 +35,18 @@ public class CartoonServiceImpl implements CartoonService {
 			}
 		return null;
 	}
+	
+	@Override
+	public List<Cartoon> findByKeyword(String keyword) {
+		keyword = "%" + keyword + "%";
+		return cartoonRepo.findByNameIgnoreCaseLikeOrDescriptionIgnoreCaseLikeOrNetworkIgnoreCaseLikeOrCreatorIgnoreCaseLike(
+				keyword, keyword, keyword, keyword);
+	}
+	
+	@Override
+	public List<Cartoon> findByUserFavs(User userFavs){
+		return cartoonRepo.findByUserFavs(userFavs);
+	}
 
 	@Override
 	public Cartoon create(String username, Cartoon cartoon) {
