@@ -1,3 +1,5 @@
+import { MerchService } from './services/merch.service';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +20,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,7 @@ import { AboutComponent } from './components/about/about.component';
     AboutComponent,
     AboutComponent,
     NotFoundComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { AboutComponent } from './components/about/about.component';
   ],
   providers: [
     ToonService,
+    MerchService,
     AuthService
   ],
   bootstrap: [AppComponent]

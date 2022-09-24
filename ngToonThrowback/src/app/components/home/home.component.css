@@ -1,0 +1,19 @@
+.main {
+  height: 125vh;
+  width: 100%;
+  padding-left: 35px;
+  display: flex;
+}
+
+.card {
+  margin: 100px auto 0;
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  perspective: 700px;
+  align-items: center;
+}
+
+#watch {
+  background-color: #FE98E2;
+}
