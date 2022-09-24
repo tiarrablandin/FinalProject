@@ -97,4 +97,15 @@ export class AuthService {
   getCredentials(): string | null {
     return localStorage.getItem('credentials');
   }
+
+  getHttpOptions() {
+    let credentials = this.getCredentials();
+    let options = {
+      headers: {
+        'X-Requestd-With': 'XMLHttpRequest',
+        Authorization: `Basic ${credentials}`
+      }
+    };
+    return options;
+  }
 }

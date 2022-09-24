@@ -1,3 +1,4 @@
+import { Toon } from './../../models/toon';
 import { Merch } from '../../models/merch';
 import { MerchService } from './../../services/merch.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +19,8 @@ export class MerchComponent implements OnInit {
   selected: Merch | null = null;
   newMerch: Merch = new Merch();
   editMerch: Merch | null = null;
+  addMerch: Merch | null = null;
+  indexToon: Toon = new Toon();
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -104,4 +107,7 @@ export class MerchComponent implements OnInit {
       this.editMerch = Object.assign({}, this.selected);
     }
 
+    setAddMerch(): void {
+      this.addMerch = Object.assign({}, this.selected);
+    }
 }

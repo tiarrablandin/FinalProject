@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Merch } from '../models/merch';
+import { Toon } from '../models/toon';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MerchService {
-  private url = environment.baseUrl + 'api/cartoons';
+  private url = environment.baseUrl + 'api';
 
   constructor(private http: HttpClient,
     private auth : AuthService) { }
@@ -26,7 +27,7 @@ export class MerchService {
 
 
   index(): Observable<Merch[]> {
-    return this.http.get<Merch[]>(this.url + '?sorted=true').pipe(
+    return this.http.get<Merch[]>(this.url + '/merch').pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

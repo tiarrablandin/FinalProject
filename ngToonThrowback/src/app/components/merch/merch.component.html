@@ -1,8 +1,8 @@
 <body>
 
-
+  <div id="merchAdd" *ngIf="addMerch">
   <form>
-    ID: <br> <input type="text" name="id" [(ngModel)]="newMerch.id"><br>
+    <!-- ID: <br> <input type="text" name="id" [(ngModel)]="newMerch.id"><br> -->
     Associated Cartoon:<br> <input type="text" name="cartoon" [(ngModel)]="newMerch.cartoon"><br>
     Link: <br><input type="text" name="url" [(ngModel)]="newMerch.url"><br>
     Image: <br><input type="text" name="image" [(ngModel)]="newMerch.image"><br>
@@ -13,7 +13,10 @@
     <button (click)="createMerch(newMerch)">Add Merchandise</button>
 
     </form>
-    <table class="styled-table">
+    </div>
+    <br>
+
+    <table >
       <thead>
         <tr>
           <td>ID</td>
@@ -27,6 +30,8 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <button (click)="setAddMerch()" class="btn btn-outline-primary">Add New Merchandise Info</button>
 
     <div *ngIf="selected">
     <p>Merch ID #: {{selected.id}}</p>
