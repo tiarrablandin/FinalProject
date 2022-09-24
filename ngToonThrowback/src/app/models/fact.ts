@@ -8,7 +8,7 @@ export class Fact {
   createdDate: string = "";
   updatedDate: string = "";
   cartoon: Toon = new Toon();
-  user: User = new User();
+  // user: User = new User();
 
   constructor(
     id: number =0,
@@ -17,7 +17,7 @@ export class Fact {
     createdDate: string = "",
     updatedDate: string = "",
     cartoon: Toon = new Toon(),
-    user: User = new User()
+    // user: User = new User()
   ){
     this.id = id;
     this.fact = fact;
@@ -25,6 +25,6 @@ export class Fact {
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.cartoon = cartoon;
-    this.user = user;
+    // this.user = user;
   }
 }

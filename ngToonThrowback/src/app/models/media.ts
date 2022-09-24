@@ -13,7 +13,7 @@ export class Media {
   createdDate: string = "";
   updatedDate: string = "";
   cartoon: Toon = new Toon();
-  user: User = new User();
+  // user: User = new User();
 
   constructor(
     id: number = 0,
@@ -25,9 +25,9 @@ export class Media {
     episodeNum: number = 0,
     active: boolean = false,
     createdDate: string = "",
-  updatedDate: string = "",
+    updatedDate: string = "",
     cartoon: Toon = new Toon(),
-    user: User = new User()
+    // user: User = new User()
   ){
     this.id = id;
     this.image = image;
@@ -40,6 +40,6 @@ export class Media {
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.cartoon = cartoon;
-    this.user = user;
+    // this.user = user;
   }
 }

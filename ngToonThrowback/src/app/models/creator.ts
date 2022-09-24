@@ -6,7 +6,7 @@ export class Creator {
   name: string = "";
   bio: string = "";
   url: string = "";
-  cartoon: Toon = new Toon();
+  // cartoon: Toon = new Toon();
   createdDate: string = "";
   updatedDate: string = "";
 
@@ -18,7 +18,7 @@ export class Creator {
     url: string = "",
     createdDate: string = "",
     updatedDate: string = "",
-    cartoon: Toon = new Toon(),
+    // cartoon: Toon = new Toon(),
     ){
 
     this.id = id;
@@ -28,7 +28,7 @@ export class Creator {
     this.url = url;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
-    this.cartoon = cartoon;
+    // this.cartoon = cartoon;
   }
 
 }
