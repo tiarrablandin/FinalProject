@@ -32,9 +32,6 @@
           <a class="nav-link active link-dark" aria-current="page" [routerLink]="['/home']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active link-dark" [routerLink]="['/about']">About</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active link-dark" [routerLink]="['/media']">Media</a>
         </li>
         <li class="nav-item">
@@ -52,14 +49,11 @@
         <li class="nav-item" *ngIf="loggedIn()">
           <button class="btn btn-outline-dark" (click)="logout()">Logout</button>
         </li>
-        <!-- <li class="nav-item" *ngIf="loggedIn()">
-          <app-logout></app-logout>
-        </li> -->
       </ul>
       <div class="d-flex">
         <label></label>
-        <!-- <input type="text" class="form-control" placeholder="search cartoon" aria-describedby="helpId" [(ngModel)]="searchTerm"> -->
-        <!-- <button class="btn btn-outline-light" (click)="search()">Search</button> -->
+        <input type="text" class="form-control" placeholder="search cartoon" aria-describedby="helpId" [(ngModel)]="searchTerm">
+        <button class="btn btn-outline-dark" (click)="search()">Search</button>
       </div><br>
     </div>
   </div>

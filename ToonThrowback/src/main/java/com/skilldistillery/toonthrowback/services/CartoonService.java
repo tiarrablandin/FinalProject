@@ -19,8 +19,9 @@ public interface CartoonService {
 		public Cartoon updateFavorite(String username, int cid);
 		
 		public Cartoon deleteFavorite(String username, int cid);
-	    
-	  
-	
 
+		List<Cartoon> findByKeyword(String keyword);
+		
+		List<Cartoon> findByUserFavs(User userFavs);
+	    
 }

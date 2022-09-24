@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.entities.User;
 import com.skilldistillery.toonthrowback.services.CartoonService;
 
 @RestController
@@ -40,6 +41,16 @@ public class CartoonController {
 			res.setStatus(404);
 		}
 		return cartoon;
+	}
+	
+	@GetMapping("rocks/{keyword}")
+	public List<Cartoon> findByKeyword(@PathVariable String keyword) {
+		return cartoonService.findByKeyword(keyword);
+	}
+	
+	@GetMapping("rocks/{favs}")
+	public List<Cartoon> findByUserFavs(@PathVariable User userFavs) {
+		return cartoonService.findByUserFavs(userFavs);
 	}
 	
 	@PostMapping("cartoons")
