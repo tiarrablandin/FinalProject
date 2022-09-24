@@ -1,6 +1,5 @@
 package com.skilldistillery.toonthrowback.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.entities.Creator;
+import com.skilldistillery.toonthrowback.entities.Network;
 import com.skilldistillery.toonthrowback.entities.User;
 import com.skilldistillery.toonthrowback.repositories.CartoonRepository;
 import com.skilldistillery.toonthrowback.repositories.UserRepository;
@@ -39,9 +40,16 @@ public class CartoonServiceImpl implements CartoonService {
 	@Override
 	public List<Cartoon> findByKeyword(String keyword) {
 		keyword = "%" + keyword + "%";
-		return cartoonRepo.findByNameIgnoreCaseLikeOrDescriptionIgnoreCaseLikeOrNetworkIgnoreCaseLikeOrCreatorIgnoreCaseLike(
-				keyword, keyword, keyword, keyword);
+		return cartoonRepo.findByNameIgnoreCaseLikeOrDescriptionIgnoreCaseLike(keyword, keyword);
 	}
+	
+//	public List<Cartoon> findByNetwork(Network network){
+//		return cartoonRepo.findByNetworkIgnoreCaseLike(network);
+//	}
+//	
+//	public List<Cartoon> findByCreator(Creator creator){
+//		return cartoonRepo.findByCreatorIgnoreCaseLike(creator);
+//	}
 	
 	@Override
 	public List<Cartoon> findByUserFavs(User userFavs){
