@@ -9,7 +9,7 @@ export class Trivia {
   createdDate: string = "";
   updatedDate: string = "";
   cartoon: Toon = new Toon();
-  user: User = new User();
+  // user: User = new User();
 
   constructor(
     id: number = 0,
@@ -19,7 +19,7 @@ export class Trivia {
     createdDate: string = "",
     updatedDate: string = "",
     cartoon: Toon = new Toon(),
-    user: User = new User()
+    // user: User = new User()
   ){
     this.id = id;
     this.question = question;
@@ -28,6 +28,6 @@ export class Trivia {
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.cartoon = cartoon;
-    this.user = user;
+    // this.user = user;
   }
 }

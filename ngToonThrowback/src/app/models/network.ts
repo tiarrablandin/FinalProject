@@ -8,7 +8,7 @@ export class Network {
   url: string = "";
   createdDate: string = "";
   updatedDate: string = "";
-  cartoon: Toon = new Toon();
+  // cartoon: Toon = new Toon();
 
   constructor(
     id: number = 0,
@@ -18,7 +18,7 @@ export class Network {
     url: string = "",
     createdDate: string = "",
     updatedDate: string = "",
-    cartoon: Toon = new Toon()
+    // cartoon: Toon = new Toon()
   ){
     this.id = id;
     this.image = image;
@@ -27,7 +27,7 @@ export class Network {
     this.url = url;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
-    this.cartoon = cartoon;
+    // this.cartoon = cartoon;
   }
 
 }

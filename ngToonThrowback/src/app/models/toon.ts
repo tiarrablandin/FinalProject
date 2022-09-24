@@ -16,7 +16,7 @@ export class Toon {
   creator: Creator = new Creator();
   network: Network = new Network();
   rating: Rating = new Rating();
-  user: User = new User();
+  // user: User = new User();
 
   constructor(id: number = 0,
     image: string = "",
@@ -31,8 +31,8 @@ export class Toon {
     creator: Creator = new Creator(),
     network: Network = new Network(),
     rating: Rating = new Rating(),
-  user: User = new User())
-  {
+    // user: User = new User()
+  ){
     this.id = id;
     this.image = image;
     this.name = name;
@@ -46,6 +46,6 @@ export class Toon {
     this.creator = creator;
     this.network = network;
     this.rating = rating;
-    this.user = user;
+    // this.user = user;
   }
 }
