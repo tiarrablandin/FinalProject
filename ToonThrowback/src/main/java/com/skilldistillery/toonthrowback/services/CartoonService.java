@@ -3,6 +3,8 @@ package com.skilldistillery.toonthrowback.services;
 import java.util.List;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.entities.Creator;
+import com.skilldistillery.toonthrowback.entities.Network;
 import com.skilldistillery.toonthrowback.entities.User;
 
 public interface CartoonService {
@@ -21,6 +23,10 @@ public interface CartoonService {
 		public Cartoon deleteFavorite(String username, int cid);
 
 		List<Cartoon> findByKeyword(String keyword);
+		
+//		List<Cartoon> findByNetwork(Network network);
+//		
+//		List<Cartoon> findByCreator(Creator creator);
 		
 		List<Cartoon> findByUserFavs(User userFavs);
 	    
