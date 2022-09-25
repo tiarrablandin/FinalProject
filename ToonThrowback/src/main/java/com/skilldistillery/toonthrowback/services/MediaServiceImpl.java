@@ -26,12 +26,12 @@ public class MediaServiceImpl implements MediaService {
 	private UserRepository userRepo;
 	
 	@Override
-	public List<Media> index(int cid) {
-		return mediaRepo.findByCartoonId(cid);
+	public List<Media> index() {
+		return mediaRepo.findAll();
 	}
 
 	@Override
-	public Media show(int id, int cid) {
+	public Media show(int id) {
 		Optional<Media> mediaOp = mediaRepo.findById(id);
 		if(mediaOp.isPresent()) {
 			Media media = mediaOp.get();

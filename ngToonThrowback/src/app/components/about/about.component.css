@@ -1,0 +1,17 @@
+.parent {
+  margin: 1rem;
+  padding: 1rem 1rem;
+  text-align: center;
+}
+#linkedIn {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+
+}
+h1 {
+ color: lightgreen;
+ text-align: center;
+
+
+}
