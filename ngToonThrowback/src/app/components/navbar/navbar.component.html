@@ -1,25 +1,3 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Login</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="mb-3">
-        <div class="input-group">
-          <form *ngIf="login">
-            <input type="text" class="form-control" style="width: 300px;" name="username" placeholder="username" [(ngModel)]="loginUser.username"><br>
-            <input type="password" class="form-control" style="width: 300px;" name="element" placeholder="password" [(ngModel)]="loginUser.password"><br>
-          </form><br><br>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <a id="register" class="link" data-bs-toggle="offcanvas" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">Register</a>
-    <button class="btn btn-outline-dark" (click)="login(loginUser); modal.dismiss('Cross click')">Login</button>
-  </div>
-</ng-template>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
   <div class="container-fluid">
@@ -60,3 +38,25 @@
   </div>
 </nav><br><br>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="login">
+            <input type="text" class="form-control" style="width: 300px;" name="username" placeholder="username" [(ngModel)]="loginUser.username"><br>
+            <input type="password" class="form-control" style="width: 300px;" name="element" placeholder="password" [(ngModel)]="loginUser.password"><br>
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a id="register" class="link" data-bs-toggle="offcanvas" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">Register</a>
+    <button class="btn btn-outline-dark" (click)="login(loginUser); modal.dismiss('Cross click')">Login</button>
+  </div>
+</ng-template>
