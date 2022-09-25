@@ -6,9 +6,9 @@ import com.skilldistillery.toonthrowback.entities.Media;
 
 public interface MediaService {
 	
-	 public List<Media> index(int cid);
+	 public List<Media> index();
 
-	 public Media show(int id, int cid);
+	 public Media show(int id);
 
 	 public Media create(Media media, int cid, String username);
 	    

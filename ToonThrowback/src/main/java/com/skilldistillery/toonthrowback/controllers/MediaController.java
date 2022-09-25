@@ -21,7 +21,7 @@ import com.skilldistillery.toonthrowback.entities.Media;
 import com.skilldistillery.toonthrowback.services.MediaService;
 
 @RestController
-@RequestMapping(path="api/{cid}")
+@RequestMapping(path="api")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class MediaController {
 	
@@ -29,20 +29,20 @@ public class MediaController {
 	private MediaService mediaService;
 	
 	@GetMapping("media")
-	public List<Media> index(@PathVariable int cid) {
-		return mediaService.index(cid);
+	public List<Media> index() {
+		return mediaService.index();
 	}
 	
 	@GetMapping("media/{id}")
-	public Media show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
-		Media media = mediaService.show(id, cid);
+	public Media show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) { 
+		Media media = mediaService.show(id);
 		if(media == null) {
 			res.setStatus(404);
 		}
 		return media;
 	}
 	
-	@PostMapping("media")
+	@PostMapping("{cid}/media")
 	public Media create(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Media media, Principal principal) {
 		Media created = null;
 		
@@ -56,7 +56,7 @@ public class MediaController {
 		return created;
 	}
 	
-	@PutMapping("media/{id}")
+	@PutMapping("{cid}/media/{id}")
 	public Media update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Media media, Principal principal) { 
 		Media updated = null;
 		try {
@@ -68,7 +68,7 @@ public class MediaController {
 		return updated;
 	}
 	
-	@DeleteMapping("medias/{id}")
+	@DeleteMapping("{cid}/medias/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
 		boolean deleted = mediaService.destroy(id, principal.getName());
 		if(deleted) {

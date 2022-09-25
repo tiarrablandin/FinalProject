@@ -1,1 +1,21 @@
-<p>media works!</p>
+
+  <div>
+    <table class="table table-dark table-hover">
+     <thead class="table-dark">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Episode Number</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let media of medias" >
+          <td (click)="displayMedia(media)">{{media.title}}</td>
+          <td (click)="displayMedia(media)">{{media.description}}</td>
+          <td (click)="displayMedia(media)">{{media.episodeNum}}</td>
+          <td><Button class="btn btn-outline-danger" (click)="deleteMedia(media.id)">X</Button></td>
+        </tr>
+      </tbody>
+    </table>
+
