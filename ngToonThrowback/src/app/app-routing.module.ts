@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { AccountComponent } from './components/account/account.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { MediaComponent } from './components/media/media.component';
 import { MerchComponent } from './components/merch/merch.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent },
   // { path: 'toon', component: ToonComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'footer', component: FooterComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

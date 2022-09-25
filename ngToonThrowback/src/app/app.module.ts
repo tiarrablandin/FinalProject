@@ -19,6 +19,7 @@ import { MerchComponent } from './components/merch/merch.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AboutComponent } from './components/about/about.component';
     AboutComponent,
     AboutComponent,
     NotFoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
