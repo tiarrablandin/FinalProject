@@ -8,7 +8,7 @@
       <div class="mb-3">
         <div class="input-group">
           <form *ngIf="login">
-            <input type="text" class="form-control" style="width: 300px;" name="username" placeholder="name" [(ngModel)]="loginUser.username"><br>
+            <input type="text" class="form-control" style="width: 300px;" name="username" placeholder="username" [(ngModel)]="loginUser.username"><br>
             <input type="password" class="form-control" style="width: 300px;" name="element" placeholder="password" [(ngModel)]="loginUser.password"><br>
           </form><br><br>
         </div>
@@ -16,6 +16,7 @@
     </form>
   </div>
   <div class="modal-footer">
+    <a id="register" class="link" data-bs-toggle="offcanvas" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">Register</a>
     <button class="btn btn-outline-dark" (click)="login(loginUser); modal.dismiss('Cross click')">Login</button>
   </div>
 </ng-template>
