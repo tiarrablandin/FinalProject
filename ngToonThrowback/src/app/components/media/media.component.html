@@ -24,8 +24,48 @@
     }
     </style>
 
+<span class="">
+  <a class="button" data-bs-toggle="offcanvas" (click)="open(content)">Add New Media!</a>
+</span>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Media!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form>
+            <h1 class="justify-content-center">Add New Media!</h1>
 
+            <div class="d-flex justify-content-center">
+              <form class="text-center">
+                <input type="text" name="title" class="col form-input form-control " placeholder="Title" style="width: 300px;" [(ngModel)]="newMedia.title">
+                <br>
+                <input type="text" name="url" class="col form-input form-control" placeholder="URL" style="width: 300px;" [(ngModel)]="newMedia.url">
+                <br>
+                <input type="text" name="description" class="col form-input form-control" placeholder="Description" style="width: 300px;" [(ngModel)]="newMedia.description">
+                <br>
+                <input type="text" name="season" class="col form-input form-control" placeholder="Season" style="width: 300px;" [(ngModel)]="newMedia.season">
+              <br>
+              <input type="text" name="episodeNum" class="col form-input form-control" placeholder="Episode Number" style="width: 300px;" [(ngModel)]="newMedia.episodeNum">
+              <br>
+              <input type="text" name="image" class="col form-input form-control" placeholder="Cartoon Image" style="width: 300px;" [(ngModel)]="newMedia.image">
+              <br>
+              <button class="btn btn-outline-primary" (click)="addMedia()">Add Media!</button>
+            </form>
+          </div>
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-primary" (click)="addMedia(); modal.dismiss('Cross click')">Submit</button>
+  </div>
+</ng-template>
 
 
   <!-- <div>
@@ -48,7 +88,7 @@
       </tbody>
     </table> -->
 
-    <div class="main container-fluid">
+
       <div class="cards-wrapper">
     <div class="card" *ngFor="let media of medias" id="mediaCard">
       <div class="image-wrapper">
@@ -62,7 +102,7 @@
       </div>
       </div>
       </div>
-    </div>
+
     <br>
 
 
