@@ -18,8 +18,53 @@
   background-color: #FE98E2;
 }
 
-#logo{
 
+#logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  animation-name: rotate;
+  animation-duration: 1.0s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+
+  /* animation: vibrate 0.5s; */
+  /* animation-duration: 4s;
+  animation: float 6s ease-in-out infinite; */
 }
+#logo:hover {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+  /* 0% { transform: rotate(02deg); }
+  10% { transform: rotate(-2deg); }
+  20% { transform: rotate(2deg); }
+  30% { transform: rotate(-2deg); }
+  40% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  60% { transform: rotate(2deg); }
+  70% { transform: rotate(-2deg); }
+  80% { transform: rotate(2deg); }
+  90% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); } */
+
+
+
+
+
+
+
+
 
 
