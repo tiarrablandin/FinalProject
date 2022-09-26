@@ -35,7 +35,7 @@ public class CartoonController {
 	public List<Cartoon> index() {
 		return cartoonService.index();
 	}
-	@GetMapping("user/{id}/cartoons")
+	@GetMapping("users/{id}/cartoons")
 	public List<Cartoon> userCartoons(@PathVariable int id, HttpServletResponse res) {
 		List<Cartoon> userCartoon = cartoonService.findByUser_id(id); 
 		if (userCartoon == null) {

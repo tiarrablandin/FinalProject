@@ -16,9 +16,10 @@
 </div>
 
 
-<div *ngIf="loggedIn">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{loggedIn.toon.image}}" alt="Card image cap">
+<div *ngIf="loggedIn" >
+
+<div *ngFor="let toon of userToons" class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{toon.image}}" alt="Card image cap">
   <div class="card-body2">
     <h5 class="card-title">{{toon.name}} </h5>
     <p class="card-text">{{toon.description}}</p>
