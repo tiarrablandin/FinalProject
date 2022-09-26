@@ -432,9 +432,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `toonthrowbackdb`;
-INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (1, 1, 'https://www.amazon.com/hey-arnold-merchandise/s?k=hey+arnold+merchandise', NULL, 1, '2022-09-22', NULL, true);
-INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (2, 2, 'https://www.amazon.com/courage-cowardly-dog-shirt/s?k=courage+the+cowardly+dog+shirt', NULL, 2, '2022-09-22', NULL, true);
-INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (3, 3, 'https://www.amazon.com/Spongebob-Merchandise/s?k=Spongebob+Merchandise', NULL, 3, '2022-09-23', NULL, true);
+INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (1, 1, 'https://www.amazon.com/hey-arnold-merchandise/s?k=hey+arnold+merchandise', 'https://upload.wikimedia.org/wikipedia/en/a/ac/Helga_Pataki.jpg', 1, '2022-09-22', NULL, true);
+INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (2, 2, 'https://www.amazon.com/courage-cowardly-dog-shirt/s?k=courage+the+cowardly+dog+shirt', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Courage_The_Cowardly_Dog_logo.png/2560px-Courage_The_Cowardly_Dog_logo.png', 2, '2022-09-22', NULL, true);
+INSERT INTO `merchandise` (`id`, `cartoon_id`, `url`, `image`, `user_id`, `created_date`, `update_date`, `active`) VALUES (3, 3, 'https://www.amazon.com/Spongebob-Merchandise/s?k=Spongebob+Merchandise', 'https://upload.wikimedia.org/wikipedia/en/0/0b/Nickelodeon_SpongeBob_SquarePants_Characters_Cast.png', 3, '2022-09-23', NULL, true);
 
 COMMIT;
 

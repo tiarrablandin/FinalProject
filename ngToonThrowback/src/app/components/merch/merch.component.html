@@ -17,14 +17,14 @@
     <br>
 
 
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="assets/card3.png" alt="Card image cap">
+    <div class="card" style="width: 18rem;" *ngFor="let merch of merchs" id="merchCard">
+      <img class="card-img-top" src="{{merch.image}}" alt="Card image cap">
       <div class="card-body1">
-        <h5 class="card-title">Powerpuff Girls </h5>
-        <p class="card-text">SEASON 1 | Episode 27 | Road Trippin'</p>
-        <p>Aired on 09/23/2022</p>
+        <h5 class="card-title">{{merch.cartoon.name}} Merchandise</h5>
+        <a [href]="merch.url">Link to Site</a>
+        <p>Posted by: {{merch.user.username}}</p>
         <br>
-        <a class="button" onclick="href='https://www.cartoonnetwork.com/video/powerpuff-girls/road-trippin-episode.html'" target="_blank" id="watch">Watch Episode</a>
+
       </div>
     </div>
 
