@@ -15,6 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -39,12 +40,12 @@ public class Merchandise {
 	@Column(name="update_date")
 	private LocalDateTime updatedDate;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"merch"})
 	@ManyToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"merch"})
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;

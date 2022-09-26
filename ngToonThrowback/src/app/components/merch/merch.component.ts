@@ -16,6 +16,7 @@ export class MerchComponent implements OnInit {
 
   merchs: Merch[] = [];
 
+
   selected: Merch | null = null;
   newMerch: Merch = new Merch();
   editMerch: Merch | null = null;
@@ -44,9 +45,9 @@ export class MerchComponent implements OnInit {
       );
     }
 
-    viewDetails(selectedMerch : Merch) {
-      this.selected = selectedMerch;
-    }
+    // viewDetails(selectedMerch : Merch) {
+    //   this.selected = selectedMerch;
+    // }
 
 
     createMerch(newMerch : Merch) {
