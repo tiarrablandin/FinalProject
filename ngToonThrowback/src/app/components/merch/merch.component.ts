@@ -1,8 +1,10 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
 import { Merch } from '../../models/merch';
 import { MerchService } from './../../services/merch.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -22,10 +24,13 @@ export class MerchComponent implements OnInit {
   editMerch: Merch | null = null;
   addMerch: Merch | null = null;
   indexToon: Toon = new Toon();
+  closeResult: string = '';
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private merchServ: MerchService) { }
+    private merchServ: MerchService,
+    private auth: AuthService,
+    private modalService: NgbModal) { }
 
     ngOnInit(): void {
       this.loadMerch();
@@ -106,9 +111,38 @@ export class MerchComponent implements OnInit {
 
     setEditMerch(): void {
       this.editMerch = Object.assign({}, this.selected);
+
     }
 
-    setAddMerch(): void {
-      this.addMerch = Object.assign({}, this.selected);
-    }
+      loggedIn() {
+        return this.auth.checkLogin();
+      }
+
+      open(content: any) {
+        this.modalService
+          .open(content, { ariaLabelledBy: 'modal-basic-title' })
+          .result.then(
+            (result: any) => {
+              this.closeResult = `Closed with: ${result}`;
+            },
+            (reason: any) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            }
+          );
+      }
+
+      private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+          return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+          return 'by clicking on a backdrop';
+        } else {
+          return `with: ${reason}`;
+        }
+      }
+
+
+    // setAddMerch(): void {
+    //   this.addMerch = Object.assign({}, this.selected);
+    // }
 }

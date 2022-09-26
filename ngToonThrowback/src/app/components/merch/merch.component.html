@@ -1,6 +1,52 @@
 <body>
+<button (click)="open(content)" *ngIf="loggedIn()">Add New Merchandise Info</button>
 
-  <div id="merchAdd" *ngIf="addMerch">
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Merchandise</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="">
+            <form>
+              <div class="form-group">
+              <label for="cartoon" class="form-label">Cartoon</label>
+              <input type="text" name="cartoon" [(ngModel)]="newMerch.cartoon" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="image" class="form-label">Picture</label>
+              <input type="image" name="image" [(ngModel)]="newMerch.image"  class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="url" class="form-label">Link</label>
+              <input type="text" name="url" [(ngModel)]="newMerch.url"  class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="user" class="form-label">Username</label>
+              <input type="text" name="user" [(ngModel)]="newMerch.createdDate"  class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="createdDate" class="form-label">Created Date</label>
+              <input type="text" name="createdDate" [(ngModel)]="newMerch.createdDate"  class="form-control"/>
+            </div>
+            <button class="btn btn-outline-primary" (click)="createMerch(newMerch); modal.dismiss('Cross click')">Login</button>
+          </form><br><br>
+          </form>
+      </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a id="register" class="dropdown-item link" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">New around here? Sign up</a>
+    <a id="forgot" class="dropdown-item link" href="#" (click)="modal.dismiss('Cross click')">Forgot password?</a>
+  </div>
+<div class="dropdown-divider"></div>
+</ng-template>
+  <div id="merchAdd">
   <form>
     <!-- ID: <br> <input type="text" name="id" [(ngModel)]="newMerch.id"><br> -->
     Associated Cartoon:<br> <input type="text" name="cartoon" [(ngModel)]="newMerch.cartoon"><br>
@@ -10,7 +56,7 @@
     Created Date: <br><input type="text" name="date" [(ngModel)]="newMerch.createdDate"><br>
     Last Updated: <br><input type="text" name="date" [(ngModel)]="newMerch.updatedDate"><br>
 
-    <button (click)="createMerch(newMerch)">Add Merchandise</button>
+    <button (click)="createMerch(newMerch)" >Add Merchandise</button>
 
     </form>
     </div>
@@ -28,7 +74,7 @@
       </div>
     </div>
 
-    <button (click)="setAddMerch()" class="btn btn-outline-primary">Add New Merchandise Info</button>
+    <button (click)="createMerch(newMerch)" class="btn btn-outline-primary">Add New Merchandise Info</button>
 
     <div *ngIf="selected">
     <p>Merch ID #: {{selected.id}}</p>
