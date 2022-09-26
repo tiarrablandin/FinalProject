@@ -29,6 +29,10 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 	public List<Merchandise> index(int cid) {
 		return merchandiseRepo.findByCartoonId(cid);
 	}
+	@Override
+	public List<Merchandise> index() {
+		return merchandiseRepo.findAll();
+	}
 
 	@Override
 	public Merchandise show(int id, int cid) {

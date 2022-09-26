@@ -21,7 +21,7 @@ import com.skilldistillery.toonthrowback.entities.Merchandise;
 import com.skilldistillery.toonthrowback.services.MerchandiseService;
 
 @RestController
-@RequestMapping(path="api/{cid}")
+@RequestMapping(path="api")
 @CrossOrigin({"*", "http://localhost:4300"})
 public class MerchandiseController {
 	
@@ -29,11 +29,16 @@ public class MerchandiseController {
 	private MerchandiseService merchandiseService;
 	
 	@GetMapping("merch")
+	public List<Merchandise> index() {
+		return merchandiseService.index();
+	}
+	
+	@GetMapping("{cid}/merch")
 	public List<Merchandise> index(@PathVariable int cid) {
 		return merchandiseService.index(cid);
 	}
 	
-	@GetMapping("merch/{id}")
+	@GetMapping("{cid}/merch/{id}")
 	public Merchandise show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 
 		Merchandise merchandise = merchandiseService.show(id, cid);
 		if(merchandise == null) {
@@ -42,7 +47,7 @@ public class MerchandiseController {
 		return merchandise;
 	}
 	
-	@PostMapping("merch")
+	@PostMapping("{cid}/merch")
 	public Merchandise create( @PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @RequestBody Merchandise merchandise, Principal principal) {
 		Merchandise created = null;
 		try {
@@ -55,7 +60,7 @@ public class MerchandiseController {
 		return created;
 	}
 	
-	@PutMapping("merch/{id}")
+	@PutMapping("{cid}/merch/{id}")
 	public Merchandise update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Merchandise merchandise, Principal principal) { 
 		Merchandise updated = null;
 		try {
@@ -67,7 +72,7 @@ public class MerchandiseController {
 		return updated;
 	}
 	
-	@DeleteMapping("merch/{id}")
+	@DeleteMapping("{cid}/merch/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
 		boolean deleted = merchandiseService.destroy(id, principal.getName());
 		if(deleted) {
