@@ -1,6 +1,7 @@
 import { Toon } from './../../models/toon';
 import { Component, OnInit } from '@angular/core';
 import { ToonService } from 'src/app/services/toon.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-toon',
@@ -17,13 +18,32 @@ export class ToonComponent implements OnInit {
 
   toons: Toon[] = [];
 
-  constructor(private toonService: ToonService) { }
+  constructor(
+    private toonService: ToonService,
+    private currentRoute: ActivatedRoute
+    ) { }
 
 
   ngOnInit(): void {
-    this.reload();
+    let searchTerm = this.currentRoute.snapshot.paramMap.get('searchTerm');
+    if(searchTerm){
+      this.search(searchTerm);
+    } else{
+      this.reload();
+    }
   }
 
+  search(searchTerm: string){
+    this.toonService.search(searchTerm).subscribe({
+      next: (data) => {
+        this.toons = data;
+      },
+      error: (err) => {
+        console.error("ToonComponent.search(): error searching for cartoon");
+        console.error(err);
+      }
+    });
+  }
 
   reload() {
     this.toonService.index().subscribe(
@@ -39,8 +59,6 @@ export class ToonComponent implements OnInit {
     );
   }
 
-
-
   getNumOfToons() {
     return this.toons.length;
 
@@ -53,6 +71,7 @@ export class ToonComponent implements OnInit {
   displayTable() {
     this.selected = null;
   }
+
 addToon() {
 this.toonService.create(this.newToon).subscribe(
   {
@@ -69,8 +88,6 @@ this.toonService.create(this.newToon).subscribe(
 
 
 }
-
-
 
 setEditToon() {
   this.editToon = Object.assign({}, this.selected);
@@ -105,4 +122,5 @@ this.toonService.destroy(id).subscribe(
   }
 );
 }
+
 }

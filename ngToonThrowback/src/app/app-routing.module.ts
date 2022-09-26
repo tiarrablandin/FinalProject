@@ -8,6 +8,7 @@ import { MediaComponent } from './components/media/media.component';
 import { MerchComponent } from './components/merch/merch.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ToonComponent } from './components/toon/toon.component';
 import { TriviaComponent } from './components/trivia/trivia.component';
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'trivia', component: TriviaComponent },
   { path: 'merch', component: MerchComponent },
   { path: 'account', component: AccountComponent },
-  // { path: 'toon', component: ToonComponent },
+  { path: 'toon', component: ToonComponent },
+  { path: 'search/:searchTerm', component: ToonComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'footer', component: FooterComponent },
   { path: '**', component: NotFoundComponent }

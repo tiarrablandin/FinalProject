@@ -45,7 +45,7 @@ public class CartoonController {
 		return cartoon;
 	}
 	
-	@GetMapping("cartoons/{keyword}")
+	@GetMapping("cartoons/search/{keyword}")
 	public List<Cartoon> findByKeyword(@PathVariable String keyword) {
 		return cartoonService.findByKeyword(keyword);
 	}

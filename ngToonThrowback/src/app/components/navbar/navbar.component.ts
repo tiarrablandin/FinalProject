@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { Toon } from 'src/app/models/toon';
 
 @Component({
   selector: 'app-navbar',
@@ -15,10 +16,13 @@ export class NavbarComponent implements OnInit {
   closeResult: string = '';
   searchTerm: string = "";
 
+  toons: Toon[] =[];
+
   constructor(
     private modalService: NgbModal,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private toonService: ToonService
   ) {}
 
   open(content: any) {
@@ -73,13 +77,15 @@ export class NavbarComponent implements OnInit {
   search(){
     // this.toonService.search(this.searchTerm).subscribe({
     //   next: (data) => {
-    //     this.ToonService = data;
+    //     this.toons = data;
+    //     this.router.navigateByUrl('toon');
     //   },
     //   error: (err) => {
-    //     console.error("RockComponent.search(): error searching for rock");
+    //     console.error("ToonComponent.search(): error searching for cartoon");
     //     console.error(err);
     //   }
     // });
+    this.router.navigateByUrl("search/" + this.searchTerm);
   }
 
 }

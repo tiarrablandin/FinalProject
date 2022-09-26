@@ -14,7 +14,6 @@ export class ToonService {
   private url = environment.baseUrl + 'api/cartoons';
 
   constructor( private http: HttpClient,
-    private datePipe: DatePipe,
     private auth: AuthService) { }
 
     index() {
@@ -29,6 +28,17 @@ export class ToonService {
         }
         )
         )
+    }
+
+    search(searchTerm: string){
+      return this.http.get<Toon[]>(this.url + "/search/" + searchTerm).pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () => new Error('ToonService.index(): error retrieving cartoon: ' + err)
+          );
+        })
+      );
     }
 
     create(toon: Toon) {
@@ -70,7 +80,4 @@ export class ToonService {
       );
     }
 
-
-
-
-    }
+}
