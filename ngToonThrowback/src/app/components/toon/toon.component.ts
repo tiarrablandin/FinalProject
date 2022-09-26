@@ -9,12 +9,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./toon.component.css'],
 })
 export class ToonComponent implements OnInit {
+
   selected: Toon | null = null;
-
   newToon: Toon = new Toon();
-
   editToon: Toon | null = null;
-
   toons: Toon[] = [];
 
   constructor(
@@ -60,7 +58,13 @@ export class ToonComponent implements OnInit {
   }
 
   displayToon(toon: Toon) {
-    this.selected = toon;
+    console.log(toon);
+    console.log(this.selected);
+    if(this.selected === toon){
+      this.selected = null
+    } else{
+      this.selected = toon;
+    }
   }
 
   displayTable() {
