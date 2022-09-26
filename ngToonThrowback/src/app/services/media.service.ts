@@ -15,7 +15,7 @@ import { AuthService } from './auth.service';
 export class MediaService {
 private url = environment.baseUrl;
 
-constructor(private http: HttpClient,
+constructor(private http: HttpClient, private auth: AuthService
  ) { }
 
 index() {
