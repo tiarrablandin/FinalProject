@@ -22,7 +22,7 @@ import com.skilldistillery.toonthrowback.services.MediaService;
 
 @RestController
 @RequestMapping(path="api")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class MediaController {
 	
 	@Autowired

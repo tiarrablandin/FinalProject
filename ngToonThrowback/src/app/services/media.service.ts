@@ -13,7 +13,7 @@ import { AuthService } from './auth.service';
 
 
 export class MediaService {
-private url = environment.baseUrl;
+private url = environment.baseUrl + "api/media";
 
 constructor(private http: HttpClient, private auth: AuthService
  ) { }
