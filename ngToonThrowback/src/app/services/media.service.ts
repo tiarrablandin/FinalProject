@@ -33,7 +33,7 @@ index() {
 }
 
 create(media: Media) {
-  return this.http.post<Media>(this.url, media).pipe(
+  return this.http.post<Media>(this.url, media, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
@@ -71,7 +71,15 @@ destroy(id: number) {
   );
 }
 
-
+getHttpOptions() {
+  let options = {
+    headers: {
+      Authorization: 'Basic ' + this.auth.getCredentials(),
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  };
+  return options;
+}
 
 
 }
