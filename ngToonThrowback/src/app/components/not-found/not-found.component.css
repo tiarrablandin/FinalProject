@@ -1,0 +1,8 @@
+h1{
+  /* text-align: center; */
+  color: lightgreen;
+  text-shadow: 2px 2px black;
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 8px;
+}
