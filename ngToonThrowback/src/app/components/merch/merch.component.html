@@ -16,21 +16,18 @@
     </div>
     <br>
 
-    <table >
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Cartoon</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let mrchs of merchs" (click)="viewDetails(mrchs)">
-          <td>{{mrchs.id}}</td>
-          <td>{{mrchs.cartoon}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
+
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="assets/card3.png" alt="Card image cap">
+      <div class="card-body1">
+        <h5 class="card-title">Powerpuff Girls </h5>
+        <p class="card-text">SEASON 1 | Episode 27 | Road Trippin'</p>
+        <p>Aired on 09/23/2022</p>
+        <br>
+        <a class="button" onclick="href='https://www.cartoonnetwork.com/video/powerpuff-girls/road-trippin-episode.html'" target="_blank" id="watch">Watch Episode</a>
+      </div>
+    </div>
+
     <button (click)="setAddMerch()" class="btn btn-outline-primary">Add New Merchandise Info</button>
 
     <div *ngIf="selected">

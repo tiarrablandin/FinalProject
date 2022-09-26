@@ -49,8 +49,8 @@ export class MerchComponent implements OnInit {
     }
 
 
-    createMerch(newMats : Merch) {
-      this.merchServ.create(newMats).subscribe (
+    createMerch(newMerch : Merch) {
+      this.merchServ.create(newMerch).subscribe (
         {
           next: (data) => {
           this.loadMerch();
