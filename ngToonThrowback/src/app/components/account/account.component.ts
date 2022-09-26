@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountComponent implements OnInit {
   users: User[] = [];
-
+  loggedIn: User = new User();
   selected: User | null = null;
 
   constructor(
@@ -19,11 +19,16 @@ export class AccountComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.authService.getLoggedInUser().subscribe(
+       (liUser) => {
+        this.loggedIn = liUser
+      }
+    )
     this.reload();
   }
 
   reload() {
-    this.userService.index().subscribe(
+    this.userService.show(this.loggedIn.id).subscribe(
     {
       next: (data: any) => {
         this.users = data

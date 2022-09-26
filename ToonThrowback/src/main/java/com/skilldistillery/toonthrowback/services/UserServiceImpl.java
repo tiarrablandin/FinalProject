@@ -22,13 +22,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User show(int id) {
-		Optional<User> userOp = userRepo.findById(id);
-		if(userOp.isPresent()) {
-			User user = userOp.get();
-				return user;
-			}
-		return null;
+	public User show(String username) {
+		User user = userRepo.findByUsername(username);
+	
+		return user;
 	}
 
 	@Override

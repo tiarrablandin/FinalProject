@@ -1,3 +1,29 @@
-<div *ngFor="let user of users">
-  <h1>{{user.firstName}}</h1>
+
+
+
+
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{loggedIn.image}}" alt="Card image cap">
+  <div class="card-body2">
+    <h5 class="card-title">{{loggedIn.username}} </h5>
+    <p class="card-text">{{loggedIn.bio}}</p>
+    <p class="card-text">{{loggedIn.firstName}} {{loggedIn.lastName}}</p>
+    <p></p>
+    <br>
+
+  </div>
+</div>
+
+
+<div *ngIf="loggedIn">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{loggedIn.toon.image}}" alt="Card image cap">
+  <div class="card-body2">
+    <h5 class="card-title">{{toon.name}} </h5>
+    <p class="card-text">{{toon.description}}</p>
+    <p></p>
+    <br>
+
+  </div>
 </div>

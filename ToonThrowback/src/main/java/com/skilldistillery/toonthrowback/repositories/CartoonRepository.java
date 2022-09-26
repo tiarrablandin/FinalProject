@@ -21,5 +21,6 @@ public interface CartoonRepository extends JpaRepository<Cartoon, Integer>{
 //	List<Cartoon> findByCreatorIgnoreCaseLike(Creator creator);
 
 	List<Cartoon> findByUserFavs(User userFavs);
+	List<Cartoon> findByUser_id(int id);
 	
 }
