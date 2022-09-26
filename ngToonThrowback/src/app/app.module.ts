@@ -21,7 +21,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +36,17 @@ import { FooterComponent } from './components/footer/footer.component';
     AboutComponent,
     NotFoundComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     ToonService,
