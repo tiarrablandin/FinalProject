@@ -45,21 +45,26 @@
     transform: rotate(360deg);
   }
 }
+.card-body3{
+  padding-top: 2%;
+  text-align: center;
+  color: #FE98E2;
+  text-shadow: 1px 1px black;
+}
 
+.card-body2{
+  padding-top: 2%;
+  text-align: center;
+  color: lightgreen;
+  text-shadow: 1px 1px black;
+}
 
-  /* 0% { transform: rotate(02deg); }
-  10% { transform: rotate(-2deg); }
-  20% { transform: rotate(2deg); }
-  30% { transform: rotate(-2deg); }
-  40% { transform: rotate(2deg); }
-  50% { transform: rotate(-2deg); }
-  60% { transform: rotate(2deg); }
-  70% { transform: rotate(-2deg); }
-  80% { transform: rotate(2deg); }
-  90% { transform: rotate(-2deg); }
-  100% { transform: rotate(2deg); } */
-
-
+.card-body1{
+  padding-top: 2%;
+  text-align: center;
+  color: lightskyblue;
+  text-shadow: 1px 1px black;
+}
 
 
 
