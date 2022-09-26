@@ -1,0 +1,13 @@
+table{
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 8px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+td{
+  color: black;
+}
