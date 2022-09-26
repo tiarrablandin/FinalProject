@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { popper } from '@popperjs/core';
 
 @Component({
   selector: 'app-trivia',
