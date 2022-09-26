@@ -1,6 +1,7 @@
 import { MediaService } from './../../services/media.service';
 import { Component, OnInit } from '@angular/core';
 import { Media } from 'src/app/models/media';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-media',
@@ -16,8 +17,9 @@ export class MediaComponent implements OnInit {
   editMedia: Media | null = null;
 
   medias: Media[] = [];
+  closeResult: string = '';
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService: MediaService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.reload();
@@ -67,6 +69,27 @@ this.mediaService.create(this.newMedia).subscribe(
 );
 
 
+}
+open(content: any) {
+  this.modalService
+    .open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result: any) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason: any) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
 }
 
 
