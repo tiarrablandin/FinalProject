@@ -1,7 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
-  color: white;
+  color: black;
   font-family: "marker felt";
   background-image: url("/assets/CN.jpeg");
   background-repeat: no-repeat;
@@ -11,3 +11,11 @@ body {
 tbody{
   color: white;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
