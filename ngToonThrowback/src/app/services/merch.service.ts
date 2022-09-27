@@ -37,6 +37,18 @@ export class MerchService {
     );
   }
 
+  listUserMerch(userId : number) {
+    return this.http.get<Merch[]>(environment.baseUrl + `api/users/${userId}/merch`).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('MerchService.index(): error retrieving Merch List: ' + err)
+        );
+      })
+    );
+  }
+
   create(merch: Merch): Observable<Merch> {
     return this.http.post<Merch>(this.url + '/1/merch', merch, this.getHttpOptions()).pipe(
       catchError((err: any) => {

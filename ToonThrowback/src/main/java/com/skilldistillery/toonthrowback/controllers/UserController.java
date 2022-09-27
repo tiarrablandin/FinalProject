@@ -22,7 +22,7 @@ import com.skilldistillery.toonthrowback.services.UserService;
 
 @RestController
 @RequestMapping(path="api")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class UserController {
 	
 	@Autowired
@@ -33,9 +33,9 @@ public class UserController {
 		return userService.index();
 	}
 	
-	@GetMapping("users/{id}")
-	public User show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) { 
-		User user = userService.show(id);
+	@GetMapping("users/profile")
+	public User show(HttpServletRequest req, HttpServletResponse res, Principal principal) { 
+		User user = userService.show(principal.getName());
 		if(user == null) {
 			res.setStatus(404);
 		}

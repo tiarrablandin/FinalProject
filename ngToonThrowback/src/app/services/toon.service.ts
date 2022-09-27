@@ -26,6 +26,17 @@ export class ToonService {
       })
     );
   }
+  listUserCartoons(userId : number) {
+    return this.http.get<Toon[]>(environment.baseUrl + `api/users/${userId}/cartoons`).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('ToonService.index(): error retrieving Toon List: ' + err)
+        );
+      })
+    );
+  }
 
   search(searchTerm: string) {
     return this.http.get<Toon[]>(this.url + '/search/' + searchTerm).pipe(

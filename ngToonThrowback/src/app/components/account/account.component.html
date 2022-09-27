@@ -1,3 +1,42 @@
-<div *ngFor="let user of users">
-  <h1>{{user.firstName}}</h1>
-</div>
+<div class="row">
+  <div class="column">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="{{ loggedIn.image }}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ loggedIn.username }}</h5>
+        <p class="card-text">{{ loggedIn.bio }}</p>
+        <p class="card-text">
+          {{ loggedIn.firstName }} {{ loggedIn.lastName }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+
+  </div>
+
+  <div class="column">
+    <img src="assets/cartoonADDS.png" id="cartoonADDS" />
+    <div *ngIf="loggedIn">
+      <div class="anyClass">
+        <div *ngFor="let toon of userToons" class="card" style="width: 18rem" style="center:center">
+          <img
+            class="card-img-top"
+            src="{{ toon.image }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ toon.name }}</h5>
+            <p class="card-text">{{ toon.description }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
