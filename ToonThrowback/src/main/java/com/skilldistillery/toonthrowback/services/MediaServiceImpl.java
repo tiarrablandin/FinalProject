@@ -92,5 +92,10 @@ public class MediaServiceImpl implements MediaService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Media> toonMedia(int cid) {
+		return mediaRepo.findByCartoonId(cid);
+	}
 }
 

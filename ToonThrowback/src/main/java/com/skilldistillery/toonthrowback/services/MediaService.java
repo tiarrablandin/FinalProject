@@ -15,4 +15,6 @@ public interface MediaService {
 	 public Media update(int id, Media media, String username);
 
 	 public boolean destroy(int id, String username);
+
+	public List<Media> toonMedia(int cid);
 }

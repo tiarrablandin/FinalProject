@@ -50,7 +50,7 @@
   </div>
   <div id="logged" *ngIf="loggedInUser">
     <div class="d-flex justify-content-center">
-    <!-- <button class="btn btn-outline-primary" (click)="()">Add Merchandise</button>
+      <!-- <button class="btn btn-outline-primary" (click)="()">Add Merchandise</button>
       <button class="btn btn-outline-primary" (click)="()">Add Media</button> -->
     </div>
     <div *ngIf="loggedInUser && loggedInUser.role == 'admin'">
@@ -68,6 +68,35 @@
 </div>
 <!-- </tbody> -->
 <!-- </table> -->
+
+<div class="container" #container>
+	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
+		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
+			<div class="card" *ngFor="let media of toonMedia; let index = index" [ngStyle]="{'width': cardWidth}">
+				<img src="{{media.image}}"><br>
+        <h5>{{media.title}}</h5>
+			</div>
+		</div>
+	</div>
+	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+		[ngClass]="{'disabled':currentPage === totalPages}"></div>
+</div>
+
+<!-- <div class="container" #container>
+	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
+		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
+			<div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
+				<img src="{{merch.image}}"><br>
+        <h5>{{merch.title}}</h5>
+			</div>
+		</div>
+	</div>
+
+	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+		[ngClass]="{'disabled':currentPage === totalPages}"></div>
+</div> -->
 
 <ng-template #content let-modal>
   <div class="modal-header">
