@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from 'src/app/models/toon';
 import { throws } from 'assert';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Merch } from 'src/app/models/merch';
 
 @Component({
   selector: 'app-account',
@@ -19,6 +20,7 @@ export class AccountComponent implements OnInit {
   loggedIn: User = new User();
   selected: User | null = null;
   userToons: Toon[] = [];
+  userMerch: Merch[] = [];
   closeResult: string = '';
 
   constructor(
@@ -57,7 +59,7 @@ this.toonService.listUserCartoons(this.loggedIn.id).subscribe(
 this.merchService.listUserMerch(this.loggedIn.id).subscribe(
   {
     next: (data: any) => {
-      this.userToons = data
+      this.userMerch = data
     },
     error: (err) => {
       console.error('MediaListComponent.reload(): error loading media:');

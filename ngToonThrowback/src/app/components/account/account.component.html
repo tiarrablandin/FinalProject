@@ -17,14 +17,38 @@
   </div>
 
   <div class="column">
-
+    <div *ngIf="loggedIn">
+      <div class="anyClass">
+        <div
+          *ngFor="let merch of userMerch"
+          class="card"
+          style="width: 18rem"
+          style="center: center"
+        >
+          <img
+            class="card-img-top"
+            src="{{ merch.image }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ merch.cartoon }}</h5>
+            <p class="card-text">{{ merch.url }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="column">
     <img src="assets/cartoonADDS.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
       <div class="anyClass">
-        <div *ngFor="let toon of userToons" class="card" style="width: 18rem" style="center:center">
+        <div
+          *ngFor="let toon of userToons"
+          class="card"
+          style="width: 18rem"
+          style="center: center"
+        >
           <img
             class="card-img-top"
             src="{{ toon.image }}"
@@ -36,7 +60,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
+</div>
