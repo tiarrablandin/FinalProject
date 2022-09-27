@@ -1,3 +1,4 @@
+import { MediaService } from './../../services/media.service';
 import { MerchService } from './../../services/merch.service';
 import { ToonService } from 'src/app/services/toon.service';
 import { UserService } from './../../services/user.service';
@@ -9,6 +10,7 @@ import { Toon } from 'src/app/models/toon';
 import { throws } from 'assert';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Merch } from 'src/app/models/merch';
+import { Media } from 'src/app/models/media';
 
 @Component({
   selector: 'app-account',
@@ -23,13 +25,18 @@ export class AccountComponent implements OnInit {
   userMerchs: Merch[] = [];
   closeResult: string = '';
   editUser: User | null = null;
+  editMedia: Media | null = null;
+  selectedMedia: Media | null = null;
+  editToon: Toon | null = null;
+  selectedToon: Toon | null = null;
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private toonService: ToonService,
     private merchService: MerchService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private mediaService: MediaService
     ) { }
 
   ngOnInit(): void {
@@ -89,6 +96,32 @@ this.merchService.listUserMerch(this.loggedIn.id).subscribe(
   }
 
 
+openCartoon(content: any) {
+  this.modalService
+    .open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result: any) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason: any) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+
+openMedia(content: any) {
+  this.modalService
+    .open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result: any) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason: any) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+
 open(content: any) {
   this.modalService
     .open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -129,7 +162,6 @@ updateUser() {
   }
 }
 delete(id: number) {
-  console.log("hellooooo");
   this.userService.destroy(id).subscribe(
     {
       next: () => {
@@ -143,4 +175,62 @@ delete(id: number) {
     }
   );
   }
-}
+  updateMedia(updatedMedia: Media) {
+    this.mediaService.update(updatedMedia).subscribe(
+      {
+        next: (data) => {
+          this.selectedMedia = data;
+          this.editMedia = null;
+          this.reload();
+        },
+        error: (err) => {
+          console.error('MediaListComponent.updateMedia(): error updating media:');
+          console.error(err);
+        }
+      }
+    );
+    }
+
+    deleteMedia(id: number) {
+    this.mediaService.destroy(id).subscribe(
+      {
+        next: () => {
+          this.reload();
+        },
+        error: (err) => {
+          console.error('MediaListComponent.deleteMedia(): error deleting media:');
+          console.error(err);
+        }
+      }
+    );
+
+    }
+    deleteToon(id: number) {
+      this.toonService.destroy(id).subscribe({
+        next: () => {
+          this.reload();
+        },
+        error: (err) => {
+          console.error('ToonListComponent.deleteToon(): error deleting Toon:');
+          console.error(err);
+        },
+      });
+    }
+
+    updateToon() {
+      if(this.editToon){
+        this.toonService.update(this.editToon).subscribe({
+          next: (data) => {
+            this.selectedToon = data;
+            this.editToon = null;
+            this.reload();
+          },
+          error: (err) => {
+            console.error('ToonListComponent.updateToon(): error updating Toon:');
+            console.error(err);
+          },
+        });
+      }
+    }
+    }
+

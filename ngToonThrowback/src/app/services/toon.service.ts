@@ -96,7 +96,7 @@ export class ToonService {
   }
 
   destroy(id: number) {
-    return this.http.delete<Toon>(this.url + '/' + id).pipe(
+    return this.http.delete<Toon>(this.url + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
