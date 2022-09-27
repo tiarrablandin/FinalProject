@@ -170,7 +170,7 @@ public class Cartoon {
 		this.url = url;
 	}
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 

@@ -24,7 +24,7 @@ public class CartoonServiceImpl implements CartoonService {
 	
 	@Override
 	public List<Cartoon> index() {
-		return cartoonRepo.findAll();
+		return cartoonRepo.findByActiveTrue();
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class CartoonServiceImpl implements CartoonService {
 	@Override
 	public List<Cartoon> findByKeyword(String keyword) {
 		keyword = "%" + keyword + "%";
-		return cartoonRepo.findByNameIgnoreCaseLikeOrDescriptionIgnoreCaseLike(keyword, keyword);
+		return cartoonRepo.findByNameIgnoreCaseLikeOrDescriptionIgnoreCaseLikeAndActiveTrue(keyword, keyword);
 	}
 	
 //	public List<Cartoon> findByNetwork(Network network){
@@ -53,7 +53,7 @@ public class CartoonServiceImpl implements CartoonService {
 	
 	@Override
 	public List<Cartoon> findByUserFavs(User userFavs){
-		return cartoonRepo.findByUserFavs(userFavs);
+		return cartoonRepo.findByUserFavsAndActiveTrue(userFavs);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class CartoonServiceImpl implements CartoonService {
 			Cartoon cartoon = cartoonOp.get();
 			if(cartoon.getUser().getUsername().equals(username)) {
 				try {
-					if (cartoon.isActive()) {
+					if (cartoon.getActive()) {
 						cartoon.setActive(false);
 						cartoonRepo.save(cartoon);
 					}
@@ -144,7 +144,7 @@ public class CartoonServiceImpl implements CartoonService {
 	@Override
 	public List<Cartoon> findByUser_id(int id) {
 		if ( userRepo.existsById(id)) {
-			return cartoonRepo.findByUser_id(id);
+			return cartoonRepo.findByUser_idAndActiveTrue(id);
 		}
 		return null;
 	}

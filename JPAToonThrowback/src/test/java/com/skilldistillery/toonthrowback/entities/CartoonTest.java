@@ -46,7 +46,7 @@ class CartoonTest {
 		assertNotNull(cartoon);
 		assertEquals("Hey Arnold", cartoon.getName());
 		assertTrue(cartoon.getDescription().contains("A young boy"));
-		assertTrue(cartoon.isActive());
+		assertTrue(cartoon.getActive());
 	}
 	
 	@Test
