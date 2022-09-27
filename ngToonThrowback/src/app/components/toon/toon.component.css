@@ -11,3 +11,42 @@ table{
 td{
   color: black;
 }
+
+img{
+  height: 200px;
+  width: 300px;
+}
+
+#title{
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 8px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.single{
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 8px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#logged{
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 8px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#single-info, #description, #title{
+  text-align: center;
+}

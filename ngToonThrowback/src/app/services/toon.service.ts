@@ -15,6 +15,16 @@ export class ToonService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+
   index() {
     return this.http.get<Toon[]>(this.url).pipe(
       catchError((err: any) => {
@@ -62,7 +72,7 @@ export class ToonService {
   }
 
   update(toon: Toon) {
-    return this.http.put<Toon>(this.url + '/' + toon.id, toon).pipe(
+    return this.http.put<Toon>(this.url + '/' + toon.id, toon, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
