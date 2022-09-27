@@ -51,7 +51,7 @@ class UserTest {
 		assertEquals(null, user.getFirstName());
 		assertEquals(null, user.getLastName());
 		assertTrue(user.getBio().contains("administrator"));
-		assertTrue(user.isActive());
+		assertTrue(user.getActive());
 		assertEquals("admin", user.getRole());
 	}
 	
