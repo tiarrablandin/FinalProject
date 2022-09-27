@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Media } from 'src/app/models/media';
+import { Merch } from 'src/app/models/merch';
 
 @Component({
   selector: 'app-toon',
@@ -21,6 +22,7 @@ export class ToonComponent implements OnInit {
   loggedInUser: User | null = null;
   closeResult: string = '';
   toonMedia: Media[] = [];
+  toonMerch: Merch[] = [];
   toons: Toon[] = [];
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -103,6 +105,18 @@ export class ToonComponent implements OnInit {
     });
   }
 
+  loadSelectedToonMerch(cid: number) {
+    this.toonService.toonMerch(cid).subscribe({
+      next: (data) => {
+        this.toonMerch = data;
+      },
+      error: (err) => {
+        console.error('ToonListComponent.reload(): error loading Toon:');
+        console.error(err);
+      },
+    });
+  }
+
   getNumOfToons() {
     return this.toons.length;
   }
@@ -113,9 +127,11 @@ export class ToonComponent implements OnInit {
     if(this.selected === toon){
       this.selected = null
       this.toonMedia = [];
+      this.toonMerch = [];
     } else{
       this.selected = toon;
       this.loadSelectedToonMedia(toon.id);
+      this.loadSelectedToonMerch(toon.id);
     }
   }
 

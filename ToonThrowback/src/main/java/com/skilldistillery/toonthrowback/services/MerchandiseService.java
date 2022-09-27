@@ -7,6 +7,8 @@ import com.skilldistillery.toonthrowback.entities.Merchandise;
 
 public interface MerchandiseService {
 
+	public List<Merchandise> index();
+	
 	public List<Merchandise> index(int cid);
 
 	public Merchandise show(int id, int cid);
@@ -17,7 +19,7 @@ public interface MerchandiseService {
 
 	public boolean destroy(int id, String username);
 
-	public List<Merchandise> index();
-
 	public List<Merchandise> findByUser_id(int id);
+	
+	public List<Merchandise> toonMerch(int cid);
 }

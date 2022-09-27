@@ -83,20 +83,19 @@
 		[ngClass]="{'disabled':currentPage === totalPages}"></div>
 </div>
 
-<!-- <div class="container" #container>
+<div class="container" #container>
 	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
 	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
 		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
 			<div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
 				<img src="{{merch.image}}"><br>
-        <h5>{{merch.title}}</h5>
 			</div>
 		</div>
 	</div>
 
 	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
 		[ngClass]="{'disabled':currentPage === totalPages}"></div>
-</div> -->
+</div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
