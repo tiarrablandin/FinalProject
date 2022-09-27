@@ -1,4 +1,4 @@
-<body>
+
 <button (click)="open(content)" *ngIf="loggedIn()">Add New Merchandise Info</button>
 
 
@@ -11,7 +11,7 @@
     <form>
       <div class="mb-3">
         <div class="input-group">
-          <form *ngIf="">
+          <form *ngIf="content">
             <form>
               <div class="form-group">
               <label for="cartoon" class="form-label">Cartoon</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <label for="image" class="form-label">Picture</label>
-              <input type="image" name="image" [(ngModel)]="newMerch.image"  class="form-control"/>
+              <input type="text" name="image" [(ngModel)]="newMerch.image"  class="form-control"/>
             </div>
             <div class="form-group">
               <label for="url" class="form-label">Link</label>
@@ -29,11 +29,7 @@
               <label for="user" class="form-label">Username</label>
               <input type="text" name="user" [(ngModel)]="newMerch.createdDate"  class="form-control"/>
             </div>
-            <div class="form-group">
-              <label for="createdDate" class="form-label">Created Date</label>
-              <input type="text" name="createdDate" [(ngModel)]="newMerch.createdDate"  class="form-control"/>
-            </div>
-            <button class="btn btn-outline-primary" (click)="createMerch(newMerch); modal.dismiss('Cross click')">Login</button>
+            <button class="btn btn-outline-primary" (click)="createMerch(newMerch); modal.dismiss('Cross click')">Add</button>
           </form><br><br>
           </form>
       </div>
@@ -41,14 +37,13 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a id="register" class="dropdown-item link" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">New around here? Sign up</a>
-    <a id="forgot" class="dropdown-item link" href="#" (click)="modal.dismiss('Cross click')">Forgot password?</a>
+    <button class="btn btn-outline-primary" (click)="createMerch(newMerch); modal.dismiss('Cross click')">Add Merchandise Info</button>
   </div>
 <div class="dropdown-divider"></div>
 </ng-template>
-  <div id="merchAdd">
+  <!-- <div id="merchAdd">
   <form>
-    <!-- ID: <br> <input type="text" name="id" [(ngModel)]="newMerch.id"><br> -->
+    ID: <br> <input type="text" name="id" [(ngModel)]="newMerch.id"><br>
     Associated Cartoon:<br> <input type="text" name="cartoon" [(ngModel)]="newMerch.cartoon"><br>
     Link: <br><input type="text" name="url" [(ngModel)]="newMerch.url"><br>
     Image: <br><input type="text" name="image" [(ngModel)]="newMerch.image"><br>
@@ -59,12 +54,14 @@
     <button (click)="createMerch(newMerch)" >Add Merchandise</button>
 
     </form>
-    </div>
+    </div> -->
     <br>
 
 
     <div class="card" style="width: 18rem;" *ngFor="let merch of merchs" id="merchCard">
+      <div class="image-wrapper">
       <img class="card-img-top" src="{{merch.image}}" alt="Card image cap">
+    </div>
       <div class="card-body1">
         <h5 class="card-title">{{merch.cartoon.name}} Merchandise</h5>
         <a [href]="merch.url">Link to Site</a>
@@ -74,7 +71,7 @@
       </div>
     </div>
 
-    <button (click)="createMerch(newMerch)" class="btn btn-outline-primary">Add New Merchandise Info</button>
+    <!-- <button (click)="createMerch(newMerch)" class="btn btn-outline-primary">Add New Merchandise Info</button>
 
     <div *ngIf="selected">
     <p>Merch ID #: {{selected.id}}</p>
@@ -86,7 +83,7 @@
     <button (click)="selected=null" class="btn btn-danger">Back</button>
     <button (click)="setEditMerch()" class="btn btn-outline-primary">Edit</button>
     <button (click)="deleteMerch(selected.id)" class="btn btn-danger">Delete</button>
-    </div>
+    </div> -->
 
     <div id="merchEdit" *ngIf="editMerch">
       <form>
@@ -115,4 +112,4 @@
         <button (click)="updateMerch(editMerch)" class="btn btn-success">Save</button>
       </form>
     </div>
-  </body>
+
