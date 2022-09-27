@@ -1,16 +1,18 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ToonService } from 'src/app/services/toon.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Media } from 'src/app/models/media';
 
 @Component({
   selector: 'app-toon',
   templateUrl: './toon.component.html',
   styleUrls: ['./toon.component.css'],
 })
+
 export class ToonComponent implements OnInit {
 
   selected: Toon | null = null;
@@ -18,16 +20,42 @@ export class ToonComponent implements OnInit {
   editToon: Toon | null = null;
   loggedInUser: User | null = null;
   closeResult: string = '';
+  toonMedia: Media[] = [];
   toons: Toon[] = [];
+
+  arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  totalCards: number = this.arr.length;
+  currentPage: number = 1;
+  pagePosition: string = "0%";
+  cardsPerPage: number = 0;
+  totalPages: number = 0;
+  overflowWidth: string = "";
+  cardWidth: string = "";
+  containerWidth: number = 0;
+  @ViewChild("container", { static: true, read: ElementRef })
+  container: ElementRef = new ElementRef("");
+  @HostListener("window:resize") windowResize() {
+    let newCardsPerPage = this.getCardsPerPage();
+    if (newCardsPerPage != this.cardsPerPage) {
+      this.cardsPerPage = newCardsPerPage;
+      this.initializeSlider();
+      if (this.currentPage > this.totalPages) {
+        this.currentPage = this.totalPages;
+        this.populatePagePosition();
+      }
+    }
+  }
 
   constructor(
     private toonService: ToonService,
     private currentRoute: ActivatedRoute,
     private authService: AuthService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit(): void {
+    this.cardsPerPage = this.getCardsPerPage();
+    this.initializeSlider();
      if(this.authService.checkLogin()){
        this.getLoggedInUser();
      }
@@ -63,6 +91,18 @@ export class ToonComponent implements OnInit {
     });
   }
 
+  loadSelectedToonMedia(cid: number) {
+    this.toonService.toonMedia(cid).subscribe({
+      next: (data) => {
+        this.toonMedia = data;
+      },
+      error: (err) => {
+        console.error('ToonListComponent.reload(): error loading Toon:');
+        console.error(err);
+      },
+    });
+  }
+
   getNumOfToons() {
     return this.toons.length;
   }
@@ -72,8 +112,10 @@ export class ToonComponent implements OnInit {
     console.log(this.selected);
     if(this.selected === toon){
       this.selected = null
+      this.toonMedia = [];
     } else{
       this.selected = toon;
+      this.loadSelectedToonMedia(toon.id);
     }
   }
 
@@ -164,4 +206,25 @@ export class ToonComponent implements OnInit {
     }
   }
 
+  initializeSlider() {
+    this.totalPages = Math.ceil(this.totalCards / this.cardsPerPage);
+    this.overflowWidth = `calc(${this.totalPages * 100}% + ${this.totalPages *
+      10}px)`;
+    this.cardWidth = `calc((${100 / this.totalPages}% - ${this.cardsPerPage *
+      10}px) / ${this.cardsPerPage})`;
+  }
+
+  getCardsPerPage() {
+    return Math.floor(this.container.nativeElement.offsetWidth / 200);
+  }
+
+  changePage(incrementor: number) {
+    this.currentPage += incrementor;
+    this.populatePagePosition();
+  }
+
+  populatePagePosition() {
+    this.pagePosition = `calc(${-100 * (this.currentPage - 1)}% - ${10 *
+      (this.currentPage - 1)}px)`;
+  }
 }

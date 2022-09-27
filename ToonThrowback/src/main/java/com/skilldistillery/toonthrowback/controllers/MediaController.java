@@ -33,6 +33,11 @@ public class MediaController {
 		return mediaService.index();
 	}
 	
+	@GetMapping("cartoons/{cid}/media")
+	public List<Media> toonMedia(@PathVariable int cid) {
+		return mediaService.toonMedia(cid);
+	}
+	
 	@GetMapping("media/{id}")
 	public Media show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) { 
 		Media media = mediaService.show(id);

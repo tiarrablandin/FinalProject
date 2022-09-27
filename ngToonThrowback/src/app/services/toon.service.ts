@@ -36,6 +36,19 @@ export class ToonService {
       })
     );
   }
+
+  toonMedia(cid: number) {
+    return this.http.get<Media[]>(this.url + "/" + cid + "/media").pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('ToonService.index(): error retrieving Toon List: ' + err)
+        );
+      })
+    );
+  }
+
   listUserCartoons(userId : number) {
     return this.http.get<Toon[]>(environment.baseUrl + `api/users/${userId}/cartoons`).pipe(
       catchError((err: any) => {
