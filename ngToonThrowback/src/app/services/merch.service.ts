@@ -38,7 +38,7 @@ export class MerchService {
   }
 
   create(merch: Merch): Observable<Merch> {
-    return this.http.post<Merch>(this.url, merch).pipe(
+    return this.http.post<Merch>(this.url + '/1/merch', merch, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -50,7 +50,7 @@ export class MerchService {
 
   update(merch: Merch) {
 
-    return this.http.patch<Merch>(this.url + '/' + merch.id, merch).pipe(
+    return this.http.patch<Merch>(this.url + '/' + merch.id, merch, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -64,7 +64,7 @@ export class MerchService {
 
 
   destroy(id: number) {
-    return this.http.delete<void>(this.url + '/' + id).pipe(
+    return this.http.delete<void>(this.url + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
