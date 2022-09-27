@@ -1,37 +1,18 @@
-
-  <style>
-    .button {
-      display: inline-block;
-      padding: 15px 25px;
-      font-size: 24px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      outline: none;
-      color: #fff;
-      background-color: #5ccbe7;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 7px #999;
-    }
-
-    .button:hover {background-color: #3e8e41}
-
-    .button:active {
-      background-color: #3e8e41;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-    }
-    </style>
-
 <span class="">
-  <a class="button" data-bs-toggle="offcanvas" (click)="open(content)">Add New Media!</a>
+  <a class="button" data-bs-toggle="offcanvas" (click)="open(content)"
+    >Add New Media!</a
+  >
 </span>
 
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add New Media!</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <form>
@@ -42,67 +23,105 @@
 
             <div class="d-flex justify-content-center">
               <form class="text-center">
-                <input type="text" name="title" class="col form-input form-control " placeholder="Title" style="width: 300px;" [(ngModel)]="newMedia.title">
-                <br>
-                <input type="text" name="url" class="col form-input form-control" placeholder="URL" style="width: 300px;" [(ngModel)]="newMedia.url">
-                <br>
-                <input type="text" name="description" class="col form-input form-control" placeholder="Description" style="width: 300px;" [(ngModel)]="newMedia.description">
-                <br>
-                <input type="text" name="season" class="col form-input form-control" placeholder="Season" style="width: 300px;" [(ngModel)]="newMedia.season">
-              <br>
-              <input type="text" name="episodeNum" class="col form-input form-control" placeholder="Episode Number" style="width: 300px;" [(ngModel)]="newMedia.episodeNum">
-              <br>
-              <input type="text" name="image" class="col form-input form-control" placeholder="Cartoon Image" style="width: 300px;" [(ngModel)]="newMedia.image">
-              <br>
-              <button class="btn btn-outline-primary" (click)="addMedia()">Add Media!</button>
-            </form>
-          </div>
-          </form><br><br>
+                <input
+                  type="text"
+                  name="title"
+                  class="col form-input form-control"
+                  placeholder="Title"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.title"
+                />
+                <br />
+                <input
+                  type="text"
+                  name="url"
+                  class="col form-input form-control"
+                  placeholder="URL"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.url"
+                />
+                <br />
+                <input
+                  type="text"
+                  name="description"
+                  class="col form-input form-control"
+                  placeholder="Description"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.description"
+                />
+                <br />
+                <input
+                  type="text"
+                  name="season"
+                  class="col form-input form-control"
+                  placeholder="Season"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.season"
+                />
+                <br />
+                <input
+                  type="text"
+                  name="episodeNum"
+                  class="col form-input form-control"
+                  placeholder="Episode Number"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.episodeNum"
+                />
+                <br />
+                <input
+                  type="text"
+                  name="image"
+                  class="col form-input form-control"
+                  placeholder="Cartoon Image"
+                  style="width: 300px"
+                  [(ngModel)]="newMedia.image"
+                />
+                <br />
+                <button class="btn btn-outline-primary" (click)="addMedia()">
+                  Add Media!
+                </button>
+              </form>
+            </div>
+          </form>
+          <br /><br />
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-outline-primary" (click)="addMedia(); modal.dismiss('Cross click')">Submit</button>
+    <button
+      class="btn btn-outline-primary"
+      (click)="addMedia(); modal.dismiss('Cross click')"
+    >
+      Submit
+    </button>
   </div>
 </ng-template>
 
-
-  <!-- <div>
-    <table class="table table-dark table-hover">
-     <thead class="table-dark">
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Episode Number</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-      <tbody>
-        <tr *ngFor="let media of medias" >
-          <td (click)="displayMedia(media)">{{media.title}}</td>
-          <td (click)="displayMedia(media)">{{media.description}}</td>
-          <td (click)="displayMedia(media)">{{media.episodeNum}}</td>
-          <td><Button class="btn btn-outline-danger" (click)="deleteMedia(media.id)">X</Button></td>
-        </tr>
-      </tbody>
-    </table> -->
-
-
-      <div class="cards-wrapper">
-    <div class="card" *ngFor="let media of medias" id="mediaCard">
-      <div class="image-wrapper">
-      <img class="card-img-top" src="{{media.image}}" alt="Card image cap"><img>
+<div class="cards-wrapper">
+  <div class="card" *ngFor="let media of medias" id="mediaCard">
+    <div class="image-wrapper">
+      <img
+        class="card-img-top"
+        src="{{ media.image }}"
+        alt="Card image cap"
+      /><img />
     </div>
-      <div class="card-body1">
-        <h5 class="card-title">{{media.title}}</h5>
-        <p class="season">Season: {{media.season}} Ep: {{media.episodeNum}}</p>
-        <br>
-        <a class="button" onclick="href='https://www.cartoonnetwork.com/video/powerpuff-girls/road-trippin-episode.html'" target="_blank" id="watch">Watch Episode</a>
-      </div>
-      </div>
-      </div>
+    <div class="card-body1">
+      <h5 class="card-title">{{ media.title }}</h5>
+      <p class="season">
+        Season: {{ media.season }} Ep: {{ media.episodeNum }}
+      </p>
+      <br />
+      <a
+        class="button"
+        onclick="href='https://www.cartoonnetwork.com/video/powerpuff-girls/road-trippin-episode.html'"
+        target="_blank"
+        id="watch"
+        >Watch Episode</a
+      >
+    </div>
+  </div>
+</div>
 
-    <br>
-
-
+<br />

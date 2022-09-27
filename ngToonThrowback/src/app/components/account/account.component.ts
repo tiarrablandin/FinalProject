@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from 'src/app/models/toon';
 import { throws } from 'assert';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-account',
@@ -17,11 +18,13 @@ export class AccountComponent implements OnInit {
   loggedIn: User = new User();
   selected: User | null = null;
   userToons: Toon[] = [];
+  closeResult: string = '';
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private toonService: ToonService
+    private toonService: ToonService,
+    private modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
@@ -64,4 +67,26 @@ this.toonService.listUserCartoons(this.loggedIn.id).subscribe(
     );
   }
 
+
+open(content: any) {
+  this.modalService
+    .open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result: any) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason: any) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
 }

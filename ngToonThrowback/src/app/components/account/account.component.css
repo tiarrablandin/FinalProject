@@ -1,0 +1,89 @@
+.card-body{
+  padding-top: 2%;
+  text-align: center;
+  color: #FE98E2;
+  text-shadow: 1px 1px black;
+  box-shadow: 0 7px #999;
+  border-radius: 20px;
+}
+img {
+  height:auto;
+  border-radius: 20px;
+}
+.anyClass {
+  height: 450px;
+  overflow-y: scroll;
+  padding-bottom: 50%;
+  background-color: white;
+  border-radius: 20px;
+
+}
+.card {
+  border-radius: 20px;
+  border-width: 5px;
+  border-color: black;
+
+}
+#cartoonADDS {
+height: 350px;
+margin-top: auto;
+
+  animation:
+    stretch
+    1.5s
+    ease-out
+    0s
+    alternate
+    4
+    none
+    running;
+}
+
+#cartoonADDS:hover {
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(1.0);
+    border-radius: 100%;
+  }
+  50% {
+    background-color: lightblue;
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  align-content: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5ccbe7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
