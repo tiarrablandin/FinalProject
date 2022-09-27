@@ -50,11 +50,9 @@ export class MerchService {
   }
 
   create(merch: Merch): Observable<Merch> {
-<<<<<<< HEAD
-    return this.http.post<Merch>(this.url + '/1/merch', merch, this.getHttpOptions()).pipe(
-=======
+
     return this.http.post<Merch>(this.url, merch, this.getHttpOptions()).pipe(
->>>>>>> 5132e1d571d495091816d7b4e8a4661dcdfffef1
+
       catchError((err: any) => {
         console.error(err);
         return throwError(
