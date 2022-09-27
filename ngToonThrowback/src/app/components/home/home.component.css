@@ -12,6 +12,10 @@
   height: 400px;
   perspective: 700px;
   align-items: center;
+  border-radius: 20px;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: black;
 } */
 
 #watch {
@@ -75,7 +79,7 @@
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: lightblue;
   border: none;
   border-radius: 15px;
   box-shadow: 0 7px #999;
@@ -87,6 +91,10 @@
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.card-img-top {
+  height: 200px;
+  border-radius: 20px;
 }
 
 

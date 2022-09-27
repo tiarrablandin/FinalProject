@@ -1,3 +1,4 @@
+import { MerchService } from './../../services/merch.service';
 import { ToonService } from 'src/app/services/toon.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +25,7 @@ export class AccountComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private toonService: ToonService,
+    private merchService: MerchService,
     private modalService: NgbModal
     ) { }
 
@@ -39,6 +41,20 @@ export class AccountComponent implements OnInit {
 
   loadUserToons() {
 this.toonService.listUserCartoons(this.loggedIn.id).subscribe(
+  {
+    next: (data: any) => {
+      this.userToons = data
+    },
+    error: (err) => {
+      console.error('MediaListComponent.reload(): error loading media:');
+      console.error(err);
+    }
+  }
+)
+
+  }
+  loadUserMerch() {
+this.merchService.listUserMerch(this.loggedIn.id).subscribe(
   {
     next: (data: any) => {
       this.userToons = data
