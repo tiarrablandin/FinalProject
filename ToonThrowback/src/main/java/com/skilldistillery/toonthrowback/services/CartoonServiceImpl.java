@@ -100,7 +100,8 @@ public class CartoonServiceImpl implements CartoonService {
 			if(cartoon.getUser().getUsername().equals(username)) {
 				try {
 					if (cartoon.isActive()) {
-						cartoon.setActive(cartoon.isActive());
+						cartoon.setActive(false);
+						cartoonRepo.save(cartoon);
 					}
 					return true;
 				} catch (Exception e) {
