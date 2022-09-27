@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 				userOld.setFirstName(user.getFirstName());
 				userOld.setLastName(user.getLastName());
 				userOld.setBio(user.getBio());
-				userOld.setActive(user.isActive());
+				userOld.setActive(user.getActive());
 				userOld.setRole(user.getRole());
 				userRepo.save(userOld);
 				return userOld;
@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
 			User user = userOp.get();
 			if(user.getId() == id) {
 				try {
-					if (user.isActive()) {
-						user.setActive(user.isActive());
+					if (user.getActive()) {
+						user.setActive(false);
+						userRepo.save(user);
 					}
 					return true;
 				} catch (Exception e) {

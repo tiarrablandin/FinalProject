@@ -43,6 +43,13 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 		}
 		return null;
 	}
+	@Override
+	public List<Merchandise> findByUser_id(int id) {
+		if ( userRepo.existsById(id)) {
+			return merchandiseRepo.findByUser_id(id);
+		}
+		return null;
+	}
 
 	@Override
 	public Merchandise create(Merchandise merchandise, int cid, String username) {

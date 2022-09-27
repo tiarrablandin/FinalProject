@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.toonthrowback.entities.Cartoon;
 import com.skilldistillery.toonthrowback.entities.Merchandise;
 import com.skilldistillery.toonthrowback.services.MerchandiseService;
 
@@ -36,6 +37,14 @@ public class MerchandiseController {
 	@GetMapping("{cid}/merch")
 	public List<Merchandise> index(@PathVariable int cid) {
 		return merchandiseService.index(cid);
+	}
+	@GetMapping("users/{id}/merch")
+	public List<Merchandise> userMerch(@PathVariable int id, HttpServletResponse res) {
+		List<Merchandise> userMerch = merchandiseService.findByUser_id(id); 
+		if (userMerch == null) {
+			res.setStatus(404);
+		}
+		return userMerch;
 	}
 	
 	@GetMapping("{cid}/merch/{id}")

@@ -187,7 +187,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 

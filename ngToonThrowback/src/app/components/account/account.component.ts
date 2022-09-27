@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from 'src/app/models/toon';
 import { throws } from 'assert';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Merch } from 'src/app/models/merch';
 
 @Component({
   selector: 'app-account',
@@ -19,7 +20,9 @@ export class AccountComponent implements OnInit {
   loggedIn: User = new User();
   selected: User | null = null;
   userToons: Toon[] = [];
+  userMerchs: Merch[] = [];
   closeResult: string = '';
+  editUser: User | null = null;
 
   constructor(
     private authService: AuthService,
@@ -33,10 +36,10 @@ export class AccountComponent implements OnInit {
     this.authService.getLoggedInUser().subscribe(
        (liUser) => {
         this.loggedIn = liUser;
-        this.loadUserToons();
+        this.reload();
+
       }
     )
-    this.reload();
   }
 
   loadUserToons() {
@@ -57,10 +60,10 @@ this.toonService.listUserCartoons(this.loggedIn.id).subscribe(
 this.merchService.listUserMerch(this.loggedIn.id).subscribe(
   {
     next: (data: any) => {
-      this.userToons = data
+      this.userMerchs = data
     },
     error: (err) => {
-      console.error('MediaListComponent.reload(): error loading media:');
+      console.error('MerchListComponent.reload(): error loading merch:');
       console.error(err);
     }
   }
@@ -81,6 +84,8 @@ this.merchService.listUserMerch(this.loggedIn.id).subscribe(
       }
     }
     );
+    this.loadUserMerch();
+    this.loadUserToons();
   }
 
 
@@ -105,4 +110,37 @@ private getDismissReason(reason: any): string {
     return `with: ${reason}`;
   }
 }
+
+updateUser() {
+  if (this.editUser) {
+  this.userService.update(this.editUser).subscribe(
+    {
+      next: (data) => {
+        this.selected = data;
+        this.editUser = null;
+        this.reload();
+      },
+      error: (err) => {
+        console.error('UserListComponent.updateUser(): error updating user:');
+        console.error(err);
+      }
+    }
+  );
+  }
+}
+delete(id: number) {
+  console.log("hellooooo");
+  this.userService.destroy(id).subscribe(
+    {
+      next: () => {
+        this.authService.logout();
+        this.reload();
+      },
+      error: (err) => {
+        console.error('UserListComponent.deleteUser(): error deleting user:');
+        console.error(err);
+      }
+    }
+  );
+  }
 }

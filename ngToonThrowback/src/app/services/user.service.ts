@@ -52,5 +52,29 @@ export class UserService {
         })
       );
   }
+  update(user: User) {
+    return this.http.put<User>(this.url + '/users/' + user.id, user, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error (
+            'UserService.update(): error updating User: ' + err
+          )
+        );
+      })
+    );
+  }
+  destroy(id: number) {
+    return this.http.delete<void>(this.url + '/users/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error (
+            'UserService.destroy(): error deleting User: ' + err
+          )
+        );
+      })
+    );
+  }
 
 }
