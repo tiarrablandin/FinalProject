@@ -140,6 +140,14 @@ public class CartoonServiceImpl implements CartoonService {
 		return null;
 	}
 
+	@Override
+	public List<Cartoon> findByUser_id(int id) {
+		if ( userRepo.existsById(id)) {
+			return cartoonRepo.findByUser_id(id);
+		}
+		return null;
+	}
+
 
 
 }

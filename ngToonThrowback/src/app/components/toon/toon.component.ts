@@ -1,7 +1,10 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
 import { Component, OnInit } from '@angular/core';
 import { ToonService } from 'src/app/services/toon.service';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-toon',
@@ -13,14 +16,21 @@ export class ToonComponent implements OnInit {
   selected: Toon | null = null;
   newToon: Toon = new Toon();
   editToon: Toon | null = null;
+  loggedInUser: User | null = null;
+  closeResult: string = '';
   toons: Toon[] = [];
 
   constructor(
     private toonService: ToonService,
-    private currentRoute: ActivatedRoute
+    private currentRoute: ActivatedRoute,
+    private authService: AuthService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
+     if(this.authService.checkLogin()){
+       this.getLoggedInUser();
+     }
     let searchTerm = this.currentRoute.snapshot.paramMap.get('searchTerm');
     if (searchTerm) {
       this.search(searchTerm);
@@ -88,18 +98,35 @@ export class ToonComponent implements OnInit {
     this.editToon = Object.assign({}, this.selected);
   }
 
-  updateToon(updatedToon: Toon) {
-    this.toonService.update(updatedToon).subscribe({
+  updateToon() {
+    if(this.editToon){
+      this.toonService.update(this.editToon).subscribe({
+        next: (data) => {
+          this.selected = data;
+          this.editToon = null;
+          this.reload();
+        },
+        error: (err) => {
+          console.error('ToonListComponent.updateToon(): error updating Toon:');
+          console.error(err);
+        },
+      });
+    }
+  }
+
+  getLoggedInUser(){
+    this.authService.getLoggedInUser().subscribe({
       next: (data) => {
-        this.selected = data;
-        this.editToon = null;
-        this.reload();
+        this.loggedInUser = data;
+        console.log(this.loggedInUser);
       },
       error: (err) => {
         console.error('ToonListComponent.updateToon(): error updating Toon:');
         console.error(err);
       },
-    });
+      }
+    );
+
   }
 
   deleteToon(id: number) {
@@ -113,4 +140,28 @@ export class ToonComponent implements OnInit {
       },
     });
   }
+
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result: any) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason: any) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 }

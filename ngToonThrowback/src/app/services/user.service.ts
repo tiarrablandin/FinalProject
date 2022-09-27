@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private datePipe: DatePipe,
+
     private auth: AuthService
   ) { }
 
@@ -42,7 +42,7 @@ export class UserService {
 
   show(userId: any): Observable<User> {
     return this.http
-      .get<User>(this.url + '/' + userId, this.getHttpOptions())
+      .get<User>(this.url + '/users/profile' , this.getHttpOptions())
       .pipe(
         catchError((err: any) => {
           console.error('UserService.show(): error retrieving User');

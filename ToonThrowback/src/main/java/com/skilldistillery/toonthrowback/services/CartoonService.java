@@ -29,5 +29,6 @@ public interface CartoonService {
 //		List<Cartoon> findByCreator(Creator creator);
 		
 		List<Cartoon> findByUserFavs(User userFavs);
+		List<Cartoon> findByUser_id(int id);
 	    
 }
