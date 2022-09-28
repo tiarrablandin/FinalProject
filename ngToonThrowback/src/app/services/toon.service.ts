@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { catchError, throwError } from 'rxjs';
 import { Media } from '../models/media';
+import { Merch } from '../models/merch';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +44,19 @@ export class ToonService {
         console.log(err);
         return throwError(
           () =>
-            new Error('ToonService.index(): error retrieving Toon List: ' + err)
+            new Error('ToonService.index(): error retrieving Media List: ' + err)
+        );
+      })
+    );
+  }
+
+  toonMerch(cid: number) {
+    return this.http.get<Merch[]>(this.url + "/" + cid + "/merch").pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('ToonService.index(): error retrieving Merch List: ' + err)
         );
       })
     );

@@ -26,12 +26,13 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 	private UserRepository userRepo;
 
 	@Override
-	public List<Merchandise> index(int cid) {
-		return merchandiseRepo.findByCartoonId(cid);
-	}
-	@Override
 	public List<Merchandise> index() {
 		return merchandiseRepo.findAll();
+	}
+	
+	@Override
+	public List<Merchandise> index(int cid) {
+		return merchandiseRepo.findByCartoonId(cid);
 	}
 
 	@Override
@@ -99,5 +100,10 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public List<Merchandise> toonMerch(int cid) {
+		return merchandiseRepo.findByCartoonId(cid);
 	}
 }

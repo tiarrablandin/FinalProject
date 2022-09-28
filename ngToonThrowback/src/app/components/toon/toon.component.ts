@@ -1,3 +1,4 @@
+import { MerchService } from './../../services/merch.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
@@ -6,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Media } from 'src/app/models/media';
+import { Merch } from 'src/app/models/merch';
+import { MediaService } from 'src/app/services/media.service';
 
 @Component({
   selector: 'app-toon',
@@ -20,7 +23,10 @@ export class ToonComponent implements OnInit {
   editToon: Toon | null = null;
   loggedInUser: User | null = null;
   closeResult: string = '';
+  newMedia: Media = new Media();
+  newMerch: Merch = new Merch();
   toonMedia: Media[] = [];
+  toonMerch: Merch[] = [];
   toons: Toon[] = [];
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -51,6 +57,8 @@ export class ToonComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private authService: AuthService,
     private modalService: NgbModal,
+    private merchService: MerchService,
+    private mediaService: MediaService,
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +111,18 @@ export class ToonComponent implements OnInit {
     });
   }
 
+  loadSelectedToonMerch(cid: number) {
+    this.toonService.toonMerch(cid).subscribe({
+      next: (data) => {
+        this.toonMerch = data;
+      },
+      error: (err) => {
+        console.error('ToonListComponent.reload(): error loading Toon:');
+        console.error(err);
+      },
+    });
+  }
+
   getNumOfToons() {
     return this.toons.length;
   }
@@ -113,9 +133,11 @@ export class ToonComponent implements OnInit {
     if(this.selected === toon){
       this.selected = null
       this.toonMedia = [];
+      this.toonMerch = [];
     } else{
       this.selected = toon;
       this.loadSelectedToonMedia(toon.id);
+      this.loadSelectedToonMerch(toon.id);
     }
   }
 
@@ -131,6 +153,32 @@ export class ToonComponent implements OnInit {
       },
       error: (err) => {
         console.error('ToonComponent.create(): error creating Toon:');
+        console.error(err);
+      },
+    });
+  }
+
+  addMedia() {
+    this.mediaService.create(this.newMedia).subscribe({
+      next: (data) => {
+        this.newMedia = new Media();
+        this.reload();
+      },
+      error: (err) => {
+        console.error('ToonComponent.create(): error creating media:');
+        console.error(err);
+      },
+    });
+  }
+
+  addMerch() {
+    this.merchService.create(this.newMerch).subscribe({
+      next: (data) => {
+        this.newMerch = new Merch();
+        this.reload();
+      },
+      error: (err) => {
+        console.error('ToonComponent.create(): error creating merch:');
         console.error(err);
       },
     });

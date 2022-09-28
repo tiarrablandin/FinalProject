@@ -32,6 +32,8 @@ public class Merchandise {
 	
 	private boolean active;
 	
+	private String description;
+	
 	@CreationTimestamp
 	@Column(name="created_date")
 	private LocalDateTime createdDate;

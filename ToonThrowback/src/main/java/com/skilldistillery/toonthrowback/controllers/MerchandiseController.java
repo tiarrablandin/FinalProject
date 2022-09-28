@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.toonthrowback.entities.Cartoon;
+import com.skilldistillery.toonthrowback.entities.Media;
 import com.skilldistillery.toonthrowback.entities.Merchandise;
 import com.skilldistillery.toonthrowback.services.MerchandiseService;
 
@@ -31,6 +33,11 @@ public class MerchandiseController {
 	@GetMapping("merch")
 	public List<Merchandise> index() {
 		return merchandiseService.index();
+	}
+	
+	@GetMapping("cartoons/{cid}/merch")
+	public List<Merchandise> toonMerch(@PathVariable int cid) {
+		return merchandiseService.toonMerch(cid);
 	}
 	
 	@GetMapping("{cid}/merch")
