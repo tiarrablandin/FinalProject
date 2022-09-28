@@ -70,7 +70,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Media> media;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"user"})
 	@OneToMany(mappedBy="user")
 	private List<Comment> comment;
 	

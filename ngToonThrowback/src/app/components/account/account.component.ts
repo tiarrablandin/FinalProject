@@ -1,3 +1,4 @@
+import { CommentService } from './../../services/comment.service';
 import { MediaService } from './../../services/media.service';
 import { MerchService } from './../../services/merch.service';
 import { ToonService } from 'src/app/services/toon.service';
@@ -11,6 +12,7 @@ import { throws } from 'assert';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Merch } from 'src/app/models/merch';
 import { Media } from 'src/app/models/media';
+import { Comment } from './../../models/comment';
 
 @Component({
   selector: 'app-account',
@@ -32,6 +34,10 @@ export class AccountComponent implements OnInit {
   editToon: Toon | null = null;
   selectedToon: Toon = new Toon();
   editMerch: Merch | null = null;
+  newComment: Comment = new Comment();
+  userComments: Comment[] = [];
+  editComment: Comment | null = null;
+  selectedComment: Comment | null = null;
 
   constructor(
     private authService: AuthService,
@@ -39,7 +45,8 @@ export class AccountComponent implements OnInit {
     private toonService: ToonService,
     private merchService: MerchService,
     private modalService: NgbModal,
-    private mediaService: MediaService
+    private mediaService: MediaService,
+    private commentService: CommentService
     ) { }
 
   ngOnInit(): void {
@@ -80,6 +87,35 @@ this.merchService.listUserMerch(this.loggedIn.id).subscribe(
 )
 
   }
+  loadUserComments() {
+this.commentService.listUserComment(this.loggedIn.id).subscribe(
+  {
+    next: (data: any) => {
+      console.log(data);
+      this.userComments = data
+    },
+    error: (err) => {
+      console.error('CommentListComponent.reload(): error loading comment:');
+      console.error(err);
+    }
+  }
+)
+
+  }
+  loadUserMedias() {
+this.mediaService.listUserMedia(this.loggedIn.id).subscribe(
+  {
+    next: (data: any) => {
+      this.userComments = data
+    },
+    error: (err) => {
+      console.error('MediaListComponent.reload(): error loading media:');
+      console.error(err);
+    }
+  }
+)
+
+  }
 
 
   reload() {
@@ -96,6 +132,8 @@ this.merchService.listUserMerch(this.loggedIn.id).subscribe(
     );
     this.loadUserMerch();
     this.loadUserToons();
+    this.loadUserComments();
+    this.loadUserMedias();
   }
 
 
@@ -274,5 +312,48 @@ delete(id: number) {
         },
       });
     }
+
+
+    createComment() {
+      this.commentService.create(this.newComment).subscribe({
+        next: (data) => {
+          this.newComment = new Comment();
+          this.reload();
+        },
+        error: (err) => {
+          console.error('CommentComponent.create(): error creating Comment:');
+          console.error(err);
+        },
+      });
     }
+    deleteComment(id: number) {
+      this.commentService.destroy(id).subscribe({
+        next: () => {
+          this.reload();
+
+        },
+        error: (err) => {
+          console.error('CommentListComponent.deleteComment(): error deleting Comment:');
+          console.error(err);
+        },
+      });
+    }
+    updateComment() {
+      console.log(this.editComment);
+
+      if(this.editComment){
+        this.commentService.update(this.editComment).subscribe({
+          next: (data) => {
+            this.selectedComment = data;
+            this.editToon = null;
+            this.reload();
+          },
+          error: (err) => {
+            console.error('CommentListComponent.updateComment(): error updating Comment:');
+            console.error(err);
+          },
+        });
+      }
+    }
+  }
 

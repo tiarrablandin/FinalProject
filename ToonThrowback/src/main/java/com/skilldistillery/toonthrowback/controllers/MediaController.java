@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.toonthrowback.entities.Media;
+import com.skilldistillery.toonthrowback.entities.Merchandise;
 import com.skilldistillery.toonthrowback.services.MediaService;
 
 @RestController
@@ -81,6 +82,14 @@ public class MediaController {
 		}else {
 			res.setStatus(404);
 		}
+	}
+	@GetMapping("users/{id}/media")
+	public List<Media> userMedia(@PathVariable int id, HttpServletResponse res) {
+		List<Media> userMedia = mediaService.findByUser_id(id); 
+		if (userMedia == null) {
+			res.setStatus(404);
+		}
+		return userMedia;
 	}
 	
 }

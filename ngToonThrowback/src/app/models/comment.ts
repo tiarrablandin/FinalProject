@@ -7,10 +7,10 @@ export class Comment {
   active: boolean = false;
   createdDate: string = "";
   updatedDate: string = "";
-  user: User = new User();
+  // user: User = new User();
   cartoon: Toon = new Toon();
-  parentComment: Comment = new Comment();
-  replies: Comment = new Comment();
+  // parentComment: Comment = new Comment();
+  // replies: Comment = new Comment();
 
   constructor(
     id: number = 0,
@@ -18,19 +18,19 @@ export class Comment {
     active: boolean = false,
     createdDate: string = "",
     updatedDate: string = "",
-    user: User = new User(),
+    // user: User = new User(),
     cartoon: Toon = new Toon(),
-    parentComment: Comment = new Comment(),
-    replies: Comment = new Comment(),
+    // parentComment: Comment = new Comment(),
+    // replies: Comment = new Comment(),
   ){
     this.id = id;
     this.comment = comment;
     this.active = active;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
-    this.user = user;
+    // this.user = user;
     this. cartoon = cartoon;
-    this.parentComment = parentComment;
-    this.replies = replies;
+    // this.parentComment = parentComment;
+    // this.replies = replies;
   }
 }

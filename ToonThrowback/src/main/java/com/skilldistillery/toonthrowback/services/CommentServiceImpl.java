@@ -29,6 +29,10 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> index(int cid) {
 		return commentRepo.findByCartoonId(cid);
 	}
+	@Override
+	public List<Comment> indexUser(int id) {
+		return commentRepo.findByUserId(id);
+	}
 
 	@Override
 	public Comment show(int id, int cid) {

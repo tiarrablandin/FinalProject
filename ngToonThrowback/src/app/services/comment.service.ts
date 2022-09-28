@@ -10,7 +10,7 @@ import { Media } from '../models/media';
   providedIn: 'root'
 })
 export class CommentService {
-  private url = environment.baseUrl + 'api/comment';
+  private url = environment.baseUrl + 'api/comments';
   constructor(
     private http: HttpClient,
     private auth: AuthService
@@ -31,7 +31,7 @@ export class CommentService {
   }
 
   create(comment: Comment) {
-    return this.http.post<Comment>(environment.baseUrl + "api/" + comment.cartoon.id + "/comment", this.getHttpOptions()).pipe(
+    return this.http.post<Comment>(environment.baseUrl + "api/" + comment.cartoon.id + "/comments", this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -72,6 +72,17 @@ export class CommentService {
       },
     };
     return options;
+  }
+  listUserComment(userId : number) {
+    return this.http.get<Comment[]>(environment.baseUrl + `api/users/${userId}/comments`, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('CommentService.index(): error retrieving Comment List: ' + err)
+        );
+      })
+    );
   }
 }
 

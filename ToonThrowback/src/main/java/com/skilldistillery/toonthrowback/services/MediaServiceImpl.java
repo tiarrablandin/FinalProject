@@ -97,5 +97,13 @@ public class MediaServiceImpl implements MediaService {
 	public List<Media> toonMedia(int cid) {
 		return mediaRepo.findByCartoonId(cid);
 	}
+
+	@Override
+	public List<Media> findByUser_id(int id) {
+		if(userRepo.existsById(id)) {
+			return mediaRepo.findByUserId(id);
+		}
+		return null;
+	}
 }
 

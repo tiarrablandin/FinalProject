@@ -22,7 +22,7 @@ import com.skilldistillery.toonthrowback.services.CommentService;
 
 @RestController
 @RequestMapping(path="api/cartoons/{cid}")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class CommentController {
 	
 	@Autowired
@@ -32,6 +32,8 @@ public class CommentController {
 	public List<Comment> index(@PathVariable int cid) {
 		return commentService.index(cid);
 	}
+	
+
 	
 	@GetMapping("comments/{id}")
 	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @PathVariable int cid) { 

@@ -74,4 +74,15 @@ export class MediaService {
     };
     return options;
   }
+  listUserMedia(userId : number) {
+    return this.http.get<Media[]>(environment.baseUrl + `api/users/${userId}/media`, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('MediaService.index(): error retrieving Media List: ' + err)
+        );
+      })
+    );
+  }
 }

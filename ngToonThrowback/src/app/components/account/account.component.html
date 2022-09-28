@@ -1,6 +1,5 @@
-
 <!----------------------------- modal update account ------------------------------>
- <ng-template #accountModal let-modal>
+<ng-template #accountModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update Account!</h4>
     <button
@@ -165,7 +164,10 @@
                   [(ngModel)]="editMedia.season"
                 />
                 <br />
-                <button class="btn btn-outline-primary" (click)="updateMedia(editMedia)">
+                <button
+                  class="btn btn-outline-primary"
+                  (click)="updateMedia(editMedia)"
+                >
                   Add Media!
                 </button>
               </form>
@@ -176,11 +178,8 @@
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-  </div>
+  <div class="modal-footer"></div>
 </ng-template>
-
-
 
 <!------------------------------------------------------------------>
 <!--------------------update cartoon modal  ------------------------>
@@ -258,31 +257,31 @@
                 />
                 <br />
                 <input
-                type="text"
-                name="image"
-                class="col form-input form-control"
-                placeholder="Cartoon Image"
-                style="width: 300px"
-                [(ngModel)]="editToon.network"
-              />
-              <br />
+                  type="text"
+                  name="image"
+                  class="col form-input form-control"
+                  placeholder="Cartoon Image"
+                  style="width: 300px"
+                  [(ngModel)]="editToon.network"
+                />
+                <br />
                 <input
-                type="text"
-                name="image"
-                class="col form-input form-control"
-                placeholder="Cartoon Image"
-                style="width: 300px"
-                [(ngModel)]="editToon.rating"
-              />
-              <br />
+                  type="text"
+                  name="image"
+                  class="col form-input form-control"
+                  placeholder="Cartoon Image"
+                  style="width: 300px"
+                  [(ngModel)]="editToon.rating"
+                />
+                <br />
                 <input
-                type="text"
-                name="image"
-                class="col form-input form-control"
-                placeholder="Cartoon Image"
-                style="width: 300px"
-                [(ngModel)]="editToon.url"
-              />
+                  type="text"
+                  name="image"
+                  class="col form-input form-control"
+                  placeholder="Cartoon Image"
+                  style="width: 300px"
+                  [(ngModel)]="editToon.url"
+                />
                 <button class="btn btn-outline-primary" (click)="updateToon()">
                   Update Toon!
                 </button>
@@ -294,8 +293,7 @@
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-  </div>
+  <div class="modal-footer"></div>
 </ng-template>
 <!------------------------------------------------------------------>
 <!-------------------------- Update merch modal--------------------->
@@ -354,7 +352,10 @@
                   [(ngModel)]="editMerch.description"
                 /> -->
 
-                <button class="btn btn-outline-primary" (click)="updateMerch(editMerch)">
+                <button
+                  class="btn btn-outline-primary"
+                  (click)="updateMerch(editMerch)"
+                >
                   Update Media!
                 </button>
               </form>
@@ -365,8 +366,7 @@
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-  </div>
+  <div class="modal-footer"></div>
 </ng-template>
 <!---------------------------------------------------------------------------------->
 <!------------------------------logged in user-------------------------------------->
@@ -388,11 +388,14 @@
     </div>
 
     <span class="">
-      <a class="button" data-bs-toggle="offcanvas" (click)="editUser = loggedIn; open(accountModal)"
+      <a
+        class="button"
+        data-bs-toggle="offcanvas"
+        (click)="editUser = loggedIn; open(accountModal)"
         >Update User!</a
       >
     </span>
-    <br>
+    <br />
     <!----------------------------------media----------------------------------->
     <div *ngIf="loggedIn">
       <div class="anyClass">
@@ -409,22 +412,27 @@
           />
           <div class="card-body">
             <h5 class="card-title">{{ media.title }}</h5>
-            <p class="card-text"> Season: {{ media.season }} | Ep: {{media.episodeNum}}</p>
+            <p class="card-text">
+              Season: {{ media.season }} | Ep: {{ media.episodeNum }}
+            </p>
             <span class="">
-              <a class="button" data-bs-toggle="offcanvas" (click)="updateMedia(media); openMedia(mediaModal)"
-              >Update Media!</a
+              <a
+                class="button"
+                data-bs-toggle="offcanvas"
+                (click)="updateMedia(media); openMedia(mediaModal)"
+                >Update Media!</a
               >
-              <button class="btn btn-danger" (click)="deleteMedia(media.id)" >Delete Me!</button>
+              <button class="btn btn-danger" (click)="deleteMedia(media.id)">
+                Delete Me!
+              </button>
             </span>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-<!--------------------------merchandise--------------------------------------->
+  <!--------------------------merchandise--------------------------------------->
   <div class="column">
-
     <div *ngIf="loggedIn">
       <div class="anyClass">
         <div
@@ -442,19 +450,22 @@
             <h5 class="card-title">{{ merch.createdDate }}</h5>
             <p class="card-text">{{ merch.updatedDate }}</p>
             <span class="">
-              <a class="button" data-bs-toggle="offcanvas" (click)="setEditMerch(merch); open(merchModal)"
+              <a
+                class="button"
+                data-bs-toggle="offcanvas"
+                (click)="setEditMerch(merch); open(merchModal)"
                 >Update Merch!</a
               >
-              <button class="btn btn-danger" (click)="deleteToon(merch.id)" >Delete Me!</button>
+              <button class="btn btn-danger" (click)="deleteToon(merch.id)">
+                Delete Me!
+              </button>
             </span>
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
-<!-------------------------cartoons------------------------------->
+  <!-------------------------cartoons------------------------------->
   <div class="column">
     <img src="assets/cartoonADDS.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
@@ -474,17 +485,33 @@
             <h5 class="card-title">{{ toon.name }}</h5>
             <p class="card-text">{{ toon.description }}</p>
             <span class="">
-              <a class="button" data-bs-toggle="offcanvas" (click)="setEdit(toon); openCartoon(cartoonModal)"
-              >Update Cartoon!</a
+              <a
+                class="button"
+                data-bs-toggle="offcanvas"
+                (click)="setEdit(toon); openCartoon(cartoonModal)"
+                >Update Cartoon!</a
               >
-              <button class="btn btn-danger" (click)="deleteToon(toon.id)" >Delete Me!</button>
+              <button class="btn btn-danger" (click)="deleteToon(toon.id)">
+                Delete Me!
+              </button>
             </span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
 </div>
-<td><button class="btn btn-danger" (click)="delete(loggedIn.id)"  [routerLink]="['/home']">Delete Me!</button></td>
+<button
+  class="btn btn-danger"
+  (click)="delete(loggedIn.id)"
+  [routerLink]="['/home']"
+>
+  Delete Me!
+</button>
+<!--------------------------------------------------------------------------------------------------------->
+<!-----------------------------------------user comments--------------------------------------------------->
+<div *ngIf="loggedIn">
+  <div *ngFor="let comment of userComments">
+    <p>These are the comments!!!!!!!!!!!!!!!!!!!!{{ comment.comment }}</p>
+  </div>
+</div>

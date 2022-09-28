@@ -7,6 +7,7 @@ import com.skilldistillery.toonthrowback.entities.Comment;
 public interface CommentService {
 	
 	 public List<Comment> index(int cid);
+	 public List<Comment> indexUser(int id);
 
 	 public Comment show( int id, int cid);
 

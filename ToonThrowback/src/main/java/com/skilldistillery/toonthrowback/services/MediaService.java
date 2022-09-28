@@ -3,6 +3,7 @@ package com.skilldistillery.toonthrowback.services;
 import java.util.List;
 
 import com.skilldistillery.toonthrowback.entities.Media;
+import com.skilldistillery.toonthrowback.entities.Merchandise;
 
 public interface MediaService {
 	
@@ -17,4 +18,6 @@ public interface MediaService {
 	 public boolean destroy(int id, String username);
 
 	public List<Media> toonMedia(int cid);
+	
+	public List<Media> findByUser_id(int id);
 }

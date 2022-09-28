@@ -2,6 +2,7 @@ import { Fact } from "./fact";
 import { Media } from "./media";
 import { Toon } from "./toon";
 import { Trivia } from "./trivia";
+import { Comment } from './comment';
 
 export class User {
   id: number = 0;

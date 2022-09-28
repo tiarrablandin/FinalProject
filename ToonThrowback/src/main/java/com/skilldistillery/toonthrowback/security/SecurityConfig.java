@@ -36,6 +36,8 @@ public class SecurityConfig {
         .antMatchers(HttpMethod.GET, "/api/merch").permitAll()
         .antMatchers(HttpMethod.GET, "/api/users/*/cartoons").permitAll()
         .antMatchers(HttpMethod.GET, "/api/users/*/merch").permitAll()
+        .antMatchers(HttpMethod.GET, "/api/users/*/media").permitAll()
+        .antMatchers(HttpMethod.GET, "/api/users/*/comments").permitAll()
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authentication.
         .and()

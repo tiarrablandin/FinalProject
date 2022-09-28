@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.toonthrowback.entities.Comment;
 import com.skilldistillery.toonthrowback.entities.User;
+import com.skilldistillery.toonthrowback.services.CommentService;
 import com.skilldistillery.toonthrowback.services.UserService;
 
 @RestController
@@ -27,10 +29,16 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CommentService commentService;
 	
 	@GetMapping("users")
 	public List<User> index() {
 		return userService.index();
+	}
+	@GetMapping("users/{id}/comments")
+	public List<Comment> indexUser(@PathVariable int id) {
+		return commentService.indexUser(id);
 	}
 	
 	@GetMapping("users/profile")
