@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit {
   selected: User | null = null;
   userToons: Toon[] = [];
   userMerchs: Merch[] = [];
+  userMedias: Media[] = [];
   closeResult: string = '';
   editUser: User | null = null;
   editMedia: Media | null = null;

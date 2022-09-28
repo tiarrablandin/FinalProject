@@ -368,7 +368,8 @@
   <div class="modal-footer">
   </div>
 </ng-template>
-<!------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!------------------------------logged in user-------------------------------------->
 <div class="row">
   <div class="column">
     <div class="card" style="width: 18rem">
@@ -391,10 +392,37 @@
         >Update User!</a
       >
     </span>
-
+    <br>
+    <!----------------------------------media----------------------------------->
+    <div *ngIf="loggedIn">
+      <div class="anyClass">
+        <div
+          *ngFor="let media of userMedias"
+          class="card"
+          style="width: 18rem"
+          style="center: center"
+        >
+          <img
+            class="card-img-top"
+            src="{{ media.image }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ media.title }}</h5>
+            <p class="card-text"> Season: {{ media.season }} | Ep: {{media.episodeNum}}</p>
+            <span class="">
+              <a class="button" data-bs-toggle="offcanvas" (click)="updateMedia(media); openMedia(mediaModal)"
+              >Update Media!</a
+              >
+              <button class="btn btn-danger" (click)="deleteMedia(media.id)" >Delete Me!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
-
+<!--------------------------merchandise--------------------------------------->
   <div class="column">
 
     <div *ngIf="loggedIn">
@@ -426,7 +454,7 @@
       </div>
     </div>
   </div>
-
+<!-------------------------cartoons------------------------------->
   <div class="column">
     <img src="assets/cartoonADDS.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
