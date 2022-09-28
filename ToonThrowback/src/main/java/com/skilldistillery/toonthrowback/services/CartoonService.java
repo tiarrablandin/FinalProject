@@ -3,8 +3,8 @@ package com.skilldistillery.toonthrowback.services;
 import java.util.List;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
-import com.skilldistillery.toonthrowback.entities.Creator;
 import com.skilldistillery.toonthrowback.entities.Network;
+import com.skilldistillery.toonthrowback.entities.Rating;
 import com.skilldistillery.toonthrowback.entities.User;
 
 public interface CartoonService {
@@ -31,5 +31,9 @@ public interface CartoonService {
 		List<Cartoon> findByUserFavs(User userFavs);
 		
 		List<Cartoon> findByUser_id(int id);
+
+		List<Network> indexNetworks();
+
+		List<Rating> indexRatings();
 	    
 }

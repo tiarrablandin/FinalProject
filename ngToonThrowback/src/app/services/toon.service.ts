@@ -7,6 +7,8 @@ import { AuthService } from './auth.service';
 import { catchError, throwError } from 'rxjs';
 import { Media } from '../models/media';
 import { Merch } from '../models/merch';
+import { Network } from '../models/network';
+import { Rating } from '../models/rating';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +30,30 @@ export class ToonService {
 
   index() {
     return this.http.get<Toon[]>(this.url).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('ToonService.index(): error retrieving Toon List: ' + err)
+        );
+      })
+    );
+  }
+
+  indexNetworks() {
+    return this.http.get<Network[]>(this.url + "/networks").pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('ToonService.index(): error retrieving Toon List: ' + err)
+        );
+      })
+    );
+  }
+
+  indexRatings() {
+    return this.http.get<Rating[]>(this.url + "/ratings").pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -87,7 +113,7 @@ export class ToonService {
   }
 
   create(toon: Toon) {
-    return this.http.post<Toon>(this.url, toon).pipe(
+    return this.http.post<Toon>(this.url, toon, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

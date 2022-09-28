@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.toonthrowback.entities.Cartoon;
-import com.skilldistillery.toonthrowback.entities.Creator;
 import com.skilldistillery.toonthrowback.entities.Network;
+import com.skilldistillery.toonthrowback.entities.Rating;
 import com.skilldistillery.toonthrowback.entities.User;
 import com.skilldistillery.toonthrowback.repositories.CartoonRepository;
+import com.skilldistillery.toonthrowback.repositories.CreatorRepository;
+import com.skilldistillery.toonthrowback.repositories.NetworkRepository;
+import com.skilldistillery.toonthrowback.repositories.RatingRepository;
 import com.skilldistillery.toonthrowback.repositories.UserRepository;
 
 @Service
@@ -22,9 +25,28 @@ public class CartoonServiceImpl implements CartoonService {
 	@Autowired
 	private UserRepository userRepo;
 	
+	@Autowired
+	private CreatorRepository creatorRepo;
+	@Autowired
+	
+	private NetworkRepository networkRepo;
+	@Autowired
+	
+	private RatingRepository ratingRepo;
+	
 	@Override
 	public List<Cartoon> index() {
 		return cartoonRepo.findByActiveTrue();
+	}
+	
+	@Override
+	public List<Network> indexNetworks() {
+		return networkRepo.findAll();
+	}
+	
+	@Override
+	public List<Rating> indexRatings() {
+		return ratingRepo.findAll();
 	}
 
 	@Override
@@ -60,6 +82,7 @@ public class CartoonServiceImpl implements CartoonService {
 	public Cartoon create(String username, Cartoon cartoon) {
 		User user = userRepo.findByUsername(username);
 		if(user != null) {
+			creatorRepo.saveAndFlush(cartoon.getCreator());
 			cartoon.setUser(user);
 			System.out.println(user);
 			System.out.println(cartoon);

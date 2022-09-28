@@ -3,13 +3,15 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ToonService } from 'src/app/services/toon.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Media } from 'src/app/models/media';
 import { Merch } from 'src/app/models/merch';
 import { MediaService } from 'src/app/services/media.service';
 import { ConditionalExpr } from '@angular/compiler';
+import { Network } from 'src/app/models/network';
+import { Rating } from 'src/app/models/rating';
 
 @Component({
   selector: 'app-toon',
@@ -29,6 +31,8 @@ export class ToonComponent implements OnInit {
   toonMedia: Media[] = [];
   toonMerch: Merch[] = [];
   toons: Toon[] = [];
+  networks: Network[] = [];
+  ratings: Rating[] = [];
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   totalCards: number = this.arr.length;
@@ -60,7 +64,12 @@ export class ToonComponent implements OnInit {
     private modalService: NgbModal,
     private merchService: MerchService,
     private mediaService: MediaService,
-  ) {}
+    private router: Router
+  ) {
+    this.router.events.subscribe(() => {
+      this.selected = null;
+   });
+  }
 
   ngOnInit(): void {
     this.cardsPerPage = this.getCardsPerPage();
@@ -79,6 +88,7 @@ export class ToonComponent implements OnInit {
   search(searchTerm: string) {
     this.toonService.search(searchTerm).subscribe({
       next: (data) => {
+        this.selected = null;
         this.toons = data;
       },
       error: (err) => {
@@ -92,6 +102,26 @@ export class ToonComponent implements OnInit {
     this.toonService.index().subscribe({
       next: (data) => {
         this.toons = data;
+      },
+      error: (err) => {
+        console.error('ToonListComponent.reload(): error loading Toon:');
+        console.error(err);
+      },
+    });
+
+    this.toonService.indexNetworks().subscribe({
+      next: (data) => {
+        this.networks = data;
+      },
+      error: (err) => {
+        console.error('ToonListComponent.reload(): error loading Toon:');
+        console.error(err);
+      },
+    });
+
+    this.toonService.indexRatings().subscribe({
+      next: (data) => {
+        this.ratings = data;
       },
       error: (err) => {
         console.error('ToonListComponent.reload(): error loading Toon:');
@@ -161,9 +191,15 @@ export class ToonComponent implements OnInit {
   }
 
   addMedia() {
+    if(this.selected){
+      this.newMedia.cartoon = this.selected;
+    }
     this.mediaService.create(this.newMedia).subscribe({
       next: (data) => {
         this.newMedia = new Media();
+        if(this.selected){
+          this.loadSelectedToonMedia(this.selected.id);
+        }
         this.reload();
       },
       error: (err) => {
@@ -174,8 +210,14 @@ export class ToonComponent implements OnInit {
   }
 
   addMerch() {
+    if(this.selected){
+      this.newMerch.cartoon = this.selected;
+    }
     this.merchService.create(this.newMerch).subscribe({
       next: (data) => {
+        if(this.selected){
+          this.loadSelectedToonMerch(this.selected.id);
+        }
         this.newMerch = new Merch();
         this.reload();
       },
