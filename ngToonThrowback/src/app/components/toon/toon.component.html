@@ -236,3 +236,34 @@
   <div *ngFor="let comment of comments">
     <p>{{comment.comment}} {{comment.createdDate}}</p>
   </div>
+  <div *ngIf ="loggedIn">
+  <span class="">
+    <a
+      class="button"
+      data-bs-toggle="offcanvas"
+      (click)="open(commentModal)"
+      >Add comment!</a
+    >
+  </span>
+</div>
+  <ng-template #commentModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add comment!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <div class="input-group">
+            <form *ngIf="createComment">
+               <input type="text" id="comment" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newComment.comment"><br>
+            </form><br><br>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="modal-footer">
+      <button class=" dropfown-item btn btn-outline-primary" (click)="createComment(); modal.dismiss('Cross click')">Update</button>
+    </div>
+  </ng-template>

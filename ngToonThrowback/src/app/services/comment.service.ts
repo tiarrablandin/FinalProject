@@ -31,7 +31,7 @@ export class CommentService {
   }
 
   create(comment: Comment) {
-    return this.http.post<Comment>(environment.baseUrl + "api/" + comment.cartoon.id + "/comments", this.getHttpOptions()).pipe(
+    return this.http.post<Comment>(environment.baseUrl + "api/cartoons/" + comment.cartoon.id + "/comments", comment, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
