@@ -204,8 +204,11 @@ export class ToonComponent implements OnInit {
     });
   }
   createComment() {
+    if (this.selected)
+    this.newComment.cartoon = this.selected
     this.commentService.create(this.newComment).subscribe({
       next: (data) => {
+        this.loadComments();
         this.newComment = new Comment();
         this.reload();
       },
@@ -215,6 +218,7 @@ export class ToonComponent implements OnInit {
       },
     });
   }
+
   deleteComment(id: number) {
     this.commentService.destroy(id).subscribe({
       next: () => {
