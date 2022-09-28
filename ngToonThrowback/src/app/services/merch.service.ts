@@ -64,7 +64,7 @@ export class MerchService {
 
   update(merch: Merch) {
 
-    return this.http.patch<Merch>(this.url + '/' + merch.id, merch, this.getHttpOptions()).pipe(
+    return this.http.patch<Merch>(this.url + '/' +merch.cartoon.id + '/merch/' + merch.id, merch, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

@@ -27,8 +27,10 @@ export class AccountComponent implements OnInit {
   editUser: User | null = null;
   editMedia: Media | null = null;
   selectedMedia: Media | null = null;
+  selectedMerch: Merch | null = null;
   editToon: Toon | null = null;
-  selectedToon: Toon | null = null;
+  selectedToon: Toon = new Toon();
+  editMerch: Merch | null = null;
 
   constructor(
     private authService: AuthService,
@@ -218,6 +220,7 @@ delete(id: number) {
     }
 
     updateToon() {
+  console.log(this.editToon);
       if(this.editToon){
         this.toonService.update(this.editToon).subscribe({
           next: (data) => {
@@ -231,6 +234,44 @@ delete(id: number) {
           },
         });
       }
+    }
+    setEdit(toon : Toon) {
+      console.log(this.editToon);
+      this.editToon = toon;
+
+    }
+    setEditMerch(merch : Merch) {
+      console.log(this.editMerch);
+      this.editMerch = merch;
+
+    }
+    updateMerch(merch: Merch, setSelected = true): void {
+      this.merchService.update(merch).subscribe({
+        next: (data) => {
+          this.selectedMerch = data;
+          this.editMerch = null;
+          this.reload();
+
+          if (setSelected) {
+            this.selectedMerch = merch;
+          }
+        },
+        error: (bad) => {
+          console.error('MerchListComponent.updateMerch(): error updating merch');
+          console.error(bad);
+        },
+      });
+    }
+    deleteMerch(id: number): void {
+      this.merchService.destroy(id).subscribe({
+        next: (good) => {
+          this.reload();
+        },
+        error: (bad) => {
+          console.error('MerchListComponent.deleteMerch(): error deleting merch');
+          console.error(bad);
+        },
+      });
     }
     }
 

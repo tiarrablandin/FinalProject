@@ -10,20 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.toonthrowback.entities.Cartoon;
 import com.skilldistillery.toonthrowback.entities.Merchandise;
 import com.skilldistillery.toonthrowback.services.MerchandiseService;
 
 @RestController
 @RequestMapping(path="api")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class MerchandiseController {
 	
 	@Autowired
@@ -69,7 +68,7 @@ public class MerchandiseController {
 		return created;
 	}
 	
-	@PutMapping("{cid}/merch/{id}")
+	@PatchMapping("{cid}/merch/{id}")
 	public Merchandise update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Merchandise merchandise, Principal principal) { 
 		Merchandise updated = null;
 		try {
