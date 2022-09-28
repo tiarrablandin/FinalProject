@@ -1,3 +1,4 @@
+import { CommentService } from './../../services/comment.service';
 import { MerchService } from './../../services/merch.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Toon } from './../../models/toon';
@@ -12,6 +13,7 @@ import { MediaService } from 'src/app/services/media.service';
 import { ConditionalExpr } from '@angular/compiler';
 import { Network } from 'src/app/models/network';
 import { Rating } from 'src/app/models/rating';
+import { Comment } from './../../models/comment';
 
 @Component({
   selector: 'app-toon',
@@ -21,18 +23,22 @@ import { Rating } from 'src/app/models/rating';
 
 export class ToonComponent implements OnInit {
 
+  loggedInUser: User | null = null;
   selected: Toon | null = null;
   newToon: Toon = new Toon();
   editToon: Toon | null = null;
-  loggedInUser: User | null = null;
-  closeResult: string = '';
-  newMedia: Media = new Media();
-  newMerch: Merch = new Merch();
-  toonMedia: Media[] = [];
-  toonMerch: Merch[] = [];
   toons: Toon[] = [];
+  newMerch: Merch = new Merch();
+  toonMerch: Merch[] = [];
+  newMedia: Media = new Media();
+  toonMedia: Media[] = [];
   networks: Network[] = [];
   ratings: Rating[] = [];
+  newComment: Comment = new Comment();
+  comments: Comment[] = [];
+  editComment: Comment | null = null;
+  closeResult: string = '';
+  selectedComment: Comment | null = null;
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   totalCards: number = this.arr.length;
@@ -64,6 +70,7 @@ export class ToonComponent implements OnInit {
     private modalService: NgbModal,
     private merchService: MerchService,
     private mediaService: MediaService,
+    private commentService: CommentService,
     private router: Router
   ) {
     this.router.events.subscribe(() => {
@@ -189,6 +196,47 @@ export class ToonComponent implements OnInit {
       },
     });
   }
+  createComment() {
+    this.commentService.create(this.newComment).subscribe({
+      next: (data) => {
+        this.newComment = new Comment();
+        this.reload();
+      },
+      error: (err) => {
+        console.error('CommentComponent.create(): error creating Comment:');
+        console.error(err);
+      },
+    });
+  }
+  deleteComment(id: number) {
+    this.commentService.destroy(id).subscribe({
+      next: () => {
+        this.reload();
+
+      },
+      error: (err) => {
+        console.error('CommentListComponent.deleteComment(): error deleting Comment:');
+        console.error(err);
+      },
+    });
+  }
+  updateComment() {
+    console.log(this.editComment);
+
+    if(this.editComment){
+      this.commentService.update(this.editComment).subscribe({
+        next: (data) => {
+          this.selectedComment = data;
+          this.editToon = null;
+          this.reload();
+        },
+        error: (err) => {
+          console.error('CommentListComponent.updateComment(): error updating Comment:');
+          console.error(err);
+        },
+      });
+    }
+  }
 
   addMedia() {
     if(this.selected){
@@ -227,6 +275,7 @@ export class ToonComponent implements OnInit {
       },
     });
   }
+
 
   setEditToon() {
     this.editToon = Object.assign({}, this.selected);

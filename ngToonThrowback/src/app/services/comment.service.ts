@@ -1,0 +1,77 @@
+import { Comment } from './../models/comment';
+import { AuthService } from 'src/app/services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Media } from '../models/media';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CommentService {
+  private url = environment.baseUrl + 'api/comment';
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService
+  ) { }
+
+  index() {
+    return this.http.get<Comment[]>(this.url).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error(
+              'CommentService.index(): error retrieving Comment List: ' + err
+            )
+        );
+      })
+    );
+  }
+
+  create(comment: Comment) {
+    return this.http.post<Comment>(environment.baseUrl + "api/" + comment.cartoon.id + "/comment", this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('CommentService.create(): error creating Comment: ' + err)
+        );
+      })
+    );
+  }
+
+  update(comment: Comment) {
+    return this.http.put<Comment>(this.url + '/' + comment.id, comment, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('CommentService.update(): error updating Comment: ' + err)
+        );
+      })
+    );
+  }
+
+  destroy(id: number) {
+    return this.http.delete<Comment>(this.url + '/' + id).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('CommentService.destroy(): error deleting Comment: ' + err)
+        );
+      })
+    );
+  }
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+}
+
