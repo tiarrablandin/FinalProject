@@ -74,7 +74,7 @@ public class CartoonServiceImpl implements CartoonService {
 		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
 		if(cartoonOp.isPresent()) {
 			Cartoon cartoonOld = cartoonOp.get();
-			if (cartoonOld.getUser().getUsername().equals(username)) {
+			if (cartoonOld.getUser().getUsername().equalsIgnoreCase(username) || userRepo.findByUsername(username).getRole().equals("admin")) {
 				cartoonOld.setName(cartoon.getName());
 				cartoonOld.setDescription(cartoon.getDescription());
 				cartoonOld.setUrl(cartoon.getUrl());
@@ -85,7 +85,7 @@ public class CartoonServiceImpl implements CartoonService {
 				cartoonOld.setUpdatedDate(cartoon.getUpdatedDate());
 				cartoonOld.setNetwork(cartoon.getNetwork());
 				cartoonOld.setCreator(cartoon.getCreator());
-				cartoonRepo.save(cartoonOld);
+				cartoonRepo.saveAndFlush(cartoonOld);
 				return cartoonOld;
 			}
 		}
@@ -97,7 +97,7 @@ public class CartoonServiceImpl implements CartoonService {
 		Optional<Cartoon> cartoonOp = cartoonRepo.findById(cid);
 		if(cartoonOp.isPresent()) {
 			Cartoon cartoon = cartoonOp.get();
-			if(cartoon.getUser().getUsername().equals(username)) {
+			if(cartoon.getUser().getUsername().equals(username) || userRepo.findByUsername(username).getRole().equals("admin")) {
 				try {
 					if (cartoon.getActive()) {
 						cartoon.setActive(false);

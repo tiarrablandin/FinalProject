@@ -9,7 +9,7 @@ export class Merch {
   createdDate: string = "";
   updatedDate: string = "";
   active: string = "";
-  description: string = "";
+  // description: string = "";
 
   constructor(
     id: number = 0,
@@ -20,7 +20,7 @@ export class Merch {
     createdDate: string = "",
     updatedDate: string = "",
     active: string = "",
-    description: string = ""
+    // description: string = ""
     ) {
     this.id = id;
     this.cartoon = cartoon
@@ -30,6 +30,6 @@ export class Merch {
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.active = active;
-    this.description = description;
+    // this.description = description;
   }
 }

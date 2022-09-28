@@ -9,6 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Media } from 'src/app/models/media';
 import { Merch } from 'src/app/models/merch';
 import { MediaService } from 'src/app/services/media.service';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-toon',
@@ -139,6 +140,7 @@ export class ToonComponent implements OnInit {
       this.loadSelectedToonMedia(toon.id);
       this.loadSelectedToonMerch(toon.id);
     }
+    console.log(this.selected);
   }
 
   displayTable() {
@@ -189,6 +191,8 @@ export class ToonComponent implements OnInit {
   }
 
   updateToon() {
+    console.log(this.editToon);
+
     if(this.editToon){
       this.toonService.update(this.editToon).subscribe({
         next: (data) => {
@@ -223,6 +227,7 @@ export class ToonComponent implements OnInit {
     this.toonService.destroy(id).subscribe({
       next: () => {
         this.reload();
+
       },
       error: (err) => {
         console.error('ToonListComponent.deleteToon(): error deleting Toon:');
