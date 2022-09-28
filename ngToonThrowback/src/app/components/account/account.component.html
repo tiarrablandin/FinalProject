@@ -512,6 +512,6 @@
 <!-----------------------------------------user comments--------------------------------------------------->
 <div *ngIf="loggedIn">
   <div *ngFor="let comment of userComments">
-    <p>These are the comments!!!!!!!!!!!!!!!!!!!!{{ comment.comment }}</p>
+    <p>{{comment.comment}} {{comment.createdDate}}</p>
   </div>
 </div>

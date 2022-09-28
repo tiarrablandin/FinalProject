@@ -3,9 +3,9 @@
 body {
   color: black;
   font-family: "marker felt";
-  background-image: url("/assets/CN.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("assets/CN.jpeg");
+  background-repeat: repeat-y;
+  background-size: contain;
 }
 
 tbody{
