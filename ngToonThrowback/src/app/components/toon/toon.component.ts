@@ -35,10 +35,12 @@ export class ToonComponent implements OnInit {
   networks: Network[] = [];
   ratings: Rating[] = [];
   newComment: Comment = new Comment();
+  userComments: Comment[] = [];
   comments: Comment[] = [];
   editComment: Comment | null = null;
   closeResult: string = '';
   selectedComment: Comment | null = null;
+  loggedIn: User = new User();
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   totalCards: number = this.arr.length;
@@ -106,7 +108,8 @@ export class ToonComponent implements OnInit {
   }
 
   reload() {
-    this.toonService.index().subscribe({
+    this.toonService.index().subscribe(
+      {
       next: (data) => {
         this.toons = data;
       },
@@ -115,6 +118,7 @@ export class ToonComponent implements OnInit {
         console.error(err);
       },
     });
+
 
     this.toonService.indexNetworks().subscribe({
       next: (data) => {
@@ -135,6 +139,7 @@ export class ToonComponent implements OnInit {
         console.error(err);
       },
     });
+
   }
 
   loadSelectedToonMedia(cid: number) {
@@ -176,6 +181,8 @@ export class ToonComponent implements OnInit {
       this.selected = toon;
       this.loadSelectedToonMedia(toon.id);
       this.loadSelectedToonMerch(toon.id);
+      this.loadComments();
+
     }
     console.log(this.selected);
   }
@@ -236,6 +243,22 @@ export class ToonComponent implements OnInit {
         },
       });
     }
+  }
+
+  loadComments() {
+    if(this.selected)
+    this.toonService.listComments(this.selected.id).subscribe(
+      {
+        next: (data: any) => {
+          console.log(data);
+          this.comments = data
+        },
+        error: (err) => {
+          console.error('CommentListComponent.reload(): error loading comment:');
+          console.error(err);
+        }
+      }
+    )
   }
 
   addMedia() {
@@ -318,7 +341,7 @@ export class ToonComponent implements OnInit {
     this.toonService.destroy(id).subscribe({
       next: () => {
         this.reload();
-
+this.router.navigateByUrl("/home");
       },
       error: (err) => {
         console.error('ToonListComponent.deleteToon(): error deleting Toon:');

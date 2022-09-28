@@ -1,3 +1,4 @@
+import { Comment } from './../models/comment';
 import { Toon } from './../models/toon';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -99,6 +100,33 @@ export class ToonService {
       })
     );
   }
+  listComments(cid : number) {
+    return this.http.get<Comment[]>(environment.baseUrl + `api/cartoons/${cid}/comments`).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error(
+              'CommentService.index(): error retrieving Comment List: ' + err
+            )
+        );
+      })
+    );
+  }
+
+
+  // listComments() {
+  //   return this.http.get<Toon[]>(environment.baseUrl + `api/cartoons/comments`).pipe(
+  //     catchError((err: any) => {
+  //       console.log(err);
+  //       return throwError(
+  //         () =>
+  //           new Error('ToonService.index(): error retrieving Toon List: ' + err)
+  //       );
+  //     })
+  //   );
+  // }
+
 
   search(searchTerm: string) {
     return this.http.get<Toon[]>(this.url + '/search/' + searchTerm).pipe(
