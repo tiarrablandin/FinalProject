@@ -32,7 +32,7 @@ export class MediaService {
   }
 
   create(media: Media) {
-    return this.http.post<Media>(this.url, media, this.getHttpOptions()).pipe(
+    return this.http.post<Media>(environment.baseUrl + "api/" + media.cartoon.id + "/media", media, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

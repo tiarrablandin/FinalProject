@@ -85,6 +85,7 @@ export class NavbarComponent implements OnInit {
     //     console.error(err);
     //   }
     // });
+    this.router.navigateByUrl("home");
     this.router.navigateByUrl("search/" + this.searchTerm);
   }
 

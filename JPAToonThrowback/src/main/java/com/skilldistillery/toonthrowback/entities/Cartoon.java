@@ -1,5 +1,6 @@
 package com.skilldistillery.toonthrowback.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -40,11 +42,13 @@ public class Cartoon {
 	
 	private boolean active;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="airing_date")
-	private LocalDateTime airingDate;
+	private LocalDate airingDate;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="finale_date")
-	private LocalDateTime finaleDate;
+	private LocalDate finaleDate;
 	
 	@CreationTimestamp
 	@Column(name="created_date")
@@ -178,19 +182,19 @@ public class Cartoon {
 		this.active = active;
 	}
 
-	public LocalDateTime getAiringDate() {
+	public LocalDate getAiringDate() {
 		return airingDate;
 	}
 
-	public void setAiringDate(LocalDateTime airingDate) {
+	public void setAiringDate(LocalDate airingDate) {
 		this.airingDate = airingDate;
 	}
 
-	public LocalDateTime getFinaleDate() {
+	public LocalDate getFinaleDate() {
 		return finaleDate;
 	}
 
-	public void setFinaleDate(LocalDateTime finaleDate) {
+	public void setFinaleDate(LocalDate finaleDate) {
 		this.finaleDate = finaleDate;
 	}
 
