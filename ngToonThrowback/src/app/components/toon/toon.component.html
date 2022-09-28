@@ -159,7 +159,7 @@
             Episode: <input type="text" id="episode" name="episode" class="form-control" style="width: 300px;" [(ngModel)]="newMedia.episodeNum"><br>
             <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
             <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="newMedia.active">
-            Cartoon: <input type="text" id="cartoon" name="cartoon" class="form-control" style="width: 300px;" [(ngModel)]="newMedia.cartoon"><br>
+            Cartoon: <input type="text" id="cartoon" name="cartoon" class="form-control" style="width: 300px;" [(ngModel)]="newMedia.cartoon.name"><br>
           </form><br><br>
         </div>
       </div>
@@ -182,15 +182,10 @@
         <div class="input-group">
           <form *ngIf="newMerch">
             Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.image"><br>
-            <!-- Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="editToon.name"><br>
-            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="editToon.description"><br>
-            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="editToon.rating"><br><br>
-            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.airingDate"><br><br>
-            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.finaleDate"><br><br>
-            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="editToon.creator.name"><br><br>
-            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="editToon.network.name"><br><br>
+            URL: <input type="text" id="url" name="url" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.url"><br>
+            Cartoon: <input type="text" id="cartoon" name="cartoon" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.cartoon.name"><br>
             <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
-            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="editToon.active"> -->
+            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="newMerch.active">
           </form><br><br>
         </div>
       </div>
@@ -213,15 +208,15 @@
         <div class="input-group">
           <form *ngIf="newToon">
             Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newToon.image"><br>
-            <!-- Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="editToon.name"><br>
-            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="editToon.description"><br>
-            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="editToon.rating"><br><br>
-            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.airingDate"><br><br>
-            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.finaleDate"><br><br>
-            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="editToon.creator.name"><br><br>
-            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="editToon.network.name"><br><br>
+            Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="newToon.name"><br>
+            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="newToon.description"><br>
+            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="newToon.rating"><br><br>
+            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="newToon.airingDate"><br><br>
+            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="newToon.finaleDate"><br><br>
+            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="newToon.creator.name"><br><br>
+            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="newToon.network.name"><br><br>
             <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
-            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="editToon.active"> -->
+            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="newToon.active">
           </form><br><br>
         </div>
       </div>
