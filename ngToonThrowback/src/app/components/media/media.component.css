@@ -23,6 +23,7 @@
 
 .cards-wrapper {
   display: flex;
+  flex-wrap: wrap;
   padding-left: 25px;
 }
 
