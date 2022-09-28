@@ -1,3 +1,5 @@
+
+
 table{
   background-color: white;
   opacity: 0.9;
@@ -112,4 +114,8 @@ img{
 
 .right {
   right: 0;
+}
+
+#addToon{
+  float: right;
 }

@@ -25,7 +25,7 @@ import com.skilldistillery.toonthrowback.services.CartoonService;
 
 @RestController
 @RequestMapping(path="api")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class CartoonController {
 	
 	@Autowired
