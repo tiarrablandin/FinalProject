@@ -1,3 +1,7 @@
+<div *ngIf="loggedInUser">
+  <button class="btn btn-outline-primary" (click)="open(addToonModal); addToon">Add Cartoon</button>
+</div>
+
 <div *ngIf="!selected">
   <table class="table table-hover">
     <thead class="table-light">
@@ -50,8 +54,8 @@
   </div>
   <div id="logged" *ngIf="loggedInUser">
     <div class="d-flex justify-content-center">
-      <!-- <button class="btn btn-outline-primary" (click)="()">Add Merchandise</button>
-      <button class="btn btn-outline-primary" (click)="()">Add Media</button> -->
+      <button class="btn btn-outline-primary" (click)="open(merchModal)">Add Merchandise</button>
+      <button class="btn btn-outline-primary" (click)="open(mediaModal)">Add Media</button>
     </div>
     <div *ngIf="loggedInUser && loggedInUser.role == 'admin'">
       <div class="d-flex justify-content-center">
@@ -65,30 +69,35 @@
       </div>
     </div>
   </div>
-</div>
+</div><br>
 <!-- </tbody> -->
 <!-- </table> -->
 
 <div class="container" #container>
-	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+	<div class="left" *ngIf="totalPages > 1 && selected" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
 	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
 		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
-			<div class="card" *ngFor="let media of toonMedia; let index = index" [ngStyle]="{'width': cardWidth}">
-				<img src="{{media.image}}"><br>
-        <h5>{{media.title}}</h5>
+      <div class="card" *ngFor="let media of toonMedia; let index = index" [ngStyle]="{'width': cardWidth}">
+        <a href={{media.url}}>
+          <img src="{{media.image}}" style="height: 75%; width: 75% !important"><br>
+          <h5>{{media.title}}</h5>
+        </a>
 			</div>
 		</div>
 	</div>
-	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+	<div class="right" *ngIf="totalPages > 1 && selected" (click)="currentPage != totalPages && changePage(+1)"
 		[ngClass]="{'disabled':currentPage === totalPages}"></div>
-</div>
+</div><br>
 
-<div class="container" #container>
+<div class="container" #container *ngIf="selected">
 	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
 	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
 		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
 			<div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
-				<img src="{{merch.image}}"><br>
+				<a href={{merch.url}}>
+          <img src="{{merch.image}}" style="height: 75%; width: 75% !important"><br>
+          <h5>{{merch.description}}</h5>
+        </a>
 			</div>
 		</div>
 	</div>
@@ -125,5 +134,98 @@
   <div class="dropdown-divider"></div>
   <div class="modal-footer">
     <button class=" dropfown-item btn btn-outline-primary" (click)="updateToon(); modal.dismiss('Cross click')">Update</button>
+  </div>
+</ng-template>
+
+<ng-template #mediaModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Media</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="newMedia">
+            Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newMedia.image"><br>
+            <!-- Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="editToon.name"><br>
+            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="editToon.description"><br>
+            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="editToon.rating"><br><br>
+            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.airingDate"><br><br>
+            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.finaleDate"><br><br>
+            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="editToon.creator.name"><br><br>
+            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="editToon.network.name"><br><br> -->
+            <!-- <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
+            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="editToon.active"> -->
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="dropdown-divider"></div>
+  <div class="modal-footer">
+    <button class=" dropfown-item btn btn-outline-primary" (click)="addMedia(); modal.dismiss('Cross click')">Add</button>
+  </div>
+</ng-template>
+
+<ng-template #merchModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Merch</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="newMerch">
+            Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.image"><br>
+            <!-- Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="editToon.name"><br>
+            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="editToon.description"><br>
+            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="editToon.rating"><br><br>
+            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.airingDate"><br><br>
+            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.finaleDate"><br><br>
+            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="editToon.creator.name"><br><br>
+            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="editToon.network.name"><br><br>
+            <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
+            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="editToon.active"> -->
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="dropdown-divider"></div>
+  <div class="modal-footer">
+    <button class=" dropfown-item btn btn-outline-primary" (click)="addMerch(); modal.dismiss('Cross click')">Update</button>
+  </div>
+</ng-template>
+
+<ng-template #addToonModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Merch</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="newToon">
+            Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newToon.image"><br>
+            <!-- Name: <input type="text" name="Name" class="form-control" style="width: 300px;" [(ngModel)]="editToon.name"><br>
+            Description: <input type="text" name="description" class="form-control" style="width: 300px;" [(ngModel)]="editToon.description"><br>
+            Rating: <input type="text" name="rating" class="form-control" style="width: 300px;" [(ngModel)]="editToon.rating"><br><br>
+            Airing Date: <input type="text" name="airingDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.airingDate"><br><br>
+            Finale Date: <input type="text" name="finaleDate" class="form-control" style="width: 300px;" [(ngModel)]="editToon.finaleDate"><br><br>
+            Creator: <input type="text" name="creator" class="form-control" style="width: 300px;" [(ngModel)]="editToon.creator.name"><br><br>
+            Network: <input type="text" name="network" class="form-control" style="width: 300px;" [(ngModel)]="editToon.network.name"><br><br>
+            <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
+            <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="editToon.active"> -->
+          </form><br><br>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="dropdown-divider"></div>
+  <div class="modal-footer">
+    <button class=" dropfown-item btn btn-outline-primary" (click)="addToon(); modal.dismiss('Cross click')">Add</button>
   </div>
 </ng-template>

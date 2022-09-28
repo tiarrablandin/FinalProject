@@ -9,24 +9,27 @@ export class Merch {
   createdDate: string = "";
   updatedDate: string = "";
   active: string = "";
+  description: string = "";
 
   constructor(
     id: number = 0,
-  cartoon: Toon = new Toon(),
-  url: string = "",
-  image: string = "",
-  user: User = new User(),
-  createdDate: string = "",
-  updatedDate: string = "",
-  active: string = ""
-  ) {
+    cartoon: Toon = new Toon(),
+    url: string = "",
+    image: string = "",
+    user: User = new User(),
+    createdDate: string = "",
+    updatedDate: string = "",
+    active: string = "",
+    description: string = ""
+    ) {
     this.id = id;
-  this.cartoon = cartoon
-  this.url = url;
-  this.image = image;
-  this.user = user;
-  this.createdDate = createdDate;
-  this.updatedDate = updatedDate;
-  this.active = active;
+    this.cartoon = cartoon
+    this.url = url;
+    this.image = image;
+    this.user = user;
+    this.createdDate = createdDate;
+    this.updatedDate = updatedDate;
+    this.active = active;
+    this.description = description;
   }
 }
