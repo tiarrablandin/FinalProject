@@ -84,5 +84,18 @@ export class CommentService {
       })
     );
   }
+  listComments(cid : number) {
+    return this.http.get<Comment[]>(this.url + `api/cartoons/${cid}/comments`).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error(
+              'CommentService.index(): error retrieving Comment List: ' + err
+            )
+        );
+      })
+    );
+  }
 }
 

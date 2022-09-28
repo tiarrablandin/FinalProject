@@ -79,7 +79,7 @@ public class CartoonController {
 //		return cartoonService.findByCreator(creator);
 //	}
 	
-	@GetMapping("cartoons/{favs}")
+	@GetMapping("cartoons/favorites/{favs}")
 	public List<Cartoon> findByUserFavs(@PathVariable User userFavs) {
 		return cartoonService.findByUserFavs(userFavs);
 	}
