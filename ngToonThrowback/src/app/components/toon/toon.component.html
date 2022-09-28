@@ -81,8 +81,7 @@
         <a href={{media.url}}>
           <img src="{{media.image}}" style="height: 75%; width: 75% !important"><br>
           <h5>{{media.title}}</h5>
-          <!-- <button class="btn btn-outline-primary" (click)="open(content); editMedia = selected">Edit</button>
-          <button class="btn btn-outline-primary" (click)="deleteMedia(selected.id)" [routerLink]="['/home']">Delete</button> -->
+          <!-- <button class="btn btn-outline-primary" (click)="deleteMedia(selected.id)" [routerLink]="['/home']">Delete</button> --> -->
         </a>
 			</div>
 		</div>
@@ -98,9 +97,8 @@
 			<div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
 				<a href={{merch.url}}>
           <img src="{{merch.image}}" style="height: 75%; width: 75% !important"><br>
-          <!-- <h5>{{merch.description}}</h5> -->
-          <!-- <button class="btn btn-outline-primary" (click)="open(content); editMerch = selected">Edit</button>
-          <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> -->
+          <h5>{{merch.description}}</h5>
+          <!-- <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> --> -->
         </a>
 			</div>
 		</div>
