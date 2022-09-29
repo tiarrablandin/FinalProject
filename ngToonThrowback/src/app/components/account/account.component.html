@@ -198,11 +198,11 @@
       <div class="mb-3">
         <div class="input-group">
           <form>
-            <h1 class="justify-content-center">Cartoon Updated!</h1>
+            <h1 class="justify-content-center"></h1>
 
             <div class="d-flex justify-content-center" *ngIf="editToon">
               <form class="text-center">
-                <input
+               Title: <input
                   type="text"
                   name="title"
                   class="col form-input form-control"
@@ -211,7 +211,7 @@
                   [(ngModel)]="editToon.name"
                 />
                 <br />
-                <input
+               URL: <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
@@ -220,7 +220,7 @@
                   [(ngModel)]="editToon.url"
                 />
                 <br />
-                <input
+               Description: <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
@@ -229,60 +229,46 @@
                   [(ngModel)]="editToon.description"
                 />
                 <br />
-                <input
+               Image: <input
                   type="text"
-                  name="season"
+                  name="Image"
                   class="col form-input form-control"
-                  placeholder="Season"
+                  placeholder="Image"
                   style="width: 300px"
                   [(ngModel)]="editToon.image"
                 />
                 <br />
-                <input
-                  type="text"
-                  name="episodeNum"
+               Airing Date: <input
+                  type="date"
+                  name="Airing Date"
                   class="col form-input form-control"
-                  placeholder="Episode Number"
+                  placeholder="Airing Date"
                   style="width: 300px"
                   [(ngModel)]="editToon.airingDate"
                 />
                 <br />
-                <input
-                  type="text"
-                  name="image"
+               Finale Date: <input
+                  type="date"
+                  name="finaleDate"
                   class="col form-input form-control"
-                  placeholder="Cartoon Image"
+                  placeholder="Finale Date"
                   style="width: 300px"
                   [(ngModel)]="editToon.finaleDate"
                 />
                 <br />
-                <input
-                  type="text"
-                  name="image"
-                  class="col form-input form-control"
-                  placeholder="Cartoon Image"
-                  style="width: 300px"
-                  [(ngModel)]="editToon.network"
-                />
+              <!-- Network:  <select name="network" id="" [(ngModel)]="editToon.network.id">
+                  <option *ngFor="let network of networks" [value]="network.id">
+                    {{network.name}}
+                  </option>
+                </select>
                 <br />
-                <input
-                  type="text"
-                  name="image"
-                  class="col form-input form-control"
-                  placeholder="Cartoon Image"
-                  style="width: 300px"
-                  [(ngModel)]="editToon.rating"
-                />
-                <br />
-                <input
-                  type="text"
-                  name="image"
-                  class="col form-input form-control"
-                  placeholder="Cartoon Image"
-                  style="width: 300px"
-                  [(ngModel)]="editToon.url"
-                />
-                <button class="btn btn-outline-primary" (click)="updateToon()">
+              Rating:  <select name="rating" id="" [(ngModel)]="editToon.rating.id">
+                  <option *ngFor="let rating of ratings" [value]="rating.id">
+                    {{rating.rating}}
+                  </option>
+                </select> -->
+
+                <button class="button" (click)="updateToon()">
                   Update Toon!
                 </button>
               </form>
@@ -405,11 +391,13 @@
           style="width: 18rem"
           style="center: center"
         >
+        <div class="image-wrapper">
           <img
             class="card-img-top"
             src="{{ media.image }}"
             alt="Card image cap"
-          />
+          /><img />
+        </div>
           <div class="card-body">
             <h5 class="card-title">{{ media.title }}</h5>
             <p class="card-text">
@@ -441,11 +429,13 @@
           style="width: 18rem"
           style="center: center"
         >
+        <div class="image-wrapper">
           <img
             class="card-img-top"
             src="{{ merch.image }}"
             alt="Card image cap"
-          />
+          /><img />
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{ merch.createdDate }}</h5>
             <p class="card-text">{{ merch.updatedDate }}</p>
@@ -476,11 +466,13 @@
           style="width: 18rem"
           style="center: center"
         >
+        <div class="image-wrapper">
           <img
             class="card-img-top"
             src="{{ toon.image }}"
             alt="Card image cap"
-          />
+          /><img />
+        </div>
           <div class="card-body">
             <h5 class="card-title">{{ toon.name }}</h5>
             <p class="card-text">{{ toon.description }}</p>

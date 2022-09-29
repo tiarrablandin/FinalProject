@@ -11,6 +11,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Merch } from 'src/app/models/merch';
 import { Media } from 'src/app/models/media';
 import { Comment } from './../../models/comment';
+import { Network } from 'src/app/models/network';
+import { Rating } from 'src/app/models/rating';
 
 @Component({
   selector: 'app-account',
@@ -36,6 +38,8 @@ export class AccountComponent implements OnInit {
   userComments: Comment[] = [];
   editComment: Comment | null = null;
   selectedComment: Comment | null = null;
+  networks: Network[] = [];
+  ratings: Rating[] = [];
 
   constructor(
     private authService: AuthService,
@@ -243,6 +247,7 @@ delete(id: number) {
     );
 
     }
+
     deleteToon(id: number) {
       this.toonService.destroy(id).subscribe({
         next: () => {
