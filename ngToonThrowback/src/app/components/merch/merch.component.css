@@ -12,7 +12,7 @@
   display: flex;
 } */
 
-#merchCard {
+ #merchCard {
   border-radius: 20px;
   display: inline-block;
   width: calc(100%/3);
@@ -43,5 +43,68 @@
 .image-wrapper img{
   max-width: 100%;
   max-height: 100%;
+}
+ #mediaCard {
+  border-radius: 20px;
+  display: inline-block;
+  /* width: calc(100%/3); */
+   width:300px;
+  height: 400px;
+  perspective: 700px;
+  align-items: center;
+}
+.card-body1{
+
+  padding-top: 2%;
+  text-align: center;
+  color: lightskyblue;
+  text-shadow: 1px 1px black;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 25px;
+}
+
+.image-wrapper {
+  margin: 0 auto;
+  /* height: 22vw; */
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+}
+.image-wrapper img{
+  max-width: 100%;
+  max-height: 100%;
+}
+@media screen and (max-width: 567px) {
+  .card-body1:not(:first-child) {
+  display: none;
+  }
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5ccbe7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 

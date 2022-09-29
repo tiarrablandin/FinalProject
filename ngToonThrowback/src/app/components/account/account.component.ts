@@ -89,7 +89,6 @@ this.merchService.listUserMerch(this.loggedIn.id).subscribe(
 this.commentService.listUserComment(this.loggedIn.id).subscribe(
   {
     next: (data: any) => {
-      console.log(data);
       this.userComments = data
     },
     error: (err) => {
@@ -104,7 +103,7 @@ this.commentService.listUserComment(this.loggedIn.id).subscribe(
 this.mediaService.listUserMedia(this.loggedIn.id).subscribe(
   {
     next: (data: any) => {
-      this.userComments = data
+      this.userMedias = data
     },
     error: (err) => {
       console.error('MediaListComponent.reload(): error loading media:');

@@ -28,7 +28,7 @@ export class MerchService {
 
 
   index(): Observable<Merch[]> {
-    return this.http.get<Merch[]>(this.url + '/merch').pipe(
+    return this.http.get<Merch[]>(this.url ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

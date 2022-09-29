@@ -1,4 +1,4 @@
-
+<!--
 <button (click)="open(content)" *ngIf="loggedIn()">Add New Merchandise Info</button>
 
 
@@ -58,7 +58,7 @@
     <br>
 
 
-    <div class="card" style="width: 18rem;" *ngFor="let merch of merchs" id="merchCard">
+    <!-- <div class="card" style="width: 18rem;" *ngFor="let merch of merchs" id="merchCard">
       <div class="image-wrapper">
       <img class="card-img-top" src="{{merch.image}}" alt="Card image cap">
     </div>
@@ -69,7 +69,7 @@
         <br>
 
       </div>
-    </div>
+    </div> -->
 
     <!-- <button (click)="createMerch(newMerch)" class="btn btn-outline-primary">Add New Merchandise Info</button>
 
@@ -85,7 +85,7 @@
     <button (click)="deleteMerch(selected.id)" class="btn btn-danger">Delete</button>
     </div> -->
 
-    <div id="merchEdit" *ngIf="editMerch">
+    <!-- <div id="merchEdit" *ngIf="editMerch">
       <form>
         <div class="form-group">
         <label for="cartoon" class="form-label">Cartoon</label>
@@ -111,5 +111,30 @@
         <button (click)="editMerch = null" class="btn btn-danger">Cancel</button>
         <button (click)="updateMerch(editMerch)" class="btn btn-success">Save</button>
       </form>
+    </div> -->
+
+    <div class="cards-wrapper">
+      <div class="card mb-3 mx-3" *ngFor="let merch of merchs" id="mediaCard">
+        <div class="image-wrapper">
+          <img
+            class="card-img-top"
+            src="{{ merch.image }}"
+            alt="Card image cap"
+          /><img />
+        </div>
+        <div class="card-body1">
+          <h5 class="card-title">{{ merch.description }}</h5>
+          <p>{{merch.description}}</p>
+          <br />
+          <a
+            class="button"
+            onclick="href='https://www.cartoonnetwork.com/video/powerpuff-girls/road-trippin-episode.html'"
+            target="_blank"
+            id="watch"
+            >Buy Now!</a
+          >
+        </div>
+      </div>
     </div>
 
+    <br />
