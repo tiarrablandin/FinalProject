@@ -4,15 +4,21 @@
   - [Description](#description)
   - [Technologies](#technologies)
   - [Concepts](#concepts)
-  - [Rest Endpoints](#rest_endpoints auth)
-  - [Rest Endpoints](#rest_endpoints cartoon)
-  - [Rest Endpoints](#rest_endpoints comment)
-  - [Rest Endpoints](#rest_endpoints fact)
-  - [Rest Endpoints](#rest_endpoints media)
-  - [Rest Endpoints](#rest_endpoints merchandise)
-  - [Rest Endpoints](#rest_endpoints trivia)
-  - [Rest Endpoints](#rest_endpoints user)
-  - [Lessons Learned](#lessons learned)
+  - [Rest Endpoints](#rest_endpoints_auth)
+  - [Rest Endpoints](#rest_endpoints_cartoon)
+  - [Rest Endpoints](#rest_endpoints_comment)
+  - [Rest Endpoints](#rest_endpoints_fact)
+  - [Rest Endpoints](#rest_endpoints_media)
+  - [Rest Endpoints](#rest_endpoints_merchandise)
+  - [Rest Endpoints](#rest_endpoints_trivia)
+  - [Rest Endpoints](#rest_endpoints_user)
+  - [Lessons Learned](#lessons_learned)
+
+
+
+## EC2 URL
+
+http://18.144.181.105:8080/ToonThrowback/#/home
 
 
 
