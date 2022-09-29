@@ -1,6 +1,6 @@
 
 
-<ng-template #triviaAnswer let-modal>
+<!-- <ng-template #triviaAnswer let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title" *ngIf="selected">Answer: {{selected.answer}}</h4>
     <button
@@ -12,7 +12,7 @@
   </div>
   <div class="modal-body">
     <p>
-      <!-- trivia.answer -->
+      trivia.answer
     </p>
   </div>
   <div class="modal-footer">
@@ -23,7 +23,7 @@
 
     </button>
   </div>
-</ng-template>
+</ng-template> -->
 
 <div class="cards-wrapper">
   <div class="card mb-3 mx-3" *ngFor="let trivia of trivias" id="triviaCard">
@@ -48,7 +48,7 @@
 
 <ng-template #triviaAnswer let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title" *ngIf="selected">Answer: {{selected.answer}}</h4>
+    <h4 class="modal-title" id="modal-basic-title">Answer: </h4>
     <button
       type="button"
       class="btn-close"
@@ -56,18 +56,10 @@
       (click)="modal.dismiss('Cross click')"
     ></button>
   </div>
-  <!-- <div class="modal-body">
+  <div class="modal-body" *ngIf="selected">
     <p>
-      trivia.answer
+      {{selected.answer}}
     </p>
   </div>
-  <div class="modal-footer">
-    <button
-      class="btn btn-outline-primary"
-      (click)="modal.dismiss('Cross click')"
-    >
-
-    </button>
-  </div> -->
 </ng-template>
 

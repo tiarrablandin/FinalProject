@@ -12,6 +12,7 @@
   text-align: center;
   color: lightskyblue;
   text-shadow: 1px 1px black;
+  opacity: 25;
 }
 
 .cards-wrapper {
