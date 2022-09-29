@@ -11,12 +11,12 @@ public interface MerchandiseRepository extends JpaRepository<Merchandise, Intege
 
 	Merchandise getById(int userId);
 	
-	List<Merchandise> findByUserId(int id);
+	List<Merchandise> findByUserIdAndActiveTrue(int id);
 	
-	List<Merchandise> findByCartoonId(int id);
+	List<Merchandise> findByCartoonIdAndActiveTrue(int id);
 	
-	List<Merchandise> findByIdAndCartoonId(int id, int cid);
+	List<Merchandise> findByIdAndCartoonIdAndActiveTrue(int id, int cid);
 	
-	List<Merchandise> findByUser_id(int id);
+	List<Merchandise> findByUser_idAndActiveTrue(int id);
 	
 }

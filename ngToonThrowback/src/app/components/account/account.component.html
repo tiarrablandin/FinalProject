@@ -1,4 +1,5 @@
-<!----------------------------- modal update account ------------------------------>
+<!----------------------------- update account modal------------------------------>
+
 <ng-template #accountModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update Account!</h4>
@@ -6,8 +7,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+      (click)="modal.dismiss('Cross click')">
+    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -24,58 +25,52 @@
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editUser.username"
-                />
-                <br />
+                  [(ngModel)]="editUser.username"/>
+                <br/>
                 <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editUser.firstName"
-                />
-                <br />
+                  [(ngModel)]="editUser.firstName"/>
+                <br/>
                 <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editUser.lastName"
-                />
-                <br />
+                  [(ngModel)]="editUser.lastName"/>
+                <br/>
                 <input
                   type="text"
                   name="season"
                   class="col form-input form-control"
                   placeholder="Season"
                   style="width: 300px"
-                  [(ngModel)]="editUser.bio"
-                />
-                <br />
+                  [(ngModel)]="editUser.bio"/>
+                <br/>
                 <input
                   type="text"
                   name="episodeNum"
                   class="col form-input form-control"
                   placeholder="Episode Number"
                   style="width: 300px"
-                  [(ngModel)]="editUser.email"
-                />
-                <br />
+                  [(ngModel)]="editUser.email"/>
+                <br/>
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Cartoon Image"
                   style="width: 300px"
-                  [(ngModel)]="editUser.image"
-                />
-                <br />
+                  [(ngModel)]="editUser.image"/>
+                <br/>
               </form>
             </div>
           </form>
-          <br /><br />
+          <br/><br/>
         </div>
       </div>
     </form>
@@ -83,14 +78,14 @@
   <div class="modal-footer">
     <button
       class="btn btn-outline-primary"
-      (click)="updateUser(); modal.dismiss('Cross click')"
-    >
+      (click)="updateUser(); modal.dismiss('Cross click')">
       Submit
     </button>
   </div>
 </ng-template>
-<!------------------------------------------------------------------>
+
 <!--------------------- update media modal ------------------------->
+
 <ng-template #mediaModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update Media!</h4>
@@ -98,8 +93,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+      (click)="modal.dismiss('Cross click')">
+    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -116,64 +111,57 @@
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.title"
-                />
-                <br />
+                  [(ngModel)]="editMedia.title"/>
+                <br/>
                 <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.url"
-                />
-                <br />
+                  [(ngModel)]="editMedia.url"/>
+                <br/>
                 <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.description"
-                />
-                <br />
+                  [(ngModel)]="editMedia.description"/>
+                <br/>
                 <input
                   type="text"
                   name="season"
                   class="col form-input form-control"
                   placeholder="Season"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.image"
-                />
-                <br />
+                  [(ngModel)]="editMedia.image"/>
+                <br/>
                 <input
                   type="text"
                   name="episodeNum"
                   class="col form-input form-control"
                   placeholder="Episode Number"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.season"
-                />
-                <br />
+                  [(ngModel)]="editMedia.season"/>
+                <br/>
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Cartoon Image"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.season"
-                />
-                <br />
+                  [(ngModel)]="editMedia.season"/>
+                <br/>
                 <button
                   class="btn btn-outline-primary"
-                  (click)="updateMedia(editMedia)"
-                >
+                  (click)="updateMedia(editMedia); modal.dismiss('Cross click')">
                   Add Media!
                 </button>
               </form>
             </div>
           </form>
-          <br /><br />
+          <br/><br/>
         </div>
       </div>
     </form>
@@ -181,8 +169,8 @@
   <div class="modal-footer"></div>
 </ng-template>
 
-<!------------------------------------------------------------------>
 <!--------------------update cartoon modal  ------------------------>
+
 <ng-template #cartoonModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update Cartoon!</h4>
@@ -190,8 +178,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+      (click)="modal.dismiss('Cross click')">
+    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -202,61 +190,61 @@
 
             <div class="d-flex justify-content-center" *ngIf="editToon">
               <form class="text-center">
-               Title: <input
+                Title:
+                <input
                   type="text"
                   name="title"
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editToon.name"
-                />
-                <br />
-               URL: <input
+                  [(ngModel)]="editToon.name"/>
+                <br/>
+                URL:
+                <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editToon.url"
-                />
-                <br />
-               Description: <input
+                  [(ngModel)]="editToon.url"/>
+                <br/>
+                Description:
+                <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editToon.description"
-                />
-                <br />
-               Image: <input
+                  [(ngModel)]="editToon.description"/>
+                <br/>
+                Image:
+                <input
                   type="text"
                   name="Image"
                   class="col form-input form-control"
                   placeholder="Image"
                   style="width: 300px"
-                  [(ngModel)]="editToon.image"
-                />
-                <br />
-               Airing Date: <input
+                  [(ngModel)]="editToon.image"/>
+                <br/>
+                Airing Date:
+                <input
                   type="date"
                   name="Airing Date"
                   class="col form-input form-control"
                   placeholder="Airing Date"
                   style="width: 300px"
-                  [(ngModel)]="editToon.airingDate"
-                />
-                <br />
-               Finale Date: <input
+                  [(ngModel)]="editToon.airingDate"/>
+                <br/>
+                Finale Date:
+                <input
                   type="date"
                   name="finaleDate"
                   class="col form-input form-control"
                   placeholder="Finale Date"
                   style="width: 300px"
-                  [(ngModel)]="editToon.finaleDate"
-                />
-                <br />
-              <!-- Network:  <select name="network" id="" [(ngModel)]="editToon.network.id">
+                  [(ngModel)]="editToon.finaleDate"/>
+                <br/>
+                <!-- Network:  <select name="network" id="" [(ngModel)]="editToon.network.id">
                   <option *ngFor="let network of networks" [value]="network.id">
                     {{network.name}}
                   </option>
@@ -268,21 +256,24 @@
                   </option>
                 </select> -->
 
-                <button class="button" (click)="updateToon()">
+                <button
+                  class="button"
+                  (click)="updateToon(); modal.dismiss('Cross click')">
                   Update Toon!
                 </button>
               </form>
             </div>
           </form>
-          <br /><br />
+          <br/><br/>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer"></div>
 </ng-template>
-<!------------------------------------------------------------------>
+
 <!-------------------------- Update merch modal--------------------->
+
 <ng-template #merchModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Update Merchandise!</h4>
@@ -290,8 +281,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+      (click)="modal.dismiss('Cross click')">
+    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -313,57 +304,54 @@
                 <br /> -->
                 <input
                   type="text"
-                  name="description"
+                  name="url"
                   class="col form-input form-control"
-                  placeholder="Description"
+                  placeholder="url"
                   style="width: 300px"
-                  [(ngModel)]="editMerch.url"
-                />
-                <br />
+                  [(ngModel)]="editMerch.url"/>
+                <br/>
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Image"
                   style="width: 300px"
-                  [(ngModel)]="editMerch.image"
-                />
-                <br />
-                <!-- <input
+                  [(ngModel)]="editMerch.image"/>
+                <br/>
+                <input
                   type="text"
-                  name="episodeNum"
+                  name="description"
                   class="col form-input form-control"
-                  placeholder="Episode Number"
+                  placeholder="Description"
                   style="width: 300px"
                   [(ngModel)]="editMerch.description"
-                /> -->
+                />
 
                 <button
                   class="btn btn-outline-primary"
-                  (click)="updateMerch(editMerch)"
-                >
+                  (click)="updateMerch(editMerch); modal.dismiss('Cross click')">
                   Update Media!
                 </button>
               </form>
             </div>
           </form>
-          <br /><br />
+          <br/><br/>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer"></div>
 </ng-template>
-<!---------------------------------------------------------------------------------->
+
 <!------------------------------logged in user-------------------------------------->
+
 <div class="row">
   <div class="column">
     <div class="card" style="width: 18rem">
       <img
         class="card-img-top"
         src="{{ loggedIn.image }}"
-        alt="Card image cap"
-      />
+        alt="Card image cap"/>
       <div class="card-body">
         <h5 class="card-title">{{ loggedIn.username }}</h5>
         <p class="card-text">{{ loggedIn.bio }}</p>
@@ -378,27 +366,32 @@
         class="button"
         data-bs-toggle="offcanvas"
         (click)="editUser = loggedIn; open(accountModal)"
-        >Update User!</a
-      >
-      <button class="btn btn-danger"(click)="delete(loggedIn.id)"[routerLink]="['/home']">Delete!</button>
+        >Update User!</a>
+      <button
+        class="btn btn-danger"
+        (click)="delete(loggedIn.id)"
+        [routerLink]="['/home']">
+        Delete!
+      </button>
     </span>
-    <br />
-    <!----------------------------------media----------------------------------->
+    <br/>
+
+    <!----------------------------------media card----------------------------------->
+
     <div *ngIf="loggedIn">
       <div class="anyClass">
         <div
           *ngFor="let media of userMedias"
           class="card"
           style="width: 18rem"
-          style="center: center"
-        >
-        <div class="image-wrapper">
-          <img
-            class="card-img-top"
-            src="{{ media.image }}"
-            alt="Card image cap"
-          /><img />
-        </div>
+          style="center: center">
+          <div class="image-wrapper">
+            <img
+              class="card-img-top"
+              src="{{ media.image }}"
+              alt="Card image cap"/>
+              <img/>
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{ media.title }}</h5>
             <p class="card-text">
@@ -408,9 +401,8 @@
               <a
                 class="button"
                 data-bs-toggle="offcanvas"
-                (click)="updateMedia(media); openMedia(mediaModal)"
-                >Update Media!</a
-              >
+                (click)="setEditMedia(media); openMedia(mediaModal)"
+                >Update Media!</a>
               <button class="btn btn-danger" (click)="deleteMedia(media.id)">
                 Delete Me!
               </button>
@@ -420,7 +412,9 @@
       </div>
     </div>
   </div>
-  <!--------------------------merchandise--------------------------------------->
+
+  <!--------------------------merchandise card--------------------------------------->
+
   <div class="column">
     <div *ngIf="loggedIn">
       <div class="anyClass">
@@ -428,14 +422,13 @@
           *ngFor="let merch of userMerchs"
           class="card"
           style="width: 18rem"
-          style="center: center"
-        >
-        <div class="image-wrapper">
-          <img
-            class="card-img-top"
-            src="{{ merch.image }}"
-            alt="Card image cap"
-          /><img />
+          style="center: center">
+          <div class="image-wrapper">
+            <img
+              class="card-img-top"
+              src="{{ merch.image }}"
+              alt="Card image cap"/>
+              <img/>
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ merch.createdDate }}</h5>
@@ -445,9 +438,8 @@
                 class="button"
                 data-bs-toggle="offcanvas"
                 (click)="setEditMerch(merch); open(merchModal)"
-                >Update Merch!</a
-              >
-              <button class="btn btn-danger" (click)="deleteToon(merch.id)">
+                >Update Merch!</a>
+              <button class="btn btn-danger" (click)="deleteMerch(merch.id)">
                 Delete Me!
               </button>
             </span>
@@ -456,7 +448,9 @@
       </div>
     </div>
   </div>
-  <!-------------------------cartoons------------------------------->
+
+  <!-------------------------cartoons card------------------------------->
+
   <div class="column">
     <img src="assets/cartoonADDS.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
@@ -465,15 +459,14 @@
           *ngFor="let toon of userToons"
           class="card"
           style="width: 18rem"
-          style="center: center"
-        >
-        <div class="image-wrapper">
-          <img
-            class="card-img-top"
-            src="{{ toon.image }}"
-            alt="Card image cap"
-          /><img />
-        </div>
+          style="center: center">
+          <div class="image-wrapper">
+            <img
+              class="card-img-top"
+              src="{{ toon.image }}"
+              alt="Card image cap"/>
+              <img/>
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{ toon.name }}</h5>
             <p class="card-text">{{ toon.description }}</p>
@@ -482,8 +475,7 @@
                 class="button"
                 data-bs-toggle="offcanvas"
                 (click)="setEdit(toon); openCartoon(cartoonModal)"
-                >Update Cartoon!</a
-              >
+                >Update Cartoon!</a>
               <button class="btn btn-danger" (click)="deleteToon(toon.id)">
                 Delete Me!
               </button>
@@ -494,13 +486,21 @@
     </div>
   </div>
 </div>
-<!--------------------------------------------------------------------------------------------------------->
+
 <!-----------------------------------------user comments--------------------------------------------------->
+
 <div *ngIf="loggedIn">
-    <table>
-      <tr *ngFor="let i of userComments">
-        <td>{{i.comment}} </td>
-        <td><button class="btn btn-danger"(click)="deleteComment(i)"[routerLink]="['/account']">Delete!</button></td>
-      </tr>
-      </table>
+  <table>
+    <tr *ngFor="let i of userComments">
+      <td>{{ i.comment }}</td>
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="deleteComment(i)"
+          [routerLink]="['/account']">
+          Delete!
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>

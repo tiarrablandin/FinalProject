@@ -8,11 +8,11 @@ import com.skilldistillery.toonthrowback.entities.Media;
 
 public interface MediaRepository extends JpaRepository<Media, Integer> {
 
-	Media getUserById(int userId);
+	Media getUserByIdAndActiveTrue(int userId);
 	
-	List<Media> findByUserId(int id);
+	List<Media> findByUserIdAndActiveTrue(int id);
 	
-	List<Media> findByCartoonId(int id);
+	List<Media> findByCartoonIdAndActiveTrue(int id);
 	
-	List <Media> findByIdAndCartoonId(int id , int cid);
+	List <Media> findByIdAndCartoonIdAndActiveTrue(int id , int cid);
 }

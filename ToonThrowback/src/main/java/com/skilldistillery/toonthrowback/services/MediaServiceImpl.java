@@ -58,14 +58,13 @@ public class MediaServiceImpl implements MediaService {
 		if(mediaOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Media mediaOld = mediaOp.get();
-			if (mediaOld.getId() == id && user != null && mediaOld.getUser().equals(user)) {
+			if (mediaOld.getId() == id && user != null && (mediaOld.getUser().equals(user) || user.getRole().equals("admin"))) {
 				mediaOld.setImage(media.getImage());
 				mediaOld.setTitle(media.getTitle());
 				mediaOld.setDescription(media.getDescription());
 				mediaOld.setUrl(media.getUrl());
 				mediaOld.setSeason(media.getSeason());
 				mediaOld.setEpisodeNum(media.getEpisodeNum());
-				mediaOld.setActive(media.isActive());
 				mediaRepo.save(mediaOld);
 				return mediaOld;
 			}
@@ -79,10 +78,11 @@ public class MediaServiceImpl implements MediaService {
 		if(mediaOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Media media = mediaOp.get();
-			if(media.getId() == id && user != null && media.getUser().equals(user)) {
+			if(media.getId() == id && user != null && (media.getUser().equals(user) || user.getRole().equals("admin"))) {
 				try {
 					if (media.isActive()) {
-						media.setActive(media.isActive());
+						media.setActive(false);
+						mediaRepo.save(media);
 					}
 					return true;
 				} catch (Exception e) {
@@ -95,13 +95,13 @@ public class MediaServiceImpl implements MediaService {
 
 	@Override
 	public List<Media> toonMedia(int cid) {
-		return mediaRepo.findByCartoonId(cid);
+		return mediaRepo.findByCartoonIdAndActiveTrue(cid);
 	}
 
 	@Override
 	public List<Media> findByUser_id(int id) {
 		if(userRepo.existsById(id)) {
-			return mediaRepo.findByUserId(id);
+			return mediaRepo.findByUserIdAndActiveTrue(id);
 		}
 		return null;
 	}

@@ -76,7 +76,7 @@ public class CommentServiceImpl implements CommentService {
 		if (commentOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Comment commentOld = commentOp.get();
-			if (commentOld.getId() == id && user != null && commentOld.getUser().equals(user)) {
+			if (commentOld.getId() == id && user != null && (commentOld.getUser().equals(user) || user.getRole().equals("admin"))) {
 				commentOld.setComment(comment.getComment());
 				commentOld.setActive(comment.isActive());
 				commentRepo.save(commentOld);

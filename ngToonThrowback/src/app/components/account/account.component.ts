@@ -217,6 +217,13 @@ delete(id: number) {
     }
   );
   }
+
+  setEditMedia(media : Media) {
+    console.log(this.editMedia);
+    this.editMedia = media;
+
+  }
+
   updateMedia(updatedMedia: Media) {
     this.mediaService.update(updatedMedia).subscribe(
       {

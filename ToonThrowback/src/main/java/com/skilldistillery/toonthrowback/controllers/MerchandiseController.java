@@ -87,7 +87,7 @@ public class MerchandiseController {
 		return updated;
 	}
 	
-	@DeleteMapping("{cid}/merch/{id}")
+	@DeleteMapping("merch/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
 		boolean deleted = merchandiseService.destroy(id, principal.getName());
 		if(deleted) {
