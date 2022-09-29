@@ -1,18 +1,18 @@
 # Final Project
 
-- [Toon Throwback](#finalproject)
+- [Toon Throwback](#final-project)
   - [Description](#description)
   - [Technologies](#technologies)
   - [Concepts](#concepts)
-  - [Rest Endpoints](#rest_endpoints_auth)
-  - [Rest Endpoints](#rest_endpoints_cartoon)
-  - [Rest Endpoints](#rest_endpoints_comment)
-  - [Rest Endpoints](#rest_endpoints_fact)
-  - [Rest Endpoints](#rest_endpoints_media)
-  - [Rest Endpoints](#rest_endpoints_merchandise)
-  - [Rest Endpoints](#rest_endpoints_trivia)
-  - [Rest Endpoints](#rest_endpoints_user)
-  - [Lessons Learned](#lessons_learned)
+  - [Auth Rest Endpoints](#rest-endpoints-auth)
+  - [Cartoon Rest Endpoints](#rest-endpoints-cartoon)
+  - [Comment Rest Endpoints](#rest-endpoints-comment)
+  - [Fact Rest Endpoints](#rest-endpoints-fact)
+  - [Media Rest Endpoints](#rest-endpoints-media)
+  - [Merchandise Rest Endpoints](#rest-endpoints-merchandise)
+  - [Trivia Rest Endpoints](#rest-endpoints-trivia)
+  - [User Rest Endpoints](#rest-endpoints-user)
+  - [Lessons Learned](#lessons-learned)
 
 
 
@@ -28,7 +28,7 @@ This is a full stack group project that implements full CRUD for a user and thei
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -59,7 +59,7 @@ This is a full stack group project that implements full CRUD for a user and thei
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -78,7 +78,7 @@ This is a full stack group project that implements full CRUD for a user and thei
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -93,7 +93,7 @@ Postman routes for Auth:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -117,7 +117,7 @@ Postman routes for Cartoon:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -136,7 +136,7 @@ Postman routes for Comment:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -154,7 +154,7 @@ Postman routes for Fact:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -174,7 +174,7 @@ Postman routes for Media:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -194,7 +194,7 @@ Postman routes for Merchandise:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -212,7 +212,7 @@ Postman routes for Trivia:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -231,7 +231,7 @@ Postman routes for User:
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
 
 
 
@@ -240,4 +240,4 @@ Ryan: This project was my first role as DBA; it was a intimidating to take on a 
 
 
 
-- [Back to Top](#finalproject)
+- [Back to Top](#final-project)
