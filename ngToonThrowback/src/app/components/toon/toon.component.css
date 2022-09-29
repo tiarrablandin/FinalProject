@@ -14,10 +14,10 @@ td{
   color: black;
 }
 
-img{
+/* img{
   height: 200px;
   width: 300px;
-}
+} */
 
 #title{
   background-color: white;
@@ -141,17 +141,24 @@ img{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+
 #toonCard {
   border-radius: 20px;
   display: inline-block;
   /* width: calc(100%/3); */
   width:300px;
-  height: 400px;
-  perspective: 700px;
+  height: 300px;
   align-items: center;
-}
-.card-body1{
+  height: 300px;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 7px #999;
 
+}
+
+
+.card-body1{
   padding-top: 2%;
   text-align: center;
   color: lightskyblue;
@@ -176,6 +183,7 @@ img{
 .image-wrapper img{
   max-width: 100%;
   max-height: 100%;
+  border-radius: 20px;
 }
 @media screen and (max-width: 567px) {
   .card-body1:not(:first-child) {

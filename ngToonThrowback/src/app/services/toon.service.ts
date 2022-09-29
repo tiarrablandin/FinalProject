@@ -10,6 +10,7 @@ import { Media } from '../models/media';
 import { Merch } from '../models/merch';
 import { Network } from '../models/network';
 import { Rating } from '../models/rating';
+import { Fact } from '../models/fact';
 
 @Injectable({
   providedIn: 'root',
@@ -113,6 +114,19 @@ export class ToonService {
       })
     );
   }
+  // listFacts(cid : number) {
+  //   return this.http.get<Fact[]>(environment.baseUrl + `api/cartoons/${cid}/fact`).pipe(
+  //     catchError((err: any) => {
+  //       console.log(err);
+  //       return throwError(
+  //         () =>
+  //           new Error(
+  //             'FactService.index(): error retrieving Fact List: ' + err
+  //           )
+  //       );
+  //     })
+  //   );
+  // }
 
 
   // listComments() {

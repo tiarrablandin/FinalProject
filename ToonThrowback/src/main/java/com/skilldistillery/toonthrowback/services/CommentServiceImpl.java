@@ -49,6 +49,7 @@ public class CommentServiceImpl implements CommentService {
 		Optional<Cartoon> toonOpt = toonRepo.findById(cid);
 		User user = userRepo.findByUsername(username);
 		if (toonOpt.isPresent() && user != null) {
+			comment.setActive(true);
 			comment.setUser(user);
 			comment.setCartoon(toonOpt.get());
 			return commentRepo.saveAndFlush(comment);

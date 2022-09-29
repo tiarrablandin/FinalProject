@@ -14,6 +14,7 @@ import { ConditionalExpr } from '@angular/compiler';
 import { Network } from 'src/app/models/network';
 import { Rating } from 'src/app/models/rating';
 import { Comment } from './../../models/comment';
+import { Fact } from 'src/app/models/fact';
 
 @Component({
   selector: 'app-toon',
@@ -41,6 +42,7 @@ export class ToonComponent implements OnInit {
   closeResult: string = '';
   selectedComment: Comment | null = null;
   loggedIn: User = new User();
+  facts: Fact[] = [];
 
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   totalCards: number = this.arr.length;
@@ -182,6 +184,7 @@ export class ToonComponent implements OnInit {
       this.loadSelectedToonMedia(toon.id);
       this.loadSelectedToonMerch(toon.id);
       this.loadComments();
+    //  this.loadFact();
 
     }
     console.log(this.selected);
@@ -252,6 +255,21 @@ export class ToonComponent implements OnInit {
       }
     )
   }
+  // loadFact() {
+  //   if(this.selected)
+  //   this.toonService.listFacts(this.selected.id).subscribe(
+  //     {
+  //       next: (data: any) => {
+  //         console.log(data);
+  //         this.facts = data
+  //       },
+  //       error: (err) => {
+  //         console.error('FactListComponent.reload(): error loading fact:');
+  //         console.error(err);
+  //       }
+  //     }
+  //   )
+  // }
 
   addMedia() {
     if(this.selected){
@@ -354,6 +372,7 @@ this.router.navigateByUrl("/home");
         }
       );
   }
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

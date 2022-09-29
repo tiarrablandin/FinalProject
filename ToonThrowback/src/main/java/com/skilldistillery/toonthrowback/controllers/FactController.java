@@ -22,7 +22,7 @@ import com.skilldistillery.toonthrowback.services.FactService;
 
 @RestController
 @RequestMapping(path="api/{cid}")
-@CrossOrigin({"*", "http://localhost:4300"})
+@CrossOrigin({"*", "http://localhost"})
 public class FactController {
 	
 	@Autowired
