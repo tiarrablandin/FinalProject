@@ -43,7 +43,7 @@ export class MediaService {
   }
 
   update(media: Media) {
-    return this.http.put<Media>(this.url + '/' + media.id, media).pipe(
+    return this.http.put<Media>(this.url + '/' + media.id, media, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -54,7 +54,7 @@ export class MediaService {
   }
 
   destroy(id: number) {
-    return this.http.delete<Media>(this.url + '/' + id).pipe(
+    return this.http.delete<Media>(this.url + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

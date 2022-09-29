@@ -6,6 +6,7 @@
 	<class>com.skilldistillery.toonthrowback.entities.User</class>
 	<class>com.skilldistillery.toonthrowback.entities.Cartoon</class>
 	<class>com.skilldistillery.toonthrowback.entities.Comment</class>
+	<class>com.skilldistillery.toonthrowback.entities.Creator</class>
 	<class>com.skilldistillery.toonthrowback.entities.Fact</class>
 	<class>com.skilldistillery.toonthrowback.entities.Media</class>
 	<class>com.skilldistillery.toonthrowback.entities.Merchandise</class>

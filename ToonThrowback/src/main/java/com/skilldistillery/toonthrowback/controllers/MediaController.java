@@ -62,8 +62,8 @@ public class MediaController {
 		return created;
 	}
 	
-	@PutMapping("{cid}/media/{id}")
-	public Media update(@PathVariable int cid, HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Media media, Principal principal) { 
+	@PutMapping("media/{id}")
+	public Media update( HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Media media, Principal principal) { 
 		Media updated = null;
 		try {
 			updated = mediaService.update(id, media, principal.getName());
@@ -74,7 +74,7 @@ public class MediaController {
 		return updated;
 	}
 	
-	@DeleteMapping("{cid}/medias/{id}")
+	@DeleteMapping("media/{id}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, Principal principal) {
 		boolean deleted = mediaService.destroy(id, principal.getName());
 		if(deleted) {

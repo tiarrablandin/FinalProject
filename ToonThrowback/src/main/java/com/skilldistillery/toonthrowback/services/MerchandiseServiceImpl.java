@@ -32,7 +32,7 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 	
 	@Override
 	public List<Merchandise> index(int cid) {
-		return merchandiseRepo.findByCartoonId(cid);
+		return merchandiseRepo.findByCartoonIdAndActiveTrue(cid);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 	@Override
 	public List<Merchandise> findByUser_id(int id) {
 		if ( userRepo.existsById(id)) {
-			return merchandiseRepo.findByUser_id(id);
+			return merchandiseRepo.findByUser_idAndActiveTrue(id);
 		}
 		return null;
 	}
@@ -70,11 +70,11 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 		if (merchandiseOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Merchandise merchandiseOld = merchandiseOp.get();
-			if (merchandiseOld.getId() == id && user != null && merchandiseOld.getUser().equals(user)) {
+			if (merchandiseOld.getId() == id && user != null && (merchandiseOld.getUser().equals(user) || user.getRole().equals("admin"))) {
 				merchandiseOld.setImage(merchandise.getImage());
 				merchandiseOld.setUrl(merchandise.getUrl());
-				merchandiseOld.setActive(merchandise.isActive());
 				merchandiseOld.setCartoon(merchandise.getCartoon());
+				merchandiseOld.setDescription(merchandise.getDescription());
 				merchandiseRepo.save(merchandiseOld);
 				return merchandiseOld;
 			}
@@ -88,10 +88,11 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 		if (merchandiseOp.isPresent() ) {
 			User user = userRepo.findByUsername(username);
 			Merchandise merchandise = merchandiseOp.get();
-			if (merchandise.getId() == id && user != null && merchandise.getUser().equals(user)) {
+			if (merchandise.getId() == id && user != null && (merchandise.getUser().equals(user) || user.getRole().equals("admin"))) {
 				try {
 					if (merchandise.isActive()) {
-						merchandise.setActive(merchandise.isActive());
+						merchandise.setActive(false);
+						merchandiseRepo.save(merchandise);
 					}
 					return true;
 				} catch (Exception e) {
@@ -104,6 +105,6 @@ public class MerchandiseServiceImpl implements MerchandiseService {
 	
 	@Override
 	public List<Merchandise> toonMerch(int cid) {
-		return merchandiseRepo.findByCartoonId(cid);
+		return merchandiseRepo.findByCartoonIdAndActiveTrue(cid);
 	}
 }
