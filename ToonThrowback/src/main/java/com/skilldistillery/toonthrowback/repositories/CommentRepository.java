@@ -8,12 +8,12 @@ import com.skilldistillery.toonthrowback.entities.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
-	Comment getUserById(int userId);
+	Comment getUserByIdAndActiveTrue(int userId);
 	
-	List<Comment> findByUserId(int id);
+	List<Comment> findByUserIdAndActiveTrue(int id);
 	
-	List<Comment> findByCartoonId(int id);
+	List<Comment> findByCartoonIdAndActiveTrue(int id);
 	
-	List<Comment> findByIdAndCartoonId(int id, int cid);
+	List<Comment> findByIdAndCartoonIdAndActiveTrue(int id, int cid);
 	
 }

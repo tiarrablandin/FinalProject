@@ -15,6 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -39,7 +40,7 @@ public class Trivia {
 	@Column(name="updated_date")
 	private LocalDateTime updatedDate;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"trivias"})
 	@ManyToOne
 	@JoinColumn(name="cartoon_id")
 	private Cartoon cartoon;

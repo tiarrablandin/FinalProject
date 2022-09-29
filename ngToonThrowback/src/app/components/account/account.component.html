@@ -380,6 +380,7 @@
         (click)="editUser = loggedIn; open(accountModal)"
         >Update User!</a
       >
+      <button class="btn btn-danger"(click)="delete(loggedIn.id)"[routerLink]="['/home']">Delete!</button>
     </span>
     <br />
     <!----------------------------------media----------------------------------->
@@ -438,7 +439,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ merch.createdDate }}</h5>
-            <p class="card-text">{{ merch.updatedDate }}</p>
+            <p class="card-text">{{ merch.description }}</p>
             <span class="">
               <a
                 class="button"
@@ -493,17 +494,13 @@
     </div>
   </div>
 </div>
-<button
-  class="btn btn-danger"
-  (click)="delete(loggedIn.id)"
-  [routerLink]="['/home']"
->
-  Delete Me!
-</button>
 <!--------------------------------------------------------------------------------------------------------->
 <!-----------------------------------------user comments--------------------------------------------------->
 <div *ngIf="loggedIn">
-  <div *ngFor="let i of userComments">
-    <p>{{i.comment}} </p>
-  </div>
+    <table>
+      <tr *ngFor="let i of userComments">
+        <td>{{i.comment}} </td>
+        <td><button class="btn btn-danger"(click)="deleteComment(i)"[routerLink]="['/account']">Delete!</button></td>
+      </tr>
+      </table>
 </div>

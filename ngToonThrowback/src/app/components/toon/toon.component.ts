@@ -219,18 +219,6 @@ export class ToonComponent implements OnInit {
     });
   }
 
-  deleteComment(id: number) {
-    this.commentService.destroy(id).subscribe({
-      next: () => {
-        this.reload();
-
-      },
-      error: (err) => {
-        console.error('CommentListComponent.deleteComment(): error deleting Comment:');
-        console.error(err);
-      },
-    });
-  }
   updateComment() {
     console.log(this.editComment);
 

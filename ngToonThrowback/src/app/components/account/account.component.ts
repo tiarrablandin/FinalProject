@@ -328,8 +328,11 @@ delete(id: number) {
         },
       });
     }
-    deleteComment(id: number) {
-      this.commentService.destroy(id).subscribe({
+
+    deleteComment(comment: Comment) {
+      console.log(comment);
+
+      this.commentService.destroy(comment).subscribe({
         next: () => {
           this.reload();
 
@@ -340,6 +343,7 @@ delete(id: number) {
         },
       });
     }
+
     updateComment() {
       console.log(this.editComment);
 

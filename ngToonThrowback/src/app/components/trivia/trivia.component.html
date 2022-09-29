@@ -5,7 +5,7 @@
 <div class="cards-wrapper">
   <div class="card mb-3 mx-3" *ngFor="let trivia of trivias" id="triviaCard">
     <div class="card-body1">
-      <h5 class="card-title" *ngIf="trivia.cartoon">{{ trivia.cartoon.name }}</h5>
+      <h5 class="card-title" *ngIf="trivia.cartoon">{{ trivia.cartoon.name }} Trivia</h5>
       <p class="question">
         Question: {{ trivia.question }}
       </p>

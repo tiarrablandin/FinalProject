@@ -19,11 +19,11 @@ export class User {
   updatedDate: string = "";
   cartoon: Toon = new Toon();
   favCartoons: Toon = new Toon();
-  media: Media = new Media();
-  comment: Comment = new Comment();
-  facts: Fact = new Fact();
-  // merch: Merch = new Merch();
-  trivia: Trivia = new Trivia();
+  // media: Media = new Media();
+  //comment: Comment = new Comment();
+  // facts: Fact = new Fact();
+  //merch: Merch = new Merch();
+  // trivia: Trivia = new Trivia();
 
   constructor(id: number = 0,
     image: string = "",
@@ -38,12 +38,12 @@ export class User {
     createdDate: string = "",
     updatedDate: string = "",
     cartoon: Toon = new Toon(),
-    favCartoons: Toon = new Toon(),
-    media: Media = new Media(),
-    comment: Comment = new Comment(),
-    facts: Fact = new Fact(),
+    favCartoons: Toon = new Toon())
+    // media: Media = new Media(),
+    // comment: Comment = new Comment(),
+    // facts: Fact = new Fact(),
     // merch: Merch = new Merch(),
-    trivia: Trivia = new Trivia())
+    // trivia: Trivia = new Trivia())
   {
     this.id = id;
     this.email = email;
@@ -58,10 +58,10 @@ export class User {
     this.updatedDate = updatedDate;
     this.cartoon = cartoon;
     this.favCartoons = favCartoons;
-    this.media = media;
-    this.comment = comment;
-    this.facts = facts;
+    // this.media = media;
+    // this.comment = comment;
+    // this.facts = facts;
     // this.merch = merch;
-    this.trivia = trivia;
+    // this.trivia = trivia;
   }
 }

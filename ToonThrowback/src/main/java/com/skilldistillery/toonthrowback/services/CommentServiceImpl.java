@@ -27,11 +27,11 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<Comment> index(int cid) {
-		return commentRepo.findByCartoonId(cid);
+		return commentRepo.findByCartoonIdAndActiveTrue(cid);
 	}
 	@Override
 	public List<Comment> indexUser(int id) {
-		return commentRepo.findByUserId(id);
+		return commentRepo.findByUserIdAndActiveTrue(id);
 	}
 
 	@Override
@@ -88,13 +88,14 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public boolean destroy(int id, String username) {
 		Optional<Comment> commentOp = commentRepo.findById(id);
-		if (commentOp.isPresent() ) {
+		if (commentOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
-			Comment comment = commentOp.get();
-			if (comment.getId() == id && user != null && comment.getUser().equals(user)) {
+			Comment comment = commentOp.get() ;
+			if (comment.getId() == id && user != null && (comment.getUser().equals(user) || user.getRole().equals("admin"))) {
 				try {
 					if (comment.isActive()) {
-						comment.setActive(comment.isActive());
+						comment.setActive(false);
+						commentRepo.save(comment);
 					}
 					return true;
 				} catch (Exception e) {
