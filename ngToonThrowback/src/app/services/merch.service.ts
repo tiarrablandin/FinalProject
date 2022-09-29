@@ -77,7 +77,7 @@ export class MerchService {
   }
 
   destroy(id: number) {
-    return this.http.delete<void>(this.url + '/' + id, this.getHttpOptions()).pipe(
+    return this.http.delete<void>(this.url  + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
