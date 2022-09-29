@@ -89,6 +89,14 @@ public class Merchandise {
 		this.active = active;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}

@@ -4,6 +4,14 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 	<class>com.skilldistillery.toonthrowback.entities.User</class>
+	<class>com.skilldistillery.toonthrowback.entities.Cartoon</class>
+	<class>com.skilldistillery.toonthrowback.entities.Comment</class>
+	<class>com.skilldistillery.toonthrowback.entities.Fact</class>
+	<class>com.skilldistillery.toonthrowback.entities.Media</class>
+	<class>com.skilldistillery.toonthrowback.entities.Merchandise</class>
+	<class>com.skilldistillery.toonthrowback.entities.Network</class>
+	<class>com.skilldistillery.toonthrowback.entities.Rating</class>
+	<class>com.skilldistillery.toonthrowback.entities.Trivia</class>
 
 	<properties>
 	   <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/toonthrowbackdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />

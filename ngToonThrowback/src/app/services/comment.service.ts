@@ -52,8 +52,8 @@ export class CommentService {
     );
   }
 
-  destroy(id: number) {
-    return this.http.delete<Comment>(this.url + '/' + id).pipe(
+  destroy(comment: Comment) {
+    return this.http.delete<Comment>(environment.baseUrl + "api/cartoons/" + comment.id + "/comments/" +  comment.id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
