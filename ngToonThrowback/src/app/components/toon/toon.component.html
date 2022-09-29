@@ -1,8 +1,39 @@
-<div *ngIf="loggedInUser && !selected" id="addToon" class="">
-  <button class="btn btn-primary mb-3" (click)="open(addToonModal); addToon">Add Cartoon</button>
-</div>
 
-<div *ngIf="!selected">
+<!-----------------------add cartoon button--------------------------------------------->
+<div *ngIf="loggedInUser && !selected" id="addToon" class="">
+  <button class="button" (click)="open(addToonModal); addToon">Add Cartoon</button>
+</div>
+<!--------------------------------------------------------------------------------------->
+<!--------------------------cartoon tile------------------------------------------------->
+<div class="cards-wrapper">
+  <div *ngIf="!selected">
+  <div class="card mb-3 mx-3" *ngFor="let toon of toons" id="toonCard">
+    <div class="image-wrapper" >
+      <img  (click)="displayToon(toon)"
+        class="card-img-top"
+        src="{{ toon.image }}"
+        alt="Card image cap"
+      /><img />
+    </div>
+    <div class="card-body1">
+      <h5 class="card-title">{{ toon.name }}</h5>
+      <p class="network">
+        Network: {{ toon.network.name }}
+      </p>
+      <!-- <br />
+      <a
+        class="button"
+        href="{{toon.}}"
+        target="_blank"
+        id="watch"
+        >Watch a Toon</a> -->
+    </div>
+  </div>
+  </div>
+
+</div>
+<!--------------------------------------------------------------------------------------->
+<!-- <div *ngIf="!selected">
   <table class="table table-hover">
     <thead class="table-light">
       <tr>
@@ -32,10 +63,10 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
 
 <!-- <table> -->
-<!-- <tbody> -->
+<!---------------------------------- individual cartoon page ------------------------------------------------------------>
 <div class="justify-content-center" *ngIf="selected">
   <h1 id="title">{{ selected.name }}</h1>
   <div class="single">
@@ -70,13 +101,13 @@
     </div>
   </div>
 </div><br>
-<!-- </tbody> -->
-<!-- </table> -->
+<!-----------------------------------------media card slider individual page-------------------------------------------------------->
+
 
 <div class="container" #container>
-	<div class="left" *ngIf="totalPages > 1 && selected" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+  <div class="left" *ngIf="totalPages > 1 && selected" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
 	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
-		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
+    <div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
       <div class="card" *ngFor="let media of toonMedia; let index = index" [ngStyle]="{'width': cardWidth}">
         <a href={{media.url}}>
           <img src="{{media.image}}" style="height: 75%; width: 75% !important"><br>
@@ -88,32 +119,36 @@
 	</div>
 	<div class="right" *ngIf="totalPages > 1 && selected" (click)="currentPage != totalPages && changePage(+1)"
 		[ngClass]="{'disabled':currentPage === totalPages}"></div>
-</div><br>
+  </div><br>
+  <!------------------------------------------------------------------------------------------------------------------------>
+  <!-----------------------------------merch card slider individual page----------------------------------------------------->
 
-<div class="container" #container>
-	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
-	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
-		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
-			<div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
-				<a href={{merch.url}}>
-          <img src="{{merch.image}}" style="height: 75%; width: 75% !important"><br>
-          <h5>{{merch.description}}</h5>
-          <!-- <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> --> -->
-        </a>
-			</div>
-		</div>
-	</div>
+  <div class="container" #container>
+    <div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+    <div class="cards" [ngClass]="{'w-100': totalPages === 1}">
+      <div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
+        <div class="card" *ngFor="let merch of toonMerch; let index = index" [ngStyle]="{'width': cardWidth}">
+          <a href={{merch.url}}>
+            <img src="{{merch.image}}" style="height: 75%; width: 75% !important"><br>
+            <h5>{{merch.description}}</h5>
+            <!-- <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> --> -->
+          </a>
+        </div>
+      </div>
+    </div>
 
-	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
-		[ngClass]="{'disabled':currentPage === totalPages}"></div>
-</div>
+    <div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+      [ngClass]="{'disabled':currentPage === totalPages}"></div>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <!---------------------------------------------update cartoon modal------------------------------------------------------------->
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Update Cartoon</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Cartoon</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
     <form>
       <div class="mb-3">
         <div class="input-group">
@@ -138,6 +173,8 @@
     <button class=" dropfown-item btn btn-outline-primary" (click)="updateToon(); modal.dismiss('Cross click')">Update</button>
   </div>
 </ng-template>
+<!------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------add media modal individual profile-------------------------------------------------------------------->
 
 <ng-template #mediaModal let-modal>
   <div class="modal-header">
@@ -167,6 +204,8 @@
     <button class=" dropfown-item btn btn-outline-primary" (click)="addMedia(); modal.dismiss('Cross click')">Add</button>
   </div>
 </ng-template>
+<!------------------------------------------------------------------------------------------------------------------------>
+<!-------------------------------------------------------add merch modal individual page----------------------------------------------------------------->
 
 <ng-template #merchModal let-modal>
   <div class="modal-header">
@@ -180,6 +219,7 @@
           <form *ngIf="newMerch">
             Image: <input type="text" id="image" name="image" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.image"><br>
             URL: <input type="text" id="url" name="url" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.url"><br>
+            Description: <input type="text" id="description" name="description" class="form-control" style="width: 300px;" [(ngModel)]="newMerch.description"><br>
             <label class="form-check-label" for="dropdownCheck">Active</label><br><br>
             <input type="checkbox" name="active" class="form-check-input" id="dropdownCheck" [(ngModel)]="newMerch.active">
           </form><br><br>
@@ -189,9 +229,10 @@
   </div>
   <div class="dropdown-divider"></div>
   <div class="modal-footer">
-    <button class=" dropfown-item btn btn-outline-primary" (click)="addMerch(); modal.dismiss('Cross click')">Update</button>
+    <button class=" dropfown-item btn btn-outline-primary" (click)="addMerch(); modal.dismiss('Cross click')">Add Merchandise!</button>
   </div>
 </ng-template>
+<!------------------------------------------------------------------------------------------------------------------------>
 
 <ng-template #addToonModal let-modal>
   <div class="modal-header">
