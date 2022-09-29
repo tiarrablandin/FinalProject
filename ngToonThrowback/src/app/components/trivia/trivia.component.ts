@@ -2,6 +2,7 @@ import { Trivia } from './../../models/trivia';
 import { TriviaService } from './../../services/trivia.service';
 import { Component, OnInit } from '@angular/core';
 import { popper } from '@popperjs/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-trivia',
@@ -20,7 +21,10 @@ export class TriviaComponent implements OnInit {
 
   trivias: Trivia[] = [];
 
-  constructor(private triviaService: TriviaService) { }
+  closeResult: string = '';
+
+  constructor(private triviaService: TriviaService,
+    private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -107,6 +111,34 @@ this.triviaService.destroy(id).subscribe(
     }
   }
 );
+}
+
+
+open(content: any ) {
+  this.modalService
+    .open(content, { ariaLabelledBy: 'modal-basic-title' })
+    .result.then(
+      (result: any) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason: any) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+}
+
+
+
+
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
 }
 }
 

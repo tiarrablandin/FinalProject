@@ -1,4 +1,73 @@
-<p>trivia works!</p>
 
 
-<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<ng-template #triviaAnswer let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="selected">Answer: {{selected.answer}}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <!-- trivia.answer -->
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-outline-primary"
+      (click)="modal.dismiss('Cross click')"
+    >
+
+    </button>
+  </div>
+</ng-template>
+
+<div class="cards-wrapper">
+  <div class="card mb-3 mx-3" *ngFor="let trivia of trivias" id="triviaCard">
+    <div class="card-body1">
+      <h5 class="card-title" *ngIf="trivia.cartoon">{{ trivia.cartoon.name }}</h5>
+      <p class="question">
+        Question: {{ trivia.question }}
+      </p>
+      <br />
+      <a
+        class="button"
+        (click)="open(triviaAnswer); selected=trivia;"
+        target="_blank"
+        id="watch"
+        >Click for Answer</a
+      >
+    </div>
+  </div>
+</div>
+
+<br />
+
+<ng-template #triviaAnswer let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="selected">Answer: {{selected.answer}}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <!-- <div class="modal-body">
+    <p>
+      trivia.answer
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-outline-primary"
+      (click)="modal.dismiss('Cross click')"
+    >
+
+    </button>
+  </div> -->
+</ng-template>
+

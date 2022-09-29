@@ -21,16 +21,16 @@ import com.skilldistillery.toonthrowback.entities.Trivia;
 import com.skilldistillery.toonthrowback.services.TriviaService;
 
 @RestController
-@RequestMapping(path="api/{cid}")
-@CrossOrigin({"*", "http://localhost:4300"})
+@RequestMapping(path="api")
+@CrossOrigin({"*", "http://localhost"})
 public class TriviaController {
 	
 	@Autowired
 	private TriviaService triviaService;
 	
 	@GetMapping("trivia")
-	public List<Trivia> index(@PathVariable int cid) {
-		return triviaService.index(cid);
+	public List<Trivia> index() {
+		return triviaService.index();
 	}
 	
 	@GetMapping("trivia/{id}")

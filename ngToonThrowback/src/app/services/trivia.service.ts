@@ -17,7 +17,7 @@ export class TriviaService {
     private auth: AuthService) { }
 
   index() {
-    return this.http.get<Trivia[]>(this.url).pipe(
+    return this.http.get<Trivia[]>(environment.baseUrl + "api/trivia").pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

@@ -6,7 +6,7 @@ import com.skilldistillery.toonthrowback.entities.Trivia;
 
 public interface TriviaService {
 	
-	 public List<Trivia> index(int cid);
+	 public List<Trivia> index();
 
 	 public Trivia show( int id, int cid);
 

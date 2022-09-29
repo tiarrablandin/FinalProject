@@ -21,13 +21,13 @@ public class TriviaServiceImpl implements TriviaService {
 
 	@Autowired
 	private TriviaRepository triviaRepo;
-	
+
 	@Autowired
 	private UserRepository userRepo;
 
 	@Override
-	public List<Trivia> index(int cid) {
-		return triviaRepo.findByCartoonId(cid);
+	public List<Trivia> index() {
+		return triviaRepo.findAll();
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class TriviaServiceImpl implements TriviaService {
 	@Override
 	public boolean destroy(int id, String username) {
 		Optional<Trivia> triviaOp = triviaRepo.findById(id);
-		if (triviaOp.isPresent() ) {
+		if (triviaOp.isPresent()) {
 			User user = userRepo.findByUsername(username);
 			Trivia trivia = triviaOp.get();
 			if (trivia.getId() == id && user != null && trivia.getUser().equals(user)) {
@@ -90,5 +90,5 @@ public class TriviaServiceImpl implements TriviaService {
 		}
 		return false;
 	}
-	
+
 }
