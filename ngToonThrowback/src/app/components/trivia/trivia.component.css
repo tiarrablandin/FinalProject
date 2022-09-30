@@ -2,7 +2,7 @@
   border-radius: 20px;
   display: inline-block;
   width: calc(100%/3);
-  height: 400px;
+  height: 210px;
   perspective: 700px;
   align-items: center;
 }

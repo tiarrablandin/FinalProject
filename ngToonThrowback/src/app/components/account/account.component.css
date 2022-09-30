@@ -18,7 +18,7 @@
   margin: 100px auto 0;
   display: inline-block;
   width: 1320px;
-  height: 400px;
+  height: 200px;
   perspective: 700px;
   align-items: center;
   border-radius: 20px;
@@ -73,8 +73,8 @@ tbody{
 }
 .card-img-topUser {
   padding: 1px;
-  height: 385px;
-  width: 280px;
+  height: 196px;
+  width: 150px;
   border-radius: 20px;
 }
 
@@ -167,16 +167,15 @@ margin-top: auto;
   transform: translateY(4px);
 }
 #userName{
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
-  padding: 20px;
 }
 #userBio{
-  font-size: 30px;
+  font-size: 15px;
     color: lightgreen;
 }
 #userNames{
-  font-size: 40px;
+  font-size: 30px;
   color: pink;
   text-align: center;
 }

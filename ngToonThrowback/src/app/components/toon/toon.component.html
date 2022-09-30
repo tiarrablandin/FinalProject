@@ -69,7 +69,30 @@
     </tbody>
   </table>
 </div> -->
+<div class="container-fluid d-flex justify-content-center" *ngIf="selected">
+  <div class="card" style="width: 18rem">
+    <img
+        class="card-img-top"
+        src="{{ selected.image }}"
+        alt="Card image cap"
+      />
+    <div class="card-body1">
+      <h5 class="card-title">{{selected.name}}</h5>
+      <p id="description">Description: {{ selected.description }}</p>
+      Rating:
+      <p>{{ selected.rating.rating }}</p>
+      First Aired:
+      <p>{{ selected.airingDate | date: "shortDate" }}</p>
+      Show Finale:
+      <p>{{ selected.finaleDate | date: "shortDate" }}</p>
+      Creator:
+      <p>{{ selected.creator.name }}</p>
+      Network:
+      <p>{{ selected.network.name }}</p>
 
+    </div>
+  </div>
+</div>
 <!-- <table> -->
 <div class="justify-content-center" *ngIf="selected">
   <h1 id="title">{{ selected.name }}</h1>
@@ -168,7 +191,7 @@
         <br />
         <marquee>{{ media.title }}</marquee>
         <a class="button" href="{{ media.url }}" target="_blank" id="watch"
-          >Watch a Toon</a
+          >Watch Toon</a
         >
 
         <!-- <a href="{{ media.url }}"> -->
