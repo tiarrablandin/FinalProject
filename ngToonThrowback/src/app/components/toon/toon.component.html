@@ -4,6 +4,14 @@
   </button>
 </div>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <div class="cards-wrapper">
   <div *ngIf="!selected">
     <div class="cardToons mb-3 mx-3" *ngFor="let toon of toons" id="toonCard">
@@ -136,7 +144,6 @@
     </div>
   </div>
 </div>
-<br />
 
 <div class="container" #container>
   <div
@@ -155,15 +162,19 @@
         *ngFor="let media of toonMedia; let index = index"
         [ngStyle]="{ width: cardWidth }"
       >
-        <a href="{{ media.url }}">
-          <img
-            src="{{ media.image }}"
-            style="height: 75%; width: 75% !important"
-          /><br />
-          <h5>{{ media.title }}</h5>
-          <!-- <button class="btn btn-outline-primary" (click)="deleteMedia(selected.id)" [routerLink]="['/home']">Delete</button> -->
-          -->
-        </a>
+        <div class="image-wrapper2">
+          <img style=" width: 100% !important; z-index: 100;" src="{{ media.image }}" />
+        </div>
+        <br />
+        <marquee>{{ media.title }}</marquee>
+        <a class="button" href="{{ media.url }}" target="_blank" id="watch"
+          >Watch a Toon</a
+        >
+
+        <!-- <a href="{{ media.url }}"> -->
+        <!-- <button class="btn btn-outline-primary" (click)="deleteMedia(selected.id)" [routerLink]="['/home']">Delete</button> -->
+
+        <!-- </a> -->
       </div>
     </div>
   </div>

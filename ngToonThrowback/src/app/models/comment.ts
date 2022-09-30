@@ -7,7 +7,7 @@ export class Comment {
   active: boolean = false;
   createdDate: string = "";
   updatedDate: string = "";
-  // user: User = new User();
+  //user: User = new User();
   cartoon: Toon = new Toon();
   // parentComment: Comment = new Comment();
   // replies: Comment = new Comment();
@@ -28,8 +28,8 @@ export class Comment {
     this.active = active;
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
-    // this.user = user;
-    this. cartoon = cartoon;
+    //this.user = user;
+   this. cartoon = cartoon;
     // this.parentComment = parentComment;
     // this.replies = replies;
   }

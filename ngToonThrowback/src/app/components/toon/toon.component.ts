@@ -44,6 +44,8 @@ export class ToonComponent implements OnInit {
   loggedIn: User = new User();
   facts: Fact[] = [];
 
+
+
   arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   totalCards: number = this.arr.length;
   currentPage: number = 1;

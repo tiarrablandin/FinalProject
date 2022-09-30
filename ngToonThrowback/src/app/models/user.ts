@@ -20,7 +20,7 @@ export class User {
   cartoon: Toon = new Toon();
   favCartoons: Toon = new Toon();
   // media: Media = new Media();
-  //comment: Comment = new Comment();
+  // comment: Comment []  = [];
   // facts: Fact = new Fact();
   //merch: Merch = new Merch();
   // trivia: Trivia = new Trivia();
@@ -40,7 +40,7 @@ export class User {
     cartoon: Toon = new Toon(),
     favCartoons: Toon = new Toon())
     // media: Media = new Media(),
-    // comment: Comment = new Comment(),
+    // comment: Comment [] = [])
     // facts: Fact = new Fact(),
     // merch: Merch = new Merch(),
     // trivia: Trivia = new Trivia())

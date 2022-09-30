@@ -7,8 +7,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')">
-    </button>
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <form>
@@ -25,60 +25,64 @@
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editUser.username"/>
-                <br/>
+                  [(ngModel)]="editUser.username"
+                />
+                <br />
                 <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editUser.firstName"/>
-                <br/>
+                  [(ngModel)]="editUser.firstName"
+                />
+                <br />
                 <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editUser.lastName"/>
-                <br/>
+                  [(ngModel)]="editUser.lastName"
+                />
+                <br />
                 <input
                   type="text"
                   name="season"
                   class="col form-input form-control"
                   placeholder="Season"
                   style="width: 300px"
-                  [(ngModel)]="editUser.bio"/>
-                <br/>
+                  [(ngModel)]="editUser.bio"
+                />
+                <br />
                 <input
                   type="text"
                   name="episodeNum"
                   class="col form-input form-control"
                   placeholder="Episode Number"
                   style="width: 300px"
-                  [(ngModel)]="editUser.email"/>
-                <br/>
+                  [(ngModel)]="editUser.email"
+                />
+                <br />
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Cartoon Image"
                   style="width: 300px"
-                  [(ngModel)]="editUser.image"/>
-                <br/>
+                  [(ngModel)]="editUser.image"
+                />
+                <br />
               </form>
             </div>
           </form>
-          <br/><br/>
+          <br /><br />
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button
-      class="btn btn-outline-primary"
-      (click)="updateUser(); modal.dismiss('Cross click')">
+    <button class="button" (click)="updateUser(); modal.dismiss('Cross click')">
       Submit
     </button>
   </div>
@@ -93,8 +97,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')">
-    </button>
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <form>
@@ -111,57 +115,64 @@
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.title"/>
-                <br/>
+                  [(ngModel)]="editMedia.title"
+                />
+                <br />
                 <input
                   type="text"
                   name="url"
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.url"/>
-                <br/>
+                  [(ngModel)]="editMedia.url"
+                />
+                <br />
                 <input
                   type="text"
                   name="description"
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.description"/>
-                <br/>
+                  [(ngModel)]="editMedia.description"
+                />
+                <br />
                 <input
                   type="text"
                   name="season"
                   class="col form-input form-control"
                   placeholder="Season"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.image"/>
-                <br/>
+                  [(ngModel)]="editMedia.image"
+                />
+                <br />
                 <input
                   type="text"
                   name="episodeNum"
                   class="col form-input form-control"
                   placeholder="Episode Number"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.season"/>
-                <br/>
+                  [(ngModel)]="editMedia.season"
+                />
+                <br />
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Cartoon Image"
                   style="width: 300px"
-                  [(ngModel)]="editMedia.season"/>
-                <br/>
+                  [(ngModel)]="editMedia.season"
+                />
+                <br />
                 <button
-                  class="btn btn-outline-primary"
-                  (click)="updateMedia(editMedia); modal.dismiss('Cross click')">
+                  class="button"
+                  (click)="updateMedia(editMedia); modal.dismiss('Cross click')"
+                >
                   Add Media!
                 </button>
               </form>
             </div>
           </form>
-          <br/><br/>
+          <br /><br />
         </div>
       </div>
     </form>
@@ -178,8 +189,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')">
-    </button>
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <form>
@@ -197,8 +208,9 @@
                   class="col form-input form-control"
                   placeholder="Title"
                   style="width: 300px"
-                  [(ngModel)]="editToon.name"/>
-                <br/>
+                  [(ngModel)]="editToon.name"
+                />
+                <br />
                 URL:
                 <input
                   type="text"
@@ -206,8 +218,9 @@
                   class="col form-input form-control"
                   placeholder="URL"
                   style="width: 300px"
-                  [(ngModel)]="editToon.url"/>
-                <br/>
+                  [(ngModel)]="editToon.url"
+                />
+                <br />
                 Description:
                 <input
                   type="text"
@@ -215,8 +228,9 @@
                   class="col form-input form-control"
                   placeholder="Description"
                   style="width: 300px"
-                  [(ngModel)]="editToon.description"/>
-                <br/>
+                  [(ngModel)]="editToon.description"
+                />
+                <br />
                 Image:
                 <input
                   type="text"
@@ -224,8 +238,9 @@
                   class="col form-input form-control"
                   placeholder="Image"
                   style="width: 300px"
-                  [(ngModel)]="editToon.image"/>
-                <br/>
+                  [(ngModel)]="editToon.image"
+                />
+                <br />
                 Airing Date:
                 <input
                   type="date"
@@ -233,8 +248,9 @@
                   class="col form-input form-control"
                   placeholder="Airing Date"
                   style="width: 300px"
-                  [(ngModel)]="editToon.airingDate"/>
-                <br/>
+                  [(ngModel)]="editToon.airingDate"
+                />
+                <br />
                 Finale Date:
                 <input
                   type="date"
@@ -242,8 +258,9 @@
                   class="col form-input form-control"
                   placeholder="Finale Date"
                   style="width: 300px"
-                  [(ngModel)]="editToon.finaleDate"/>
-                <br/>
+                  [(ngModel)]="editToon.finaleDate"
+                />
+                <br />
                 <!-- Network:  <select name="network" id="" [(ngModel)]="editToon.network.id">
                   <option *ngFor="let network of networks" [value]="network.id">
                     {{network.name}}
@@ -258,13 +275,14 @@
 
                 <button
                   class="button"
-                  (click)="updateToon(); modal.dismiss('Cross click')">
+                  (click)="updateToon(); modal.dismiss('Cross click')"
+                >
                   Update Toon!
                 </button>
               </form>
             </div>
           </form>
-          <br/><br/>
+          <br /><br />
         </div>
       </div>
     </form>
@@ -281,8 +299,8 @@
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modal.dismiss('Cross click')">
-    </button>
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <form>
@@ -308,16 +326,18 @@
                   class="col form-input form-control"
                   placeholder="url"
                   style="width: 300px"
-                  [(ngModel)]="editMerch.url"/>
-                <br/>
+                  [(ngModel)]="editMerch.url"
+                />
+                <br />
                 <input
                   type="text"
                   name="image"
                   class="col form-input form-control"
                   placeholder="Image"
                   style="width: 300px"
-                  [(ngModel)]="editMerch.image"/>
-                <br/>
+                  [(ngModel)]="editMerch.image"
+                />
+                <br />
                 <input
                   type="text"
                   name="description"
@@ -328,14 +348,15 @@
                 />
 
                 <button
-                  class="btn btn-outline-primary"
-                  (click)="updateMerch(editMerch); modal.dismiss('Cross click')">
+                  class="button"
+                  (click)="updateMerch(editMerch); modal.dismiss('Cross click')"
+                >
                   Update Media!
                 </button>
               </form>
             </div>
           </form>
-          <br/><br/>
+          <br /><br />
         </div>
       </div>
     </form>
@@ -346,51 +367,76 @@
 <!------------------------------logged in user-------------------------------------->
 
 <div class="row">
-  <div class="column">
-    <div class="card" style="width: 18rem">
-      <img
-        class="card-img-top"
-        src="{{ loggedIn.image }}"
-        alt="Card image cap"/>
-      <div class="card-body">
-        <h5 class="card-title">{{ loggedIn.username }}</h5>
-        <p class="card-text">{{ loggedIn.bio }}</p>
-        <p class="card-text">
-          {{ loggedIn.firstName }} {{ loggedIn.lastName }}
-        </p>
+  <div class="card" style="width: 18rem" style="center: center">
+    <div class="image-wrapper">
+      <div class="column">
+        <img
+          class="card-img-topUser"
+          src="{{ loggedIn.image }}"
+          alt="Card image cap"
+        />
       </div>
     </div>
-
-    <span class="">
+    <div class="column">
+      <div class="card-body">
+        <h5 class="card-title" id="userName">{{ loggedIn.username }}</h5>
+        <p class="card-text" id="userNames">
+          {{ loggedIn.firstName }} {{ loggedIn.lastName }}
+        </p>
+        <p class="card-text" id="userBio">{{ loggedIn.bio }}</p>
+      </div>
+    </div>
+    <div class="column">
+      <br />
+      <br />
+      <br />
+      <br />
       <a
+        id="userButton"
         class="button"
         data-bs-toggle="offcanvas"
         (click)="editUser = loggedIn; open(accountModal)"
-        >Update User!</a>
+        >Update User!</a
+      >
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <button
-        class="btn btn-danger"
+        class="button2"
+        id="userDelete"
         (click)="delete(loggedIn.id)"
-        [routerLink]="['/home']">
-        Delete!
+        [routerLink]="['/home']"
+      >
+        Delete User Profile
       </button>
-    </span>
-    <br/>
+    </div>
+  </div>
+</div>
 
-    <!----------------------------------media card----------------------------------->
+<br />
 
+<!----------------------------------media card----------------------------------->
+
+<div class="row">
+  <div class="column">
+    <img src="assets/mediaADD.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
       <div class="anyClass">
         <div
           *ngFor="let media of userMedias"
-          class="card"
+          class="card2"
           style="width: 18rem"
-          style="center: center">
+          style="center: center"
+        >
           <div class="image-wrapper">
             <img
               class="card-img-top"
               src="{{ media.image }}"
-              alt="Card image cap"/>
-              <img/>
+              alt="Card image cap"
+            />
+            <img />
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ media.title }}</h5>
@@ -402,10 +448,9 @@
                 class="button"
                 data-bs-toggle="offcanvas"
                 (click)="setEditMedia(media); openMedia(mediaModal)"
-                >Update Media!</a>
-              <button class="btn btn-danger" (click)="deleteMedia(media.id)">
-                Delete Me!
-              </button>
+                >Update Media!</a
+              >
+              <button class="button2" (click)="deleteMedia(media.id)">X</button>
             </span>
           </div>
         </div>
@@ -416,19 +461,22 @@
   <!--------------------------merchandise card--------------------------------------->
 
   <div class="column">
+    <img src="assets/merchADD.png" id="cartoonADDS" />
     <div *ngIf="loggedIn">
       <div class="anyClass">
         <div
           *ngFor="let merch of userMerchs"
-          class="card"
+          class="card2"
           style="width: 18rem"
-          style="center: center">
+          style="center: center"
+        >
           <div class="image-wrapper">
             <img
               class="card-img-top"
               src="{{ merch.image }}"
-              alt="Card image cap"/>
-              <img/>
+              alt="Card image cap"
+            />
+            <img />
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ merch.createdDate }}</h5>
@@ -438,10 +486,9 @@
                 class="button"
                 data-bs-toggle="offcanvas"
                 (click)="setEditMerch(merch); open(merchModal)"
-                >Update Merch!</a>
-              <button class="btn btn-danger" (click)="deleteMerch(merch.id)">
-                Delete Me!
-              </button>
+                >Update Merch!</a
+              >
+              <button class="button2" (click)="deleteMerch(merch.id)">X</button>
             </span>
           </div>
         </div>
@@ -457,15 +504,17 @@
       <div class="anyClass">
         <div
           *ngFor="let toon of userToons"
-          class="card"
+          class="card2"
           style="width: 18rem"
-          style="center: center">
+          style="center: center"
+        >
           <div class="image-wrapper">
             <img
               class="card-img-top"
               src="{{ toon.image }}"
-              alt="Card image cap"/>
-              <img/>
+              alt="Card image cap"
+            />
+            <img />
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ toon.name }}</h5>
@@ -475,10 +524,9 @@
                 class="button"
                 data-bs-toggle="offcanvas"
                 (click)="setEdit(toon); openCartoon(cartoonModal)"
-                >Update Cartoon!</a>
-              <button class="btn btn-danger" (click)="deleteToon(toon.id)">
-                Delete Me!
-              </button>
+                >Update Cartoon!</a
+              >
+              <button class="button2" (click)="deleteToon(toon.id)">X</button>
             </span>
           </div>
         </div>
@@ -489,18 +537,58 @@
 
 <!-----------------------------------------user comments--------------------------------------------------->
 
+
+
+<!-- <div *ngIf="loggedIn">
+  <div class="cardComment">
+    <div class="card-body" *ngFor="let i of userComments">
+      <table>
+        <tr>
+          <td class="card-title">{{ i.comment }}</td>
+          <td>
+            <a
+              class="button2"
+              (click)="deleteComment(i)"
+              [routerLink]="['/account']"
+              >X</a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div> -->
+
 <div *ngIf="loggedIn">
-  <table>
-    <tr *ngFor="let i of userComments">
-      <td>{{ i.comment }}</td>
-      <td>
-        <button
-          class="btn btn-danger"
-          (click)="deleteComment(i)"
-          [routerLink]="['/account']">
-          Delete!
-        </button>
-      </td>
-    </tr>
-  </table>
+  <div class="cardComment">
+    <table class="table table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>Comment</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let i of userComments">
+          <td>{{ i.comment }}</td>
+          <td>
+            <button
+            class="btn btn-danger"
+            (click)="deleteComment(i)"
+            [routerLink]="['/account']"
+          >
+            X
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
