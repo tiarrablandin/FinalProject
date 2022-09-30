@@ -30,11 +30,11 @@ public class SecurityConfig {
         .authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers(HttpMethod.GET, "/api/media").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers(HttpMethod.GET, "/api/cartoons").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers(HttpMethod.GET, "/api/trivia/**").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers(HttpMethod.GET, "/api/cartoons/*/comments").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers(HttpMethod.GET, "/api/cartoons/**").permitAll()     // will hit the OPTIONS on the route
+        .antMatchers(HttpMethod.GET, "/api/media").permitAll()     
+        .antMatchers(HttpMethod.GET, "/api/cartoons").permitAll()     
+        .antMatchers(HttpMethod.GET, "/api/trivia/**").permitAll()     
+        .antMatchers(HttpMethod.GET, "/api/cartoons/*/comments").permitAll()     
+        .antMatchers(HttpMethod.GET, "/api/cartoons/**").permitAll()     
         .antMatchers(HttpMethod.GET, "/api/merch").permitAll()
         .antMatchers(HttpMethod.GET, "/api/users/*/cartoons").permitAll()
         .antMatchers(HttpMethod.GET, "/api/users/*/merch").permitAll()
