@@ -69,32 +69,81 @@
     </tbody>
   </table>
 </div> -->
-<div class="container-fluid d-flex justify-content-center" *ngIf="selected">
-  <div class="card" style="width: 18rem">
-    <img
-        class="card-img-top"
-        src="{{ selected.image }}"
-        alt="Card image cap"
-      />
-    <div class="card-body1">
-      <h5 class="card-title">{{selected.name}}</h5>
-      <p id="description">Description: {{ selected.description }}</p>
-      Rating:
-      <p>{{ selected.rating.rating }}</p>
-      First Aired:
-      <p>{{ selected.airingDate | date: "shortDate" }}</p>
-      Show Finale:
-      <p>{{ selected.finaleDate | date: "shortDate" }}</p>
-      Creator:
-      <p>{{ selected.creator.name }}</p>
-      Network:
-      <p>{{ selected.network.name }}</p>
+<div class="row">
+  <div class="container-fluid d-flex justify-content-center" *ngIf="selected">
+    <div class="cardProfile">
+      <div class="column">
+        <img
+          class="card-img-topUser"
+          src="{{ selected.image }}"
+          alt="Card image cap"
+        />
+      </div>
+      <div class="column">
+        <div class="card-body">
+          <h5 class="card-title" id="userName">{{ selected.name }}</h5>
+          <p id="description">Description: {{ selected.description }}</p>
+          <p>Rating: {{ selected.rating.rating }}</p>
+          <p>First Aired: {{ selected.airingDate | date: "shortDate" }}</p>
+          <p>Show Finale: {{ selected.finaleDate | date: "shortDate" }}</p>
+          <p>Creator: {{ selected.creator.name }}</p>
+          <p>Network: {{ selected.network.name }}</p>
+        </div>
+      </div>
+      <div class="column">
+        <div *ngIf="loggedInUser && loggedInUser.role == 'admin'">
+          <div class="d-flex justify-content-center">
+            <br>
+            <p class="mt-5">Active: {{ selected.active }} </p>
+            <p class="mt-5"> Created: {{ selected.createdDate | date: "shortDate" }} | </p>
+            <p class="mt-5"> Updated: {{ selected.updatedDate | date: "shortDate" }} | </p>
+          </div>
+          <div id="logged" *ngIf="loggedInUser">
+            <div class="d-flex justify-content-center">
+              <button class="button mb-3" (click)="open(merchModal)">
+                Add Merchandise
+              </button>
+              <br>
+              <button class="button mb-3" (click)="open(mediaModal)">
+                Add Media
+              </button>
+              <br>
+              <br>
+            </div>
+            <div *ngIf="loggedInUser && loggedInUser.role == 'admin'">
+              <div class="d-flex justify-content-center">
+                Active:
+                <p>{{ selected.active }}</p>
+                Created:
+                <p>{{ selected.createdDate | date: "shortDate" }}</p>
+                Updated:
+                <p>{{ selected.updatedDate | date: "shortDate" }}</p>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  class="button"
+                  (click)="open(content); editToon = selected"
+                >
+                  Update Cartoon
+                </button>
+                <button
+                  class="button2"
+                  (click)="deleteToon(selected.id)"
+                >
+                  Delete Cartoon
+                </button>
+              </div>
+            </div>
 
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <!-- <table> -->
-<div class="justify-content-center" *ngIf="selected">
+<!-- <div class="justify-content-center" *ngIf="selected">
   <h1 id="title">{{ selected.name }}</h1>
   <div class="single">
     <div class="d-flex justify-content-center">
@@ -152,21 +201,40 @@
         </button>
       </div>
     </div>
-    <div *ngFor="let comment of comments">
-      <p>{{ comment.comment }} {{ comment.createdDate }}</p>
-    </div>
-    <div *ngIf="loggedIn">
-      <span class="">
-        <a
-          class="button"
-          data-bs-toggle="offcanvas"
-          (click)="open(commentModal)"
-          >Add comment!</a
-        >
-      </span>
-    </div>
+
+
   </div>
+</div> -->
+
+<div class="cardComment" *ngIf="selected">
+  <table class="table table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Comment</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.comment }} {{ comment.createdDate }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<div *ngIf="loggedIn">
+  <span class="" *ngIf="selected">
+    <a
+      class="button"
+      data-bs-toggle="offcanvas"
+      (click)="open(commentModal)"
+      >Add comment!</a
+    >
+  </span>
+</div>
+<br>
+<br>
+<br>
 
 <div class="container" #container>
   <div
@@ -186,11 +254,14 @@
         [ngStyle]="{ width: cardWidth }"
       >
         <div class="image-wrapper2">
-          <img style=" width: 100% !important; z-index: 100;" src="{{ media.image }}" />
+          <img
+            style="width: 100% !important; z-index: 100"
+            src="{{ media.image }}"
+          />
         </div>
         <br />
         <marquee>{{ media.title }}</marquee>
-        <a class="button" href="{{ media.url }}" target="_blank" id="watch"
+        <a class="button mb-5" href="{{ media.url }}" target="_blank" id="watch"
           >Watch Toon</a
         >
 
@@ -227,15 +298,17 @@
         *ngFor="let merch of toonMerch; let index = index"
         [ngStyle]="{ width: cardWidth }"
       >
+      <div class="image-wrapper2">
         <a href="{{ merch.url }}">
           <img
             src="{{ merch.image }}"
-            style="height: 75%; width: 75% !important"
-          /><br />
-          <h5>{{ merch.description }}</h5>
+            style= "width: 100% !important; z-index: 100"
+          />
+          <br />
+          <marquee><h5>{{ merch.description }}</h5></marquee>
           <!-- <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> -->
-          -->
         </a>
+      </div>
       </div>
     </div>
   </div>

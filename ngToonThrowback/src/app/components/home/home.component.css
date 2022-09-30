@@ -5,7 +5,7 @@
   padding-left: 35px;
   display: flex;
 }
-.card2 {
+/* .card2 {
   margin: 100px auto 0;
   display: inline-block;
   width: 1520px;
@@ -16,9 +16,9 @@
   border-radius: 20px;
   border-width: 2px;
   border-color: black;
-  background-color:lightblue;
+  background-color: lightblue;
   flex: auto;
-}
+} */
 .card3{
   margin: 100px auto 0;
   display: inline-block;
@@ -38,7 +38,7 @@
   margin: 100px auto 0;
   display: inline-block;
   width: 1520px;
-  height: 600px;
+  height: 530px;
   perspective: 700px;
   align-items: center;
   border-radius: 20px;

@@ -9,6 +9,78 @@ table{
   padding-top: 2%;
   padding-bottom: 2%;
 }
+.cardComment{
+  color: black;
+  margin: 100px auto 0;
+  display: inline-block;
+  width: 1000px;
+  height: 400px;
+  perspective: 700px;
+  align-items: center;
+  border-radius: 20px;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: black;
+  background-color: white;
+  flex: auto;
+  padding: 20px;
+}
+tbody{
+  color: black;
+}
+.cardProfile {
+  margin: 100px auto 0;
+  display: inline-block;
+  width: 1320px;
+  height: 400px;
+  perspective: 700px;
+  align-items: center;
+  border-radius: 20px;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: black;
+  background-color: white;
+}
+.card-img-topUser {
+  padding: 1px;
+  height: 400px;
+  width: 400px;
+  border-radius: 20px;
+}
+#userName{
+  font-size: 40px;
+  text-align: center;
+}
+#userBio{
+  font-size: 15px;
+    color: lightgreen;
+}
+#userNames{
+  font-size: 30px;
+  color: pink;
+  text-align: center;
+}
+#userButton{
+  float: right;
+}
+#userDelete {
+  float: right;
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+#column2 {
+  float: right;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  align-content: center;
+}
 
 td{
   color: black;
@@ -150,6 +222,20 @@ marquee{
   border-radius: 15px;
   box-shadow: 0 7px #999;
 }
+.button2 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: pink;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
 
 .button:hover {background-color:hotpink}
 
@@ -186,6 +272,13 @@ marquee{
   display: flex;
   flex-wrap: wrap;
   padding-left: 25px;
+}
+.card-body{
+  padding-top: 2%;
+  text-align: center;
+  color: #FE98E2;
+  text-shadow: 1px 1px black;
+  border-radius: 20px;
 }
 
 .image-wrapper {
