@@ -3,21 +3,73 @@
 
   <div class="d-flex justify-content-center">
     <form class="text-center">
-      <input type="text" name="username" class="col form-input form-control " placeholder="username" style="width: 300px;" [(ngModel)]="newUser.username">
-      <br>
-      <input type="password" name="password" class="col form-input form-control" placeholder="password" style="width: 300px;" [(ngModel)]="newUser.password">
-      <br>
-      <input type="email" name="email" class="col form-input form-control" placeholder="email" style="width: 300px;" [(ngModel)]="newUser.email">
-      <br>
-      <input type="text" name="image" class="col form-input form-control" placeholder="image" style="width: 300px;" [(ngModel)]="newUser.image">
-    <br>
-    <input type="text" name="firstName" class="col form-input form-control" placeholder="First Name" style="width: 300px;" [(ngModel)]="newUser.firstName">
-    <br>
-    <input type="text" name="lastName" class="col form-input form-control" placeholder="Last Name" style="width: 300px;" [(ngModel)]="newUser.lastName">
-    <br>
-    <textarea class="col form-input form-control" id="bio" rows="3" placeholder="Bio" style="width: 300px;" [(ngModel)]="newUser.bio" [ngModelOptions]="{standalone: true}"></textarea>
-    <br>
-    <button class="btn btn-outline-primary" (click)="register(newUser)">Register Account</button>
-  </form>
-</div>
+      <input
+        type="text"
+        name="username"
+        class="col form-input form-control"
+        placeholder="username"
+        style="width: 300px"
+        [(ngModel)]="newUser.username"
+      />
+      <br />
+      <input
+        type="password"
+        name="password"
+        class="col form-input form-control"
+        placeholder="password"
+        style="width: 300px"
+        [(ngModel)]="newUser.password"
+      />
+      <br />
+      <input
+        type="email"
+        name="email"
+        class="col form-input form-control"
+        placeholder="email"
+        style="width: 300px"
+        [(ngModel)]="newUser.email"
+      />
+      <br />
+      <input
+        type="text"
+        name="image"
+        class="col form-input form-control"
+        placeholder="image"
+        style="width: 300px"
+        [(ngModel)]="newUser.image"
+      />
+      <br />
+      <input
+        type="text"
+        name="firstName"
+        class="col form-input form-control"
+        placeholder="First Name"
+        style="width: 300px"
+        [(ngModel)]="newUser.firstName"
+      />
+      <br />
+      <input
+        type="text"
+        name="lastName"
+        class="col form-input form-control"
+        placeholder="Last Name"
+        style="width: 300px"
+        [(ngModel)]="newUser.lastName"
+      />
+      <br />
+      <textarea
+        class="col form-input form-control"
+        id="bio"
+        rows="3"
+        placeholder="Bio"
+        style="width: 300px"
+        [(ngModel)]="newUser.bio"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
+      <br />
+      <button class="btn btn-outline-primary" (click)="register(newUser)">
+        Register Account
+      </button>
+    </form>
+  </div>
 </div>
