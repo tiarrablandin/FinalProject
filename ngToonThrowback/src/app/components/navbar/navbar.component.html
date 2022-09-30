@@ -1,68 +1,152 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active link-dark" aria-current="page" [routerLink]="['/home']">Home</a>
+          <a
+            class="nav-link active link-dark"
+            aria-current="page"
+            [routerLink]="['/home']"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link active link-dark" [routerLink]="['/media']">Media</a>
+          <a class="nav-link active link-dark" [routerLink]="['/media']"
+            >Media</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link active link-dark" [routerLink]="['/trivia']">Trivia</a>
+          <a class="nav-link active link-dark" [routerLink]="['/trivia']"
+            >Trivia</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link active link-dark" [routerLink]="['/merch']">Merch</a>
+          <a class="nav-link active link-dark" [routerLink]="['/merch']"
+            >Merch</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link active link-dark" *ngIf="loggedIn()" [routerLink]="['/account']">Account</a>
+          <a
+            class="nav-link active link-dark"
+            *ngIf="loggedIn()"
+            [routerLink]="['/account']"
+            >Account</a
+          >
         </li>
         <li class="nav-item" *ngIf="!loggedIn()">
-          <button class="btn btn-outline-primary" (click)="open(content)">Login</button>
+          <button class="btn btn-outline-primary" (click)="open(content)">
+            Login
+          </button>
         </li>
         <li class="nav-item" *ngIf="loggedIn()">
-          <button class="btn btn-outline-primary" (click)="logout()">Logout</button>
+          <button class="btn btn-outline-primary" (click)="logout()">
+            Logout
+          </button>
         </li>
       </ul>
       <div class="d-flex">
         <label></label>
-        <input type="text" class="form-control" placeholder="search cartoon" aria-describedby="helpId" [(ngModel)]="searchTerm">
-        <button class="btn btn-outline-primary" (click)="search()">Search</button>
-      </div><br>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="search cartoon"
+          aria-describedby="helpId"
+          [(ngModel)]="searchTerm"
+        />
+        <button class="btn btn-outline-primary" (click)="search()">
+          Search
+        </button>
+      </div>
+      <br />
     </div>
   </div>
-</nav><br><br>
+</nav>
+<br /><br />
 
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Login</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <div class="input-group">
-            <form *ngIf="login">
-              <label for="username" class="form-label">Username:</label>
-              <input id="username" type="text" class="form-control" style="width: 300px;" name="username" placeholder="username" [(ngModel)]="loginUser.username"><br>
-              <label for="password" class="form-label">Password:</label>
-              <input id="password" type="password" class="form-control" style="width: 300px;" name="element" placeholder="password" [(ngModel)]="loginUser.password"><br>
-              <input type="checkbox" class="form-check-input" id="dropdownCheck">
-              <label class="form-check-label" for="dropdownCheck"> Remember me</label><br><br>
-              <button class="btn btn-outline-primary" (click)="login(loginUser); modal.dismiss('Cross click')">Login</button>
-            </form><br><br>
-          </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form *ngIf="login">
+            <label for="username" class="form-label">Username:</label>
+            <input
+              id="username"
+              type="text"
+              class="form-control"
+              style="width: 300px"
+              name="username"
+              placeholder="username"
+              [(ngModel)]="loginUser.username"
+            />
+            <br />
+            <label for="password" class="form-label">Password:</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              style="width: 300px"
+              name="element"
+              placeholder="password"
+              [(ngModel)]="loginUser.password"
+            />
+            <br />
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="dropdownCheck"
+            />
+            <label class="form-check-label" for="dropdownCheck">
+              Remember me</label
+            ><br /><br />
+            <button
+              class="btn btn-outline-primary"
+              (click)="login(loginUser); modal.dismiss('Cross click')"
+            >
+              Login
+            </button>
+          </form>
+          <br /><br />
         </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a id="register" class="dropdown-item link" [routerLink]="['/register']" (click)="modal.dismiss('Cross click')">New around here? Sign up</a>
-      <a id="forgot" class="dropdown-item link" href="#" (click)="modal.dismiss('Cross click')">Forgot password?</a>
-    </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a
+      id="register"
+      class="dropdown-item link"
+      [routerLink]="['/register']"
+      (click)="modal.dismiss('Cross click')"
+      >New around here? Sign up</a
+    >
+    <a
+      id="forgot"
+      class="dropdown-item link"
+      href="#"
+      (click)="modal.dismiss('Cross click')"
+      >Forgot password?</a
+    >
+  </div>
   <div class="dropdown-divider"></div>
 </ng-template>

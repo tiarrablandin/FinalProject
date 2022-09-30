@@ -71,13 +71,9 @@
 </div> -->
 <div class="container-fluid d-flex justify-content-center" *ngIf="selected">
   <div class="card" style="width: 18rem">
-    <img
-        class="card-img-top"
-        src="{{ selected.image }}"
-        alt="Card image cap"
-      />
+    <img class="card-img-top" src="{{ selected.image }}" alt="Card image cap" />
     <div class="card-body1">
-      <h5 class="card-title">{{selected.name}}</h5>
+      <h5 class="card-title">{{ selected.name }}</h5>
       <p id="description">Description: {{ selected.description }}</p>
       Rating:
       <p>{{ selected.rating.rating }}</p>
@@ -89,7 +85,6 @@
       <p>{{ selected.creator.name }}</p>
       Network:
       <p>{{ selected.network.name }}</p>
-
     </div>
   </div>
 </div>
@@ -186,18 +181,16 @@
         [ngStyle]="{ width: cardWidth }"
       >
         <div class="image-wrapper2">
-          <img style=" width: 100% !important; z-index: 100;" src="{{ media.image }}" />
+          <img
+            style="width: 100% !important; z-index: 100"
+            src="{{ media.image }}"
+          />
         </div>
         <br />
         <marquee>{{ media.title }}</marquee>
         <a class="button" href="{{ media.url }}" target="_blank" id="watch"
           >Watch Toon</a
         >
-
-        <!-- <a href="{{ media.url }}"> -->
-        <!-- <button class="btn btn-outline-primary" (click)="deleteMedia(selected.id)" [routerLink]="['/home']">Delete</button> -->
-
-        <!-- </a> -->
       </div>
     </div>
   </div>
@@ -233,8 +226,6 @@
             style="height: 75%; width: 75% !important"
           /><br />
           <h5>{{ merch.description }}</h5>
-          <!-- <button class="btn btn-outline-primary" (click)="deleteMerch(selected.id)" [routerLink]="['/home']">Delete</button> -->
-          -->
         </a>
       </div>
     </div>
